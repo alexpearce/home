@@ -39,11 +39,11 @@ hgroup h2 {
 
 a {
   text-decoration: none;
-  color: #e02f5c;
+  color: #0077cc;
 }
 
 a:hover {
-  color: #0077cc;
+  color: #a0d137;
 }
 
 /* End Typography */
@@ -75,11 +75,6 @@ header h1 {
 
 header h1 a {
   display: block;
-  color: #0077cc;
-}
-
-header h1 a:hover {
-  color: #a0d137;
 }
 
 header h2 {
