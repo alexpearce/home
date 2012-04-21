@@ -1,0 +1,15 @@
+<div class="post">
+  <hgroup>
+    <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
+    <h2>{{ page.date | date: "%A %d, %B %Y" }}</h2>
+    <ul>
+      {% for category in page.categories %}
+        <li><a href="/{{ category | downcase }}.html">{{ category }}</a></li>
+      {% endfor %}
+    </ul>
+  </hgroup>
+  
+  <div class="body">
+    {{ page.content }}
+  </div>  
+</div>

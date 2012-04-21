@@ -1,0 +1,30 @@
+# https://github.com/mojombo/jekyll/wiki/Configuration
+
+# Don't use custom plugins
+safe: true
+# Regeneration files when changed
+auto: true
+# Don't start the server
+server: false
+
+baseurl: /
+url: http://localhost:4000
+
+# Site source
+source: .
+# Where to put the compiled site
+destination: ./_site
+# Markdown engine
+markdown: rdiscount
+# Use Pygments for syntax highlighting
+pygments: true
+
+# Don't produce a 'related posts' index
+lsi: false
+
+# Permalink style
+permalink: /:year/:month/:title
+  
+# 3 posts per page
+paginate: 3
+
