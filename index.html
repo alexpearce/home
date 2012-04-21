@@ -6,5 +6,14 @@ layout: default
 {% endfor %}
 
 <div class="pagination">
-  
+  {% if paginator.next_page %}
+    <p class="next"><a href="/page{{ paginator.next_page }}">Older</a></p>
+  {% endif %}
+  {% if paginator.previous_page %}
+    {% if paginator.previous_page == 1 %}
+      <p class="previous"><a href="/">Newer</a></p>
+    {% else %}
+      <p class="previous"><a href="/page{{ paginator.previous_page }}">Newer</a></p>
+    {% endif %}
+  {% endif %}
 </div>

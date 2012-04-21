@@ -133,9 +133,23 @@ article .tags li a:hover {
 }
 /* @end Posts */
 
+/* @group Pagination */
+
+.pagination .previous {
+  float: right;
+  text-align: right;
+}
+
+.pagination .next {
+  float: left;
+}
+
+/* @end Pagination */
+
 /* @end Blog */
 
-/* code blocks */
+/* @group Code */
+
 .highlight {
   margin-bottom: 1em;
   border: 1px solid #333;
@@ -152,6 +166,8 @@ article .tags li a:hover {
   -o-border-radius: 4px;
   border-radius: 4px;
 }
+
+/* @end Code */
 
 /* @group Tables */
 
@@ -210,6 +226,9 @@ p code {
   }
 }
 
+/* @group Media Queries */
+/* For phones and stuff */
+
 @media screen and (max-width: 980px) {
   header {
     width: 20%;
@@ -259,3 +278,5 @@ p code {
     font-size: 1.1em;
   }
 }
+
+/* @end Media Queries */
