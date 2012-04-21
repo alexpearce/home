@@ -1,0 +1,261 @@
+html, body {
+  /* To stretch the background down the whole viewport */
+  height: 100%;
+}
+
+body {
+  background-color: #fff;
+  /* Now *that's* a subtle gradient */
+  background-image: -webkit-linear-gradient(#fff, #fcfcfc);
+  background-image: -moz-linear-gradient(#fff, #fcfcfc);
+  background-image: linear-gradient(#fff, #fcfcfc);
+  font-family: "Palatino Linotype", Palatino, Palladio, "Book Antiqua", Georgia, serif;
+}
+
+/* Typography */
+body {
+  color: #333;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  font-family: Asap, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 1.3em;
+}
+
+hgroup h2 {
+  font-size: 1.1em;
+  color: #999;
+}
+
+a {
+  text-decoration: none;
+  color: #e02f5c;
+}
+
+a:hover {
+  color: #0077cc;
+}
+
+/* End Typography */
+
+/* Columns */
+
+.columns, .blog {
+  overflow: hidden;
+  _overflow: hidden;
+  zoom: 1;
+}
+
+.columns header {
+  float: left;
+}
+
+/* End Columns */
+
+/* Header */
+
+header {
+  width: 200px;
+  margin: 100px 0 0 100px;
+}
+
+header h1 {
+  font-family: Pacifico;
+}
+
+header h2 {
+  font-size: 1.2em;
+}
+
+/* End Header */
+
+/* @group Blog */
+
+.blog {
+  width: 720px;
+  margin: 50px 0 0 0;
+  padding: 0 0 0 40px;
+}
+
+/* @group Posts */
+
+article {
+  margin: 0 0 30px 0;
+}
+
+article hgroup {
+  margin: 0 0 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+article h2 {
+  font-weight: 400;
+}
+
+article hgroup h1 a {
+  color: #333;
+}
+
+article .tags {
+  margin: 20px 0 0 0;
+  padding: 0;
+  list-style-type: none;
+  font-size: 0.8em;
+}
+
+article .tags li {
+  float: left;
+  margin: 0 7px;
+}
+
+article .tags li a {
+  padding: 1px 12px 2px 12px;
+  background: #eaeff0;
+  color: #5e6d74;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+}
+
+article .tags li a:hover {
+  background: #bdc2c4;
+}
+/* @end Posts */
+
+/* @end Blog */
+
+/* code blocks */
+.highlight {
+  margin-bottom: 1em;
+  border: 1px solid #333;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.highlight pre {
+  padding: 8px;
+}
+
+.highlight, p code {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* @group Tables */
+
+table {
+  width: 100%;
+  margin-bottom: 18px;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table th, table td {
+  padding: 8px;
+  border-top: 1px solid #dddddd;
+  line-height: 18px;
+  vertical-align: top;
+  text-align: left;
+}
+
+table th {
+  font-weight: bold;
+}
+
+table thead th {
+  vertical-align: bottom;
+}
+
+table colgroup + thead tr:first-child th,
+table colgroup + thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+  border-top: 0;
+}
+
+table tbody + tbody {
+  border-top: 2px solid #dddddd;
+}
+
+/* @end Tables */
+
+/* inline code */
+p code {
+  padding: 2px 4px;
+  border: 1px solid #e1e1e8;
+  background: #f7f7f9;
+  color: #207cb9;
+  font-size: 0.8em;
+}
+
+@media screen and (max-width: 1060px) {
+  header {
+    margin: 20px 0 0 20px;
+  }
+  
+  .blog {
+    margin: 20px 0 0 0;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  header {
+    width: 20%;
+  }
+  
+  .blog {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .columns {
+    overflow: none;
+  }
+  
+  header {
+    width: 100%;
+    float: none;
+    margin: 0 0 20px 0;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  header .deets {
+    display: none;
+  }
+  
+  .blog {
+    width: 100%;
+    padding: 0;
+  }
+  
+  article {
+    padding: 0 10px;
+    font-size: 0.9em;
+  }
+  
+  article h1 {
+    font-size: 1.4em;
+  }
+  
+  article h2 {
+    font-size: 1.1em;
+  }
+  
+  article h2 {
+    font-size: 1.1em;
+  }
+}

@@ -1,15 +1,20 @@
-<div class="post">
-  <hgroup>
+<article class="post">
+  <hgroup class="cf">
     <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
-    <h2>{{ page.date | date: "%A %d, %B %Y" }}</h2>
-    <ul>
-      {% for category in page.categories %}
-        <li><a href="/{{ category | downcase }}.html">{{ category }}</a></li>
-      {% endfor %}
-    </ul>
+    <h2>{{ page.date | date: "%A %d, %B %Y" }} in <b>{{ page.category }}</b></h2>
   </hgroup>
   
   <div class="body">
-    {{ page.content }}
-  </div>  
-</div>
+    {% if content %}
+      {{ content }}
+    {% else %}
+      {{ page.content }}
+    {% endif %}
+  </div>
+  
+  <ul class="tags cf">
+    {% for tag in page.tags %}
+      <li><a href="/{{ tag }}">{{ tag }}</a></li>
+    {% endfor %}
+  </ul>
+</article>
