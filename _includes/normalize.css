@@ -43,13 +43,13 @@ body {
 ::-moz-selection {
   background: #fe57a1;
   color: #fff;
-  text-shadow: none;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 ::selection {
   background: #fe57a1;
   color: #fff;
-  text-shadow: none;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 a:focus {

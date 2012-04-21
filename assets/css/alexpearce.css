@@ -1,3 +1,18 @@
+---
+---
+/* @group Normalize */
+
+{% include normalize.css %}
+
+/* @end Normalize */
+
+/* @group Pygments - Solarized (dark) Theme */
+
+{% include solarized-dark.css %}
+
+/* @end Pygments */
+
+
 html, body {
   /* To stretch the background down the whole viewport */
   height: 100%;
@@ -71,6 +86,7 @@ header {
 
 header h1 {
   font-family: Pacifico;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
 }
 
 header h1 a {
