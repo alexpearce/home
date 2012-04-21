@@ -73,6 +73,15 @@ header h1 {
   font-family: Pacifico;
 }
 
+header h1 a {
+  display: block;
+  color: #0077cc;
+}
+
+header h1 a:hover {
+  color: #a0d137;
+}
+
 header h2 {
   font-size: 1.2em;
 }
