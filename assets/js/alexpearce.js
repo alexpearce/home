@@ -68,8 +68,7 @@ var filterPostsByPropertyValue = function(posts, property, value) {
 //   property: string of object type we're displaying
 //   value: string of name of object we're displaying
 //   posts: array of post objects
-// Returns:
-//   null
+// Returns: nothing
 var layoutResultsPage = function(property, value, posts) {
   // Make sure we're on the search results page
   var $container = $('#results');
@@ -83,14 +82,15 @@ var layoutResultsPage = function(property, value, posts) {
   for (var i in posts) {
     // Create an unordered list of the post's tags
     var tagsList = '<ul class="tags cf">',
-        tags = posts[i].tags;
+        post     = posts[i],
+        tags     = post.tags;
 
+    if (tags[0] === null) tags.pop();
     for (var j in tags) {
       tagsList += '<li><a href="/search.html?tags=' + tags[j] + '">' + tags[j] + '</li>';
     }
     tagsList += '</ul>';
     
-    var post = posts[i];
     $container.find('ul.results').append(
       '<li>'
         // Page anchor
@@ -106,8 +106,6 @@ var layoutResultsPage = function(property, value, posts) {
         + '</li>'
     );
   }
-  
-  return null;
 }
 
 // Replaces ERB-style tags with Liquid ones as we can't escape them in posts
