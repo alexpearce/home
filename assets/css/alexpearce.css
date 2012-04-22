@@ -90,6 +90,9 @@ header h1 {
 
 header h1 a {
   display: block;
+  -webkit-transition: color 0.2s;
+  -moz-transition: color 0.2s;
+  transition: color 0.2s;
 }
 
 header h2 {
