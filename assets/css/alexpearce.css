@@ -45,11 +45,11 @@ h1 {
 
 h2 {
   font-size: 1.3em;
+  font-weight: 400;
 }
 
 hgroup h2 {
   font-size: 1.1em;
-  color: #999;
 }
 
 a {
@@ -117,12 +117,20 @@ article hgroup {
   border-bottom: 1px solid #eee;
 }
 
-article h2 {
-  font-weight: 400;
-}
-
 article hgroup h1 a {
   color: #333;
+}
+
+article hgroup h1 a:hover {
+  color: #0077cc;
+}
+
+hgroup h2 {
+  color: #999;
+}
+
+hgroup h2 a {
+  color: #999;
 }
 
 .tags {
@@ -148,7 +156,14 @@ article hgroup h1 a {
 }
 
 .tags li a:hover {
-  background: #bdc2c4;
+  /* shrink the padding to compensate for the border */
+  padding: 0 11px 1px 11px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.tags li a:active {
+  position: relative;
+  top: 1px;
 }
 
 /* @end Posts */
