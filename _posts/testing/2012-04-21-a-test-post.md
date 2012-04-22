@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A Test Post
-category: Superness
+category: Testing
 tags: [testing, tables]
 ---
 This is a little more testing. Here's a *simple* table:
