@@ -118,14 +118,15 @@ var replaceERBTags = function(elements) {
   elements.each(function() {
     // Only for text blocks at the moment as we'll strip highlighting otherwise
     var $this = $(this),
-        txt   = $this.text();
+        txt   = $this.html();
+        console.log(txt);
     
     // Replace <%=  %>with {{ }}
-    txt = txt.replace(new RegExp("<%=(.+?)%>", "g"), "{{$1}}");
+    txt = txt.replace(new RegExp("&lt;%=(.+?)%&gt;", "g"), "{{$1}}");
     // Replace <% %> with {% %}
-    txt = txt.replace(new RegExp("<%(.+?)%>", "g"), "{%$1%}");
+    txt = txt.replace(new RegExp("&lt;%(.+?)%&gt;", "g"), "{%$1%}");
     
-    $this.text(txt);
+    $this.html(txt);
   });
 };
 
