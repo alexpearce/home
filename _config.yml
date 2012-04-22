@@ -19,6 +19,9 @@ markdown: rdiscount
 # Use Pygments for syntax highlighting
 pygments: true
 
+# Exclude these files from compilation
+exclude: [Gemfile, Gemfile.lock, CNAME, README.md]
+
 # Don't produce a 'related posts' index
 lsi: false
 
@@ -27,4 +30,3 @@ permalink: /:year/:month/:title
   
 # 3 posts per page
 paginate: 4
-
