@@ -52,6 +52,20 @@ hgroup h2 {
   font-size: 1.1em;
 }
 
+/* shh */
+p.quiet {
+  color: #aaa;
+}
+
+p.quiet a {
+  color: rgba(0, 119, 204, 0.7);
+  -webkit-transition: color 0.3s;
+}
+
+p.quiet a:hover {
+  color: rgba(0, 119, 204, 1);
+}
+
 a {
   text-decoration: none;
   color: #0077cc;
