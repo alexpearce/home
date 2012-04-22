@@ -43,6 +43,9 @@ var filterPostsByPropertyValue = function(posts, property, value) {
     var post = posts[i],
         prop = post[property];
     
+    // Last element of tags is null
+    post.tags.pop();
+    
     // The property could be a string, such as a post's category,
     // or an array, such as a post's tags
     if (prop.constructor == String) {
@@ -50,8 +53,6 @@ var filterPostsByPropertyValue = function(posts, property, value) {
         filteredPosts.push(post);
       }
     } else if (prop.constructor == Array) {
-      // hehe
-      prop.pop();
       for (var j in prop) {
         if (prop[j].toLowerCase() == value.toLowerCase()) {
           filteredPosts.push(post);
@@ -84,8 +85,7 @@ var layoutResultsPage = function(property, value, posts) {
     var tagsList = '<ul class="tags cf">',
         post     = posts[i],
         tags     = post.tags;
-
-    if (tags[0] === null) tags.pop();
+        
     for (var j in tags) {
       tagsList += '<li><a href="/search.html?tags=' + tags[j] + '">' + tags[j] + '</li>';
     }
@@ -107,6 +107,22 @@ var layoutResultsPage = function(property, value, posts) {
     );
   }
 }
+
+// Formats the search results page for no results
+// Accepts:
+//   property: string of object type we're displaying
+//   value: string of name of object we're displaying
+// Returns: nothing
+var noResultsPage = function(property, value) {
+  // Make sure we're on the search results page
+  var $container = $('#results');
+  if ($container.length == 0) return;
+  
+  $container.find('h1').text('No Results Found.').after('<p class="nadda"></p>');
+  
+  var txt = "We couldn't find anything associated with '" + value + "' here.";
+  $container.find('p.nadda').text(txt);
+};
 
 // Replaces ERB-style tags with Liquid ones as we can't escape them in posts
 // Accepts:
@@ -140,8 +156,7 @@ $(function() {
       $.getJSON('/search.json', function(data) {
         posts = filterPostsByPropertyValue(data, type, value);
         if (posts.length === 0) {
-          //noResultsPage();
-          console.log('No results.');
+          noResultsPage(type, value);
         } else {
           layoutResultsPage(type, value, posts);
         }
