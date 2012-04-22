@@ -222,7 +222,7 @@ hgroup h2 a {
   padding: 8px;
 }
 
-.highlight, p code {
+.highlight {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -o-border-radius: 4px;
@@ -270,12 +270,16 @@ table tbody + tbody {
 /* @end Tables */
 
 /* inline code */
-p code {
+p code, ul code, ol code {
   padding: 2px 4px;
   border: 1px solid #e1e1e8;
   background: #f7f7f9;
-  color: #207cb9;
+  color: #2aa198;
   font-size: 0.8em;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
 }
 
 @media screen and (max-width: 1060px) {

@@ -110,6 +110,25 @@ var layoutResultsPage = function(property, value, posts) {
   return null;
 }
 
+// Replaces ERB-style tags with Liquid ones as we can't escape them in posts
+// Accepts:
+//   elements: jQuery elements in which to replace tags
+// Returns: nothing
+var replaceERBTags = function(elements) {  
+  elements.each(function() {
+    // Only for text blocks at the moment as we'll strip highlighting otherwise
+    var $this = $(this),
+        txt   = $this.text();
+    
+    // Replace <%=  %>with {{ }}
+    txt = txt.replace(new RegExp("<%=(.+?)%>", "g"), "{{$1}}");
+    // Replace <% %> with {% %}
+    txt = txt.replace(new RegExp("<%(.+?)%>", "g"), "{%$1%}");
+    
+    $this.text(txt);
+  });
+};
+
 $(function() {
   var map = {
     'category' : getParam('category'),
@@ -120,7 +139,6 @@ $(function() {
   $.each(map, function(type, value) {
     if (value !== null) {
       $.getJSON('/search.json', function(data) {
-        console.log(data);
         posts = filterPostsByPropertyValue(data, type, value);
         if (posts.length === 0) {
           //noResultsPage();
@@ -131,4 +149,9 @@ $(function() {
       });
     }
   });
+  
+  // Replace ERB-style Liquid tags in highlighted code blocks...
+  replaceERBTags($('div.highlight').find('code.text'));
+  // ... and in inline code
+  replaceERBTags($('p code'));
 });
