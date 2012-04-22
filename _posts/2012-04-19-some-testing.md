@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Some Testing
-category: Testing
+category: Superness
 tags: [testing, code]
 ---
 This is some `intial` testing.
