@@ -33,6 +33,6 @@ The replacement is done with JavaScript via `replaceERBTags($el)`, where `$el` i
 Syntax Highlighting
 -------------------
 
-[Pygments](http://pygments.org/), the syntax highlighter used by Jekyll, doesn't support Liquid so we can't get pretty markup. The syntax highlighting above is due to me using a `<% highlight erb %>` block. Because I target `$('code.text)` elements for tag replacements, i.e. `<% highlight text %>` blocks, I needed to use a different lexer to show the ERB tags.
+[Pygments](http://pygments.org/), the syntax highlighter used by Jekyll, doesn't support Liquid so we can't get pretty markup. The syntax highlighting above is due to me using a `<% highlight erb %>` block. Because I target `$('code.text')` elements for tag replacements, i.e. `<% highlight text %>` blocks, I needed to use a different lexer to show the ERB tags.
 
 You *could* target `code.erb` elements instead, but then you lose the use of ERB tags! I'm not a fan of Liquid, so I plan on doing as few posts on it as possible, hence I'm happier with ERB support. (Plus, any syntax highlighting you did get would only be approximate, and I expect would break down if you had anything but raw Liquid.)
