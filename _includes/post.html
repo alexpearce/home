@@ -3,18 +3,18 @@
     <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
     <h2>{{ page.date | date: "%A %d, %B %Y" }} in <b><a href="/search.html?category={{ page.category | downcase }}">{{ page.category }}</a></b></h2>
   </hgroup>
-  
+
   <div class="body">
     {% if content %}
-      {{ content }}
+    {{ content }}
     {% else %}
-      {{ page.content }}
+    {{ page.content }}
     {% endif %}
   </div>
-  
+
   <ul class="tags cf">
     {% for tag in page.tags %}
-      <li><a href="/search.html?tags={{ tag }}">{{ tag }}</a></li>
+    <li><a href="/search.html?tags={{ tag }}">{{ tag }}</a></li>
     {% endfor %}
   </ul>
 </article>
