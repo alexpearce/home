@@ -288,7 +288,7 @@ table tbody + tbody {
 
 /* inline code */
 p code, ul code, ol code {
-  padding: 2px 4px;
+  padding: 1px 4px;
   border: 1px solid #e1e1e8;
   background: #f7f7f9;
   color: #2aa198;
