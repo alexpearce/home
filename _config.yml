@@ -29,4 +29,4 @@ lsi: false
 permalink: /:year/:month/:title
   
 # 3 posts per page
-paginate: 4
+paginate: 3
