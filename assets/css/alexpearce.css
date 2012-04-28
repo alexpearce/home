@@ -12,18 +12,12 @@
 
 /* @end Pygments */
 
-
-html, body {
-  /* To stretch the background down the whole viewport */
-  height: 100%;
-}
-
 body {
   background-color: #fff;
   /* Now *that's* a subtle gradient */
-  background-image: -webkit-linear-gradient(#fff, #fcfcfc);
-  background-image: -moz-linear-gradient(#fff, #fcfcfc);
-  background-image: linear-gradient(#fff, #fcfcfc);
+  background-image: -webkit-linear-gradient(#fff, #fafafa);
+  background-image: -moz-linear-gradient(#fff, #fafafa);
+  background-image: linear-gradient(#fff, #fafafa);
   font-family: "Palatino Linotype", Palatino, Palladio, "Book Antiqua", Georgia, serif;
 }
 
