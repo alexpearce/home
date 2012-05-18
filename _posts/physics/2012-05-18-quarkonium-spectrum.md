@@ -5,7 +5,7 @@ category: Physics
 tags: [Physics, Python, LaTeX]
 ---
 
-As part of my degree I'm taking a computing course which requires two project reports. The second was on finding the roots of [the first Airy function](http://mathworld.wolfram.com/AiryFunctions.html) in order to find the charm and beauty quark masses.
+As part of my degree I'm taking a computing course which requires two project reports. The second was on finding the roots of [the first Airy function](http://mathworld.wolfram.com/AiryFunctions.html) in order to find the charm and beauty quark masses. The first one is in a [previous post](http://alexpearce.me/2012/04/scattering-cross-sections).
 
 The report is written in LaTeX, the problem solving was done in Python, and the plotting was done with Mathematica. The [entire project is open source on GitHub](https://github.com/alexpearce/meson-masses).
 
