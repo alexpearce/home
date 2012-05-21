@@ -65,6 +65,10 @@ a {
   color: #0077cc;
 }
 
+a.gplus {
+  color: #d74937;
+}
+
 a:hover {
   color: #a0d137;
 }
