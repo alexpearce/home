@@ -1,0 +1,18 @@
+---
+layout: nil
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Posts -->{% for post in site.posts %}
+  <url><loc>http://alexpearce.me{{ post.url }}</loc></url>
+  {% endfor %}
+  
+  <!-- Tag Indexes -->{% for tag in site.tags %}
+  <url><loc>http://alexpearce.me/search.html?tags={{ tag | first | downcase }}</loc></url>
+  {% endfor %}
+  
+  <!-- Category Indexes -->{% for category in site.categories %}
+  <url><loc>http://alexpearce.me/search.html?category={{ category | first | downcase }}</loc></url>
+  {% endfor %}
+</urlset>
