@@ -127,7 +127,17 @@ $ sudo chmod +x /etc/init.d/nginx
 $ sudo /usr/sbin/update-rc.d -f nginx defaults
 {% endhighlight %}
 
-If you installed nginx to a different directory, such as `/etc/nginx`, modify the `nginx` init.d file to point to the right places. Check it's working by restarting nginx.
+We'll also replace the default nginx configuration with a leaner one. Download the [simple config file](https://github.com/alexpearce/templates/blob/master/nginx.conf) and replace the current one (backing up first, of course).
+
+{% highlight bash %}
+$ curl https://raw.github.com/alexpearce/templates/master/nginx.conf | cat >> nginx.conf
+$ sudo mv /opt/nginx/conf/nginx.conf /opt/nginx/conf/nginx.conf.old # back up
+$ sudo mv ./nginx.conf /opt/nginx/conf
+{% endhighlight %}
+
+Notice that this new configuration file `include`s files from `/opt/nginx/sites-available`. This is similar to how many people set up [Apache with virtual hosts](http://www.debianhelp.co.uk/virtualhosts.htm). For each site we want (generally represented as a (sub)domain or set of (sub)domains) we create a file inside `sites-enabled`.
+
+If you installed nginx to a different directory, such as `/etc/nginx`, modify the `nginx` init.d and `nginx.conf` file to point to the right places. Check everything's working by restarting nginx.
 
 {% highlight bash %}
 $ sudo service nginx restart
@@ -218,12 +228,12 @@ production:
 
 The `host: localhost` is particularly important (and not in the default Rails `database.yml`); my app wouldn't work without it.
 
-Now we just need to tell nginx where our Rails app is. I've uploaded a [test server config file](https://github.com/alexpearce/templates/blob/master/nginx.server.conf) on GitHub. We just download this to this nginx directory and **edit it** so that it points to the right place.
+Now we just need to tell nginx where our Rails app is. As I mentioned earlier, we've set up nginx so that each site has its own config file inside `nginx/sites-enabled`. I've uploaded a [test app config file](https://github.com/alexpearce/templates/blob/master/nginx.app.conf) on GitHub. We just download this to this nginx directory and **edit it** so that it points to the right place.
 
 {% highlight bash %}
 $ curl https://raw.github.com/alexpearce/templates/master/nginx.server.conf | cat >> testapp
 $ nano testapp
-...
+... # edit the config file so that it points to our app
 $ sudo mv testapp /opt/nginx/sites-enabled/
 $ sudo service nginx restart
 {% endhighlight %}
