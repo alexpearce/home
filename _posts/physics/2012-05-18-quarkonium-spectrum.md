@@ -3,6 +3,7 @@ layout: post
 title: The Spectrum of Quarkonium
 category: Physics
 tags: [Physics, Python, LaTeX]
+description: A computational physics project on "Masses of S-State Quarkonium via the Roots of the Airy Function Ai(x)".
 ---
 
 As part of my degree I'm taking a computing course which requires two project reports. The second was on finding the roots of [the first Airy function](http://mathworld.wolfram.com/AiryFunctions.html) in order to find the charm and beauty quark masses. The first one is in a [previous post](http://alexpearce.me/2012/04/scattering-cross-sections).

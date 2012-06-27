@@ -3,6 +3,7 @@ layout: post
 title: Escaping Liquid Tags in Jekyll
 category: Tips
 tags: [Jekyll, JavaScript]
+description: How to include Liquid tags in Jekyll posts.
 ---
 Writing [the previous post](/2012/04/simple-jekyll-searching) brought about a problem: How can I write posts about [Liquid tags](http://liquidmarkup.org/)?
 

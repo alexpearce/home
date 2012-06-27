@@ -3,6 +3,7 @@ layout: post
 title: Scattering Cross Sections in the Standard Model
 category: Physics
 tags: [Physics, Python, C, LaTeX]
+description: A computational physics project on "Numerical Evaluation of the e+e− → μ+μ− Cross Section in the Standard Model"
 ---
 
 As part of my degree I'm taking a computing course which requires two project reports. The first was on e+e− &rarr; &mu;+&mu;− scattering, mediated via the photon and the Z boson.

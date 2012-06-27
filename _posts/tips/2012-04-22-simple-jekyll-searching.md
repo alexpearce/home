@@ -3,6 +3,7 @@ layout: post
 title: Simple Jekyll Searching
 category: Tips
 tags: [Jekyll, JavaScript]
+description: How to add simple JSON-based searching to Jekyll site.
 ---
 
 I [recently made](/2012/04/hello) this blog with [Jekyll](https://github.com/mojombo/jekyll). It's a nice little program once you get used to it's methodology. Jekyll's daughter, [Octopress](http://octopress.org/), touts itself as being "for hackers" and Jekyll itself isn't much different in this respect.

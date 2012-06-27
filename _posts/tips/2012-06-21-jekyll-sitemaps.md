@@ -3,6 +3,7 @@ layout: post
 title: Jekyll Sitemaps
 category: Tips
 tags: [Jekyll]
+description: How to create a Google sitemap for a Jekyll site.
 ---
 
 For indexing websites, Google et al. have a [standardised protocol](http://www.sitemaps.org/) for creating a sitemap. A sitemap is an XML file containing a list of all pages to be indexed. The [sitemaps Wikipedia article](http://en.wikipedia.org/wiki/Google_Sitemap) is more informative than I am on the matter.
