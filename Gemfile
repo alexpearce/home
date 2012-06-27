@@ -4,5 +4,6 @@ source :rubygems
 gem "jekyll"
 
 # Markdown
+gem "RedCloth"
 gem "redcarpet"
 gem "rdiscount"
