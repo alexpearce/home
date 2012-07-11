@@ -1,7 +1,7 @@
 source :rubygems
 
 # Site generation
-gem "jekyll"
+gem "jekyll", :git => "git://github.com/mojombo/jekyll.git"
 
 # Markdown
 gem "RedCloth"
