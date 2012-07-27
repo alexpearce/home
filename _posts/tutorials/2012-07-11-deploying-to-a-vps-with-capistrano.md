@@ -6,11 +6,11 @@ tags: [Capistrano, Ruby, nginx]
 description: A step-by-step tutorial on deploying Ruby and static apps to a VPS with Capistrano.
 ---
 
-Following on from the previous tutorial on [how to set up a Linux VPS for Ruby apps]({% post_url 2012-06-19-setting-up-a-vps %}), we'll get a simple Ruby site up-and-running by deploying it to our server with [Capistrano](https://github.com/capistrano/capistrano).
+Following on from the previous tutorial on [how to set up a Linux VPS for Ruby apps](/2012/06/setting-up-a-vps), we'll get a simple Ruby site up-and-running by deploying it to our server with [Capistrano](https://github.com/capistrano/capistrano).
 
 Capistrano simplifies many of the common tasks encountered when to deploying an app to one or more servers, allowing a push with a simple `cap deploy`. Along with Ruby apps, it can be used to deploy static (HTML) pages. The nice thing about using Capistrano rather than something such as [`rsync`](http://www.samba.org/ftp/rsync/rsync.html) is that we can easily pull the latest version from a git repository, as well as rollback to a previous version.
 
-I will assume that our VPS has been set up as in my [VPS setup]({% post_url 2012-06-19-setting-up-a-vps %}) post, but the essentials are:
+I will assume that our VPS has been set up as in my [VPS setup](/2012/06/setting-up-a-vps) post, but the essentials are:
 
 * SSH access
 * Ruby
@@ -139,7 +139,7 @@ The `deploy.rb` file is where almost all of the configuration is done. Rather th
 * `:repository`: Your GitHub repository, or where ever you're hosting the repo remotely.
 * The `:app`, `:web` and `:db` roles: The IP address or FQDN of the VPS to deploy to.
 
-If you didn't set up your VPS using the [previous tutorial]({% post_url 2012-06-19-setting-up-a-vps %}), there may be a few other things you need to change.
+If you didn't set up your VPS using the [previous tutorial](/2012/06/setting-up-a-vps), there may be a few other things you need to change.
 
 * `:user`: If you're not using a deploy user.
 * If you're not using [Passenger](http://www.modrails.com/), the `start`, `stop`, and `restart` tasks will need adjusting.
