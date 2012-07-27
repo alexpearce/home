@@ -1,4 +1,4 @@
-// Capitalizes a string
+// Capitalises a string
 // Accepts:
 //   str: string
 // Returns:
