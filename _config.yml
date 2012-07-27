@@ -20,7 +20,7 @@ markdown: rdiscount
 pygments: true
 
 # Exclude these files from compilation
-exclude: [Gemfile, Gemfile.lock, CNAME, README.md]
+exclude: [Gemfile, Gemfile.lock, CNAME, README.md, vendor]
 
 # Don't produce a 'related posts' index
 lsi: false
