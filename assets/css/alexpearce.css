@@ -19,11 +19,13 @@ body {
   background-image: -moz-linear-gradient(#fff, #fafafa);
   background-image: linear-gradient(#fff, #fafafa);
   font-family: "Palatino Linotype", Palatino, Palladio, "Book Antiqua", Georgia, serif;
+  
 }
 
 /* Typography */
 body {
   color: #333;
+  font-size: 1.0em;
 }
 
 h1, h2, h3, h4, h5 {
@@ -71,6 +73,15 @@ a.gplus {
 
 a:hover {
   color: #a0d137;
+}
+
+pre code {
+  font-size: 0.9em;
+}
+
+code {
+  /* Smaller inline code */
+  font-size: 0.75em;
 }
 
 /* End Typography */
@@ -236,12 +247,15 @@ article img {
 
 .highlight {
   margin-bottom: 1em;
+  padding: 8px;
   border: 1px solid #333;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .highlight pre {
-  padding: 8px;
+/*  overflow: scroll;*/
+  overflow-x: auto;
+  word-wrap: normal;
 }
 
 .highlight {
@@ -297,7 +311,6 @@ p code, ul code, ol code {
   border: 1px solid #e1e1e8;
   background: #f7f7f9;
   color: #2aa198;
-  font-size: 0.8em;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -o-border-radius: 3px;
