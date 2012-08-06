@@ -10,7 +10,7 @@ Every once in a while I buy a new VPS, mostly because I'm not entirely satisfied
 
 This time around I decided to use some other software that seems to be popular with the community.
 
-* For the webserver I chose [nginx](nginx.org). There are many [comparisons](http://www.wikivs.com/wiki/Apache_vs_nginx) of Apache and nginx, but for such a small-scale server as mine it really boiled down to curiosity.
+* For the webserver I chose [nginx](http://nginx.org). There are many [comparisons](http://www.wikivs.com/wiki/Apache_vs_nginx) of Apache and nginx, but for such a small-scale server as mine it really boiled down to curiosity.
 * RVM has received [some flack](http://rakeroutes.com/blog/how-to-use-bundler-instead-of-rvm-gemsets/), principally because of [Bundler's](http://gembundler.com/) ability to manage "gemsets" with Gemfiles. I went with [rbenv](https://github.com/sstephenson/rbenv) to [manage my rubies](http://shapeshed.com/using-rbenv-to-manage-rubies/).
 * I stuck with Passenger for allowing the web server to run Ruby apps. Although other solutions exist, like [Unicorn](http://unicorn.bogomips.org/) and [Thin](http://code.macournoyer.com/thin/), the configuration required was a little too much for me.
 * [PostgreSQL](http://www.postgresql.org/) is a popular choice these days. If it's good enough for [Ryan Bates](http://railscasts.com/) then it's good enough for me!
