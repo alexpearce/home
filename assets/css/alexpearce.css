@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5 {
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: 400;
 }
 
@@ -118,7 +118,7 @@ header h1 a {
   transition: color 0.2s;
 }
 
-header h2 {
+header h2 {;
   font-size: 1.2em;
 }
 
@@ -152,12 +152,23 @@ article hgroup h1 a:hover {
 }
 
 hgroup h2 {
+  float: left;
+  width: 50%;
   color: #999;
 }
 
-hgroup h2 a {
+hgroup h2 a, hgroup h3 a {
   color: #999;
 }
+
+/* comment count */
+hgroup h3 {
+  width: 50%;
+  float: right;
+  font-size: 1em;
+  text-align: right;
+}
+
 
 article img {
   display: block;
@@ -304,6 +315,14 @@ table tbody + tbody {
 }
 
 /* @end Tables */
+
+/* @group Comments */
+
+#disqus_thread {
+  padding: 0 0 40px 0;
+}
+
+/* @end Comments */
 
 /* inline code */
 p code, ul code, ol code {
