@@ -105,7 +105,7 @@ $ make install
 Finally, add ROOT to your `PATH` using the same procedure as before, such that it might now look something like this.
 
 {% highlight bash %}
-export PATH=/usr/local/bin:/opt/X11/bin:/usr/local/bin/root/src/bin:$PATH
+export PATH=/usr/local/bin:/opt/X11/bin:/usr/local/root/bin:$PATH
 {% endhighlight %}
 
 Remember that this line should be *in a shell config file* such as `.bashrc`. If you enter this line directly as a command, it will be lost in a new session.
@@ -130,10 +130,12 @@ There are [many ROOT tutorials included](http://root.cern.ch/root/html/tutorials
 
 ### Testing
 
-If you like, you can compile and run [ROOT's test suite](http://root.cern.ch/drupal/content/benchmarking). To do so, change directory in to `$ROOTSYS/test` and then compile.
+If you like, you can compile and run [ROOT's test suite](http://root.cern.ch/drupal/content/benchmarking). To do so, change directory in to `$ROOTSYS`, run the `thisroot` bash script, and then compile.
 
 {% highlight bash %}
-$ cd /usr/local/root/src/test
+$ cd /usr/local/root
+$ . bin/thisroot.sh
+$ cd test/
 $ make
 $ ./stress -b
 ...
