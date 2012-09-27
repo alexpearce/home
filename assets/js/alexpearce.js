@@ -87,7 +87,7 @@ var layoutResultsPage = function(property, value, posts) {
         tags     = post.tags;
         
     for (var j in tags) {
-      tagsList += '<li><a href="/search.html?tags=' + tags[j] + '">' + tags[j] + '</li>';
+      tagsList += '<li><a href="/search.html?tags=' + tags[j] + '">' + tags[j].toLowerCase() + '</a></li>';
     }
     tagsList += '</ul>';
     
