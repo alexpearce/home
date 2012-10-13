@@ -12,6 +12,10 @@
 
 /* @end Pygments */
 
+html, body {
+  height: 100%;
+}
+
 body {
   background-color: #fff;
   /* Now *that's* a subtle gradient */
