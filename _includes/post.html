@@ -15,7 +15,7 @@
 
   <ul class="tags cf">
     {% for tag in page.tags %}
-    <li><a href="/search.html?tags={{ tag }}">{{ tag }}</a></li>
+    <li><a href="/search.html?tags={{ tag }}">{{ tag | downcase }}</a></li>
     {% endfor %}
   </ul>
 </article>
