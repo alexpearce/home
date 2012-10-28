@@ -69,7 +69,8 @@ b, strong {
 }
 
 blockquote {
-  margin: 1em 40px
+  margin: 0;
+  padding: 1em 40px
 }
 
 dfn {

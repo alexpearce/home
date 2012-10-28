@@ -88,6 +88,20 @@ code {
   font-size: 0.75em;
 }
 
+blockquote {
+  background: #f8f8f8;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
+
+blockquote p code {
+  color: #333;
+  border: none;
+  background: none;
+}
+
 /* End Typography */
 
 /* Columns */
