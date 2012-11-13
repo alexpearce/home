@@ -24,6 +24,6 @@ You can either apply a cut to the input data:
 factory->PrepareTrainingAndTestTree("troublesome_var > 0", "troublesome_var > 0", splitOptions);
 {% endhighlight %}
 
-or make sure that the events with bad values are present in your input data.
+or make sure that the events with bad values aren't present in your input data.
 
 The [TMVA user's guide](http://tmva.sourceforge.net/docu/TMVAUsersGuide.pdf) documents the `PrepareTrainingAndTestTree` method, amongst other things.
