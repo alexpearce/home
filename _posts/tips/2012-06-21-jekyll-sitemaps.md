@@ -8,7 +8,7 @@ description: How to create a Google sitemap for a Jekyll site.
 
 For indexing websites, Google et al. have a [standardised protocol](http://www.sitemaps.org/) for creating a sitemap. A sitemap is an XML file containing a list of all pages to be indexed. The [sitemaps Wikipedia article](http://en.wikipedia.org/wiki/Google_Sitemap) is more informative than I am on the matter.
 
-Anyway, I wanted to create a sitemap for this site to [submit to Google](https://www.google.com/webmasters/tools/). This site is very simple as it consists of only three types of pages: a post page, a tag index page, and a category index page. One post page per post, and one tag/category index page per tag/category. (For how I implemented tag/category index pages, see my post on [simple Jekyll searching](/2012/04/simple-jekyll-searching).
+Anyway, I wanted to create a sitemap for this site to [submit to Google](https://www.google.com/webmasters/tools/). This site is very simple as it consists of only three types of pages: a post page, a tag index page, and a category index page. One post page per post, and one tag/category index page per tag/category. (For how I implemented tag/category index pages, see my post on [simple Jekyll searching]({% post_url 2012-04-22-simple-jekyll-searching %}).
 
 Listing all the pages is easy.
 
