@@ -17,11 +17,7 @@ html, body {
 }
 
 body {
-  background-color: #fff;
-  /* Now *that's* a subtle gradient */
-  background-image: -webkit-linear-gradient(#fff, #fafafa);
-  background-image: -moz-linear-gradient(#fff, #fafafa);
-  background-image: linear-gradient(#fff, #fafafa);
+  background-color: #fcfcfc;
   font-family: "Palatino Linotype", Palatino, Palladio, "Book Antiqua", Georgia, serif;
   
 }
