@@ -19,7 +19,6 @@ html, body {
 body {
   background-color: #fcfcfc;
   font-family: "Palatino Linotype", Palatino, Palladio, "Book Antiqua", Georgia, serif;
-  
 }
 
 /* Typography */
@@ -75,13 +74,17 @@ a:hover {
   color: #a0d137;
 }
 
+pre, code {
+  font-family: Consolas, Courier, monospace;
+}
+
 pre code {
-  font-size: 0.9em;
+  font-size: 1em;
 }
 
 code {
   /* Smaller inline code */
-  font-size: 0.75em;
+  font-size: 0.85em;
 }
 
 blockquote {
