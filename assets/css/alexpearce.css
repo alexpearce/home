@@ -357,7 +357,7 @@ p code, ul code, ol code {
   header {
     margin: 20px 0 0 20px;
   }
-  
+
   .blog {
     margin: 20px 0 0 0;
   }
@@ -370,7 +370,7 @@ p code, ul code, ol code {
   header {
     width: 20%;
   }
-  
+
   .blog {
     width: 70%;
   }
@@ -380,7 +380,7 @@ p code, ul code, ol code {
   .columns {
     overflow: none;
   }
-  
+
   header {
     width: 100%;
     float: none;
@@ -388,31 +388,39 @@ p code, ul code, ol code {
     padding: 10px;
     border-bottom: 1px solid #eee;
   }
-  
+
   header .deets {
     display: none;
   }
-  
+
   .blog {
     width: 100%;
     padding: 0;
   }
-  
+
+  .results .date {
+    display: block;
+  }
+
   article {
     padding: 0 10px;
     font-size: 0.9em;
   }
-  
+
   article h1 {
     font-size: 1.4em;
   }
-  
+
   article h2 {
     font-size: 1.1em;
   }
-  
+
   article h2 {
     font-size: 1.1em;
+  }
+
+  article img {
+    max-width: 100%;
   }
 }
 
