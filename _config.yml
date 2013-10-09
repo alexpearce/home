@@ -20,13 +20,11 @@ markdown: rdiscount
 pygments: true
 
 # Exclude these files from compilation
-exclude: [Gemfile, Gemfile.lock, CNAME, README.md, vendor]
+exclude: [Gemfile, Gemfile.lock, CNAME, README.md, vendor, bin]
 
 # Don't produce a 'related posts' index
 lsi: false
 
 # Permalink style
 permalink: /:year/:month/:title
-  
-# 3 posts per page
-paginate: 3
+
