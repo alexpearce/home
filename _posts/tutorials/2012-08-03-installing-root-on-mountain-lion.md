@@ -6,6 +6,12 @@ tags: [ROOT, osx]
 description: A step-by-step guide to install to high energy physics framework ROOT on OS X 10.8 with CMake and Homebrew.
 ---
 
+<div class="alert">
+  <a href="{% post_url 2013-12-11-root-on-os-x-mavericks %}">
+    Running OS X 10.9 Mavericks? Check out the latest tutorial.
+  </a>
+</div>
+
 With Mountain Lion, the latest version of OS X, having been [recently released](http://www.theverge.com/2012/7/25/3186764/apple-os-x-10-8-mountain-lion-released), there's been the usual flurry of blog posts on how to [survive the upgrade](http://robots.thoughtbot.com/post/27985816073/the-hitchhikers-guide-to-riding-a-mountain-lion).
 
 I recently found myself needing to install [ROOT](http://root.cern.ch/), the high energy physics framework by the folks at CERN. It wasn't easy. The only [10.8 ROOT tutorial I've found](http://blog.philippklaus.de/2012/06/installing-root-cern-on-mac-os-x-10-8-mountain-lion/) uses the `make; make install` path and doesn't enumerate any of the available configuration options. (I wanted to use `cmake` for the [Xcode integration](http://root.cern.ch/drupal/content/building-root-cmake)).
