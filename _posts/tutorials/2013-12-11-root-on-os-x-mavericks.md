@@ -93,32 +93,10 @@ To install with Homebrew, we need to add the [science formula repository](https:
 $ brew tap homebrew/science
 {% endhighlight %}
 
-As it stands now, the formula for ROOT, `root.rb`, requires some changes to use 5.34/13 and to enable the Cocoa interface.
-So, we edit the formula ourselves. (In the future, the formula will be updated, which you can grab with `brew update`. To check which version of ROOT the formula will install, run `brew info root`. If it's version 5.34/13 or above, you can skip the steps that update the formula version.)
+Then simply install ROOT, enabling the Cocoa interface.
 
 {% highlight bash %}
-$ brew edit root
-{% endhighlight %}
-
-This will open `root.rb` in your editor.
-We want to change the version used, so edit lines 5, 6, and 7 to read
-
-{% highlight text %}
-url 'ftp://root.cern.ch/root/root_v5.34.13.source.tar.gz'
-version '5.34.13'
-sha1 '87b1d1eba24b8305a70986614effee427ac01321'
-{% endhighlight %}
-
-Finally, we want to enable Cocoa, so add a new line after line 42 (which says `"--enable-builtin-glew"`) that reads
-
-{% highlight text %}
-"--enable-cocoa"
-{% endhighlight %}
-
-Save and close the formula, and then install.
-
-{% highlight bash %}
-$ brew install root
+$ brew install --with-cocoa root
 {% endhighlight %}
 
 Summary
