@@ -2,32 +2,32 @@
 <html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
-  
+
   <title>{% if page.page_title %}{{ page.page_title | downcase }} - {% endif %}alex pearce</title>
   <meta name="description" content="Blog of web developer and physicist Alex Pearce.">
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
+
   <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed">
-  
+
   <link href='//fonts.googleapis.com/css?family=Asap:400,700|Pacifico' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/assets/css/alexpearce.css">
-  
+
   <script defer src="/assets/js/modernizr.js"></script>
-  
+
   {% include analytics.html %}
 </head>
 <body>
   <div class="columns">
-    
+
     {% include header.html %}
-  
+
     <div class="blog">
       {{ content }}
     </div>
-    
+
   </div>
-  
+
   <script defer src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
   <script defer src="/assets/js/alexpearce.js"></script>
