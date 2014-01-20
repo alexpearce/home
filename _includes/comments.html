@@ -7,12 +7,12 @@
       disqus_title = "{{ page.title }}",
       disqus_identifier = "{{ page.url }}",
       disqus_developer = 0;
-  
+
   (function(d) {
     var dsq = d.createElement("script");
     dsq.async = true;
     dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
-    
+
     // If comments aren't disabled for the article, load the embed script
     if ("{{ page.comments }}" !== "false") {
       d.getElementsByTagName("head")[0].appendChild(dsq);

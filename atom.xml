@@ -13,7 +13,7 @@ layout: nil
     <name>Alex Pearce</name>
     <email>alex@alexpearce.me</email>
   </author>
-  
+
   {% for post in site.posts %}
   <entry>
     <id>http://alexpearce.me{{ post.id }}</id>
