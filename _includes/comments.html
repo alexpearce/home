@@ -9,13 +9,16 @@
       disqus_developer = 0;
 
   (function(d) {
-    var dsq = d.createElement("script");
-    dsq.async = true;
-    dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+    var embed = d.createElement("script"),
+        count = d.createElement("script");
+    embed.async = count.async = true;
+    embed.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+    count.src = "//" + disqus_shortname + ".disqus.com/count.js";
 
-    // If comments aren't disabled for the article, load the embed script
+    // If comments aren't disabled for the article, load the embed and count script
     if ("{{ page.comments }}" !== "false") {
-      d.getElementsByTagName("head")[0].appendChild(dsq);
+      d.getElementsByTagName("head")[0].appendChild(embed);
+      d.getElementsByTagName("head")[0].appendChild(count);
     } else {
       d.getElementById("disqus_thread").innerHTML = "";
     }

@@ -8,7 +8,7 @@ var alxPrc = {};
 //   string
 alxPrc.majusculeFirst = function(str) {
   return str.charAt(0).toUpperCase() + str.substring(1);
-}
+};
 
 // Retrieves the value of a GET parameter with a given key
 // Accepts:
@@ -21,7 +21,8 @@ alxPrc.getParam = function(param) {
   for (var i in queries) {
     var pair = queries[i].split('=');
     if (pair[0] === param) {
-      return pair[1];
+      // Decode the parameter value, replacing %20 with a space etc.
+      return decodeURI(pair[1]);
     }
   }
   return null;
@@ -71,9 +72,8 @@ alxPrc.filterPostsByPropertyValue = function(posts, property, value) {
 // Returns:
 //   undefined
 alxPrc.layoutResultsPage = function(property, value, posts) {
-  // Make sure we're on the search results page
-  var $container = $('#results');
-  if ($container.length == 0) return;
+  var $container = $('main');
+  if ($container.length === 0) return;
 
   // Update the header
   $container.find('h1').text(alxPrc.majusculeFirst(property)
@@ -83,33 +83,41 @@ alxPrc.layoutResultsPage = function(property, value, posts) {
   );
 
   // Loop through each post to format it
+  $results = $container.find('ul.results');
   for (var i in posts) {
     // Create an unordered list of the post's tags
-    var tagsList = '<ul class="tags cf">',
+    var tagsList = '<ul class="tags">',
         post     = posts[i],
         tags     = post.tags;
 
     for (var j in tags) {
-      tagsList += '<li><a href="/search.html?tags=' + tags[j] + '">' + tags[j].toLowerCase() + '</a></li>';
+      tagsList += ''
+        + '<li>'
+          + '<a href="/search.html?tags=' + tags[j] + '">' + tags[j] + '</a>'
+        + '</li>';
     }
     tagsList += '</ul>';
 
-    $container.find('ul.results').append(
+    $results.append(
       '<li>'
         // Page anchor
-        + '<a href="' + post.href + '">'
-        + posts[i].title
-        + '</a>'
-        // Post date
-        + ' <span class="date">- '
-        + posts[i].date.day + ' ' + posts[i].date.month + ' ' + posts[i].date.year
-        + '</span>'
-        // Tags
-        + tagsList
-        + '</li>'
+        + '<header>'
+          + '<h1>'
+            + '<a href="' + post.href + '">' + post.title + '</a>'
+          + '</h1>'
+          // Post date
+          + '<h2>'
+            + post.date.formatted
+            + ' in <a href="/search.html?category=' + post.category + '">'
+            +  alxPrc.majusculeFirst(post.category) + '</a>'
+          + '</h2>'
+          // Tags
+          + tagsList
+        + '</header>'
+      + '</li>'
     );
   }
-}
+};
 
 // Formats the search results page for no results
 // Accepts:
@@ -118,14 +126,9 @@ alxPrc.layoutResultsPage = function(property, value, posts) {
 // Returns:
 //   undefined
 alxPrc.noResultsPage = function(property, value) {
-  // Make sure we're on the search results page
-  var $container = $('#results');
-  if ($container.length == 0) return;
-
-  $container.find('h1').text('No Results Found.').after('<p class="nadda"></p>');
-
-  var txt = "We couldn't find anything associated with '" + value + "' here.";
-  $container.find('p.nadda').text(txt);
+   $('main').find('h1').text('No Results Found.').after(
+    '<p>We couldn\'t find anything associated with ‘' + value + '’ here.</p>'
+  );
 };
 
 // Replaces ERB-style tags with Liquid ones as we can't escape them in posts
@@ -149,11 +152,11 @@ alxPrc.replaceERBTags = function(elements) {
 };
 
 $(function() {
-  var map = {
-    'category' : alxPrc.getParam('category'),
-    'tags'     : alxPrc.getParam('tags'),
-    'search'   : alxPrc.getParam('search')
-  };
+  var parameters = ['category', 'tags'];
+  var map = {}
+  for (var idx in parameters) {
+    map[parameters[idx]] = alxPrc.getParam(parameters[idx]);
+  }
 
   $.each(map, function(type, value) {
     if (value !== null) {

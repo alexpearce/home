@@ -1,21 +1,21 @@
-<article class="post">
-  <hgroup class="cf">
+<article>
+  <header>
     <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
-    <h2>{{ page.date | date: "%A %d, %B %Y" }} in <b><a href="/search.html?category={{ page.category | downcase }}">{{ page.category }}</a></b></h2>
-    <h3 class="comment-count"><a href="{{ page.url }}/#disqus_thread"></a></h3>
-  </hgroup>
-
-  <div class="body">
-    {% if content %}
-    {{ content }}
-    {% else %}
-    {{ page.content }}
+    <h2>{{ page.date | date: "%A %d, %B %Y" }} in <a href="/search.html?category={{ page.category | downcase }}">{{ page.category }}</a></h2>
+    {% if page.comments != false %}
+    <h3 class="comment-count"><a href="#disqus_thread" data-disqus-identifier="{{ page.url }}">Comments</a></h3>
     {% endif %}
-  </div>
+    {% if page.tags != empty %}
+    <ul class="tags">{% for tag in page.tags %}<li>
+        <a href="/search.html?tags={{ tag }}">{{ tag }}</a>
+    </li>{% endfor %}
+    </ul>
+    {% endif %}
+  </header>
 
-  <ul class="tags cf">
-    {% for tag in page.tags %}
-    <li><a href="/search.html?tags={{ tag }}">{{ tag | downcase }}</a></li>
-    {% endfor %}
-  </ul>
+  {% if content %}
+  {{ content }}
+  {% else %}
+  {{ page.content }}
+  {% endif %}
 </article>

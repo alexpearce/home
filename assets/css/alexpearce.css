@@ -1,452 +1,294 @@
 ---
 ---
+
 /* @group Normalize */
 
 {% include normalize.css %}
 
 /* @end Normalize */
 
-/* @group Pygments - Solarized (dark) Theme */
+/* @group Typography */
 
-{% include solarized-dark.css %}
-
-/* @end Pygments */
-
-html, body {
-  height: 100%;
-}
+/* @group Font faces */
 
 body {
-  background-color: #fcfcfc;
-  font-family: "Palatino Linotype", Palatino, Palladio, "Book Antiqua", Georgia, serif;
+  font-family: "Droid Serif", "Palatino", "Georgia", serif;
 }
 
-/* Typography */
-body {
-  color: #333;
-  font-size: 1.0em;
+h1, h2, h3, header, .sidebar {
+  font-family: "Droid Sans", sans-serif;
 }
 
-h1, h2, h3, h4, h5 {
-  margin: 0;
-  font-family: Asap, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
+pre, code, kbd, samp {
+  font-family: "Consolas", "Menlo", "Courier", monospace;
 }
+
+/* @end Font faces */
 
 h1 {
-  font-size: 1.8em;
-  font-weight: 400;
+  font-size: 1.7em;
 }
 
 h2 {
-  font-size: 1.3em;
-  font-weight: 400;
+  font-size: 1.2em;
 }
 
-hgroup h2 {
-  font-size: 1.1em;
+h3 {
+  font-size: 1.0em;
 }
 
-/* shh */
-p.quiet {
-  color: #aaa;
+header h1, header h2, header h3 {
+  margin: 0;
 }
 
-p.quiet a {
-  color: rgba(0, 119, 204, 0.7);
-  -webkit-transition: color 0.3s;
+.sidebar p {
+  font-size: 0.8em;
 }
 
-p.quiet a:hover {
-  color: rgba(0, 119, 204, 1);
+/* Vertical rhythm of 1.5em */
+p {
+  margin: 1.5em 0;
+  line-height: 1.5em;
 }
 
 a {
   text-decoration: none;
-  color: #0077cc;
-}
-
-a.gplus {
-  color: #d74937;
+  color: rgb(25, 145, 248);
 }
 
 a:hover {
-  color: #a0d137;
+  color: rgb(20, 126, 221);
+  text-decoration: underline;
 }
 
+pre {
+  padding: 1em;
+}
+
+/* Allow horizontal scrolling on wide snippets */
 pre, code {
-  font-family: Consolas, Courier, monospace;
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
 }
 
-pre code {
-  font-size: 1em;
-}
-
+/* Inline code */
 code {
-  /* Smaller inline code */
-  font-size: 0.85em;
+  padding: 0.2em 0.4em 0.1em 0.4em;
+  font-size: 0.9em;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  white-space: nowrap;
+  border-radius: 0.3em;
+}
+
+.highlight {
+  position: relative;
+  border-radius: 0.2em;
+}
+
+.highlight:before {
+  content: "\f121";
+  position: absolute;
+  top: 50%;
+  left: -1.7em;
+  margin-top: -0.45em;
+}
+
+.highlight code {
+  padding: 0;
+  font-size: 1.0em;
+  background-color: transparent;
+  white-space: pre;
+  border-radius: 0;
 }
 
 blockquote {
-  background: #f8f8f8;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
+  position: relative;
+  margin: 0;
+  font-style: italic;
 }
 
-blockquote p code {
-  color: #333;
-  border: none;
-  background: none;
+blockquote p:before {
+  content: open-quote;
 }
 
-/* End Typography */
-
-/* Columns */
-
-.columns, .blog {
-  overflow: hidden;
-  _overflow: hidden;
-  zoom: 1;
+blockquote p:after {
+  content: close-quote;
 }
 
-.columns header {
-  float: left;
-}
-
-/* End Columns */
-
-/* Header */
-
-header {
-  width: 200px;
-  margin: 100px 0 0 100px;
-}
-
-header h1 {
-  font-family: Pacifico;
-}
-
-header h1 a {
-  display: block;
-  -webkit-transition: color 0.2s;
-  -moz-transition: color 0.2s;
+.tags:before, .comment-count:before, .highlight:before {
+  font-family: "FontAwesome";
+  font-size: 0.9em;
+  font-weight: normal;
+  color: #ddd;
   transition: color 0.2s;
 }
 
-header h2 {;
-  font-size: 1.2em;
+.tags:hover:before, .comment-count:hover:before, .highlight:hover:before {
+  color: #aaa;
 }
 
-/* End Header */
-
-/* @group Blog */
-
-.blog {
-  width: 720px;
-  margin: 50px 0 0 0;
-  padding: 0 0 0 40px;
+/* List items are flush with the left text alignment */
+ul, ol, dl {
+  padding-left: 0;
 }
 
-/* @group Posts */
-
-article {
-  margin: 0 0 30px 0;
+li {
+  margin-bottom: 0.75em;
 }
 
-article hgroup {
-  margin: 0 0 15px 0;
-  border-bottom: 1px solid #eee;
+/* @end Typography */
+
+/* Now that's simple CSS columns! */
+.columns {
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  display: -ms-flex;
+  -ms-flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
-article hgroup h1 a {
+/* Sidebar */
+.sidebar {
+  width: 12em;
+  -webkit-flex-shrink: 0;
+  -ms-flex-shrink: 0;
+  flex-shrink: 0;
+  padding: 2em 1em 0 1em;
+  border-right: 0.15em solid rgb(31, 40, 59);
+  background: rgb(41, 53, 77);
+  color: rgb(235, 240, 243);
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
+}
+
+.sidebar h2 {
+  color: rgb(80, 109, 152);
+}
+
+.sidebar a {
+  text-decoration: none;
+}
+
+/* @group Main content */
+
+main {
+  padding: 2em 3em;
+  text-align: left;
   color: #333;
 }
 
-article hgroup h1 a:hover {
-  color: #0077cc;
+/* First header should be flush with padding */
+main h1:first-child {
+  margin-top: 0;
 }
 
-hgroup h2 {
-  float: left;
-  width: 50%;
-  color: #999;
+article h2 {
+  margin: 1.0em 0;
+  font-size: 1.5em;
 }
 
-hgroup h2 a, hgroup h3 a {
-  color: #999;
+header h2 {
+  margin: 0;
+  font-size: 1.0em;
+  color: #aaa;
 }
 
-/* comment count */
-hgroup h3 {
-  width: 50%;
-  float: right;
-  font-size: 1em;
-  text-align: right;
+header h3 {
+  font-size: 1.0em;
 }
 
+/* Push back items with icons */
+.comment-count, .tags  {
+  margin-left: -1.2em;
+}
+
+.comment-count:before {
+  content: "\f086";
+}
+
+.comment-count:before, .tags:before {
+  padding-right: 0.4em;
+}
+
+/* Images change size to fit the parent */
 article img {
-  display: block;
-  margin: 0 auto;
-  padding: 5px 5px 20px 5px;
-  background: #fff;
+  max-width: 100%;
+  height: auto;
 }
 
-.alert a {
-  display: block;
-  padding: 10px 0 8px 0;
-  color: #fff;
-  text-align: center;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
-  background-color: #f1783c;
-  border-radius: 3px;
-  box-shadow: 0 2px 0 #c26246;
-  transition: background-color 0.2s;
-}
-
-.alert a:hover {
-  background-color: #f1883c;
-}
-
-.alert a:active {
-  /* Remove the box shadow and shift to takes it's place. */
-  box-shadow: none;
-  -webkit-transform: translate(0, 2px);
-  -moz-transform: translate(0, 2px);
-  -ms-transform: translate(0, 2px);
-  -o-transform: translate(0, 2px);
-  transform: translate(0, 2px);
-}
-
-.tags {
-  margin: 20px 0 0 0;
+/* Search and index listings */
+ul.results {
+  margin: 0;
   padding: 0;
-  list-style-type: none;
-  font-size: 0.8em;
+  list-style: none;
+}
+
+ul.results > li {
+  margin: 2.0em 0;
+}
+
+ul.results > li:first-child {
+  margin-top: 0;
+}
+
+/* Tags listing */
+.tags {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.tags:before {
+  content: "\f02c";
 }
 
 .tags li {
-  float: left;
-  margin: 0 7px;
+  display: inline-block;
+  margin-bottom: 0;
 }
 
-.tags li a {
-  padding: 1px 12px 2px 12px;
-  background: #eaeff0;
-  color: #5e6d74;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -o-border-radius: 20px;
-  border-radius: 20px;
+/* Add a comma+space after each list item, except the last */
+.tags li:after {
+  content: ",\00a0";
 }
 
-.tags li a:hover {
-  /* shrink the padding to compensate for the border */
-  padding: 0 11px 1px 11px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+.tags li:last-child:after {
+  content: "";
 }
 
-.tags li a:active {
-  position: relative;
-  top: 1px;
-}
+/* @end Main content */
 
-/* @end Posts */
-
-/* @group Pagination */
-
-.pagination .previous {
-  float: right;
-  text-align: right;
-}
-
-.pagination .next {
-  float: left;
-}
-
-/* @end Pagination */
-
-/* @group Search Results Pages */
-/* categories etc. */
-
-.results {
-  padding-left: 20px;
-  list-style-type: none;
-}
-
-.results > li {
-  margin: 0 0 15px 0;
-  padding: 0 0 10px 0;
-  font-size: 1.2em;
-  border-bottom: 1px solid #eee;
-}
-
-.results .date {
-  font-size: 0.8em;
-  color: #ccc;
-}
-
-.results ul.tags {
-  margin: 5px 0 0 0;
-  font-size: 0.6em;
-}
-
-/* @end Search Results Pages */
-
-/* @end Blog */
-
-/* @group Code */
-
-.highlight {
-  margin-bottom: 1em;
-  padding: 8px;
-  border: 1px solid #333;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-}
-
-.highlight pre {
-/*  overflow: scroll;*/
-  overflow-x: auto;
-  word-wrap: normal;
-}
-
-.highlight {
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -o-border-radius: 4px;
-  border-radius: 4px;
-}
-
-/* @end Code */
-
-/* @group Tables */
-
-table {
-  width: 100%;
-  margin-bottom: 18px;
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-table th, table td {
-  padding: 8px;
-  border-top: 1px solid #dddddd;
-  line-height: 18px;
-  vertical-align: top;
-  text-align: left;
-}
-
-table th {
-  font-weight: bold;
-}
-
-table thead th {
-  vertical-align: bottom;
-}
-
-table colgroup + thead tr:first-child th,
-table colgroup + thead tr:first-child td,
-table thead:first-child tr:first-child th,
-table thead:first-child tr:first-child td {
-  border-top: 0;
-}
-
-table tbody + tbody {
-  border-top: 2px solid #dddddd;
-}
-
-/* @end Tables */
-
-/* @group Comments */
-
-#disqus_thread {
-  padding: 0 0 40px 0;
-}
-
-/* @end Comments */
-
-/* inline code */
-p code, ul code, ol code {
-  padding: 1px 4px;
-  border: 1px solid #e1e1e8;
-  background: #f7f7f9;
-  color: #2aa198;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px;
-}
-
-@media screen and (max-width: 1060px) {
-  header {
-    margin: 20px 0 0 20px;
-  }
-
-  .blog {
-    margin: 20px 0 0 0;
-  }
-}
-
-/* @group Media Queries */
-/* For phones and stuff */
-
-@media screen and (max-width: 980px) {
-  header {
-    width: 20%;
-  }
-
-  .blog {
-    width: 70%;
-  }
-}
-
-@media screen and (max-width: 580px) {
+@media only screen and (max-width: 750px) {
   .columns {
-    overflow: none;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
 
-  header {
+  .sidebar {
     width: 100%;
-    float: none;
-    margin: 0 0 20px 0;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
+    border-right: none;
+    -webkit-flex-shrink: 1;
+    -ms-flex-shrink: 1;
+    flex-shrink: 1;
+    padding: 1em;
   }
 
-  header .deets {
+  .sidebar p {
     display: none;
   }
+}
 
-  .blog {
-    width: 100%;
-    padding: 0;
-  }
-
-  .results .date {
-    display: block;
-  }
-
-  article {
-    padding: 0 10px;
-    font-size: 0.9em;
-  }
-
-  article h1 {
-    font-size: 1.4em;
-  }
-
-  article h2 {
-    font-size: 1.1em;
-  }
-
-  article h2 {
-    font-size: 1.1em;
-  }
-
-  article img {
-    max-width: 100%;
+@media only screen and (max-width: 500px) {
+  main {
+    padding: 2em 2em;
+    text-align: left;
   }
 }
 
-/* @end Media Queries */
+/* @group Syntax highlighting */
+
+{% include base16.ocean.dark.css %}
+
+/* @end Syntax highlighting */
