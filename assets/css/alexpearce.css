@@ -11,12 +11,18 @@
 
 /* @group Font faces */
 
+/* Make the body fill the entire window. */
 body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   font-family: "Droid Serif", "Palatino", "Georgia", serif;
 }
 
 h1, h2, h3, header, .sidebar {
-  font-family: "Droid Sans", sans-serif;
+  font-family: "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 pre, code, kbd, samp {
@@ -142,6 +148,7 @@ li {
 
 /* Now that's simple CSS columns! */
 .columns {
+  min-height: 100%;
   display: -webkit-flex;
   -webkit-flex-direction: row;
   display: -ms-flex;
