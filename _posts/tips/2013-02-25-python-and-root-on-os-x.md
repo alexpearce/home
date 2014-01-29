@@ -6,7 +6,7 @@ tags: [ROOT, Python, OSX]
 description: Fixing an ImportError from libPyROOT on OS X
 ---
 
-I don't find myself using [ROOT](http://root.cern.ch/drupal/) much on my home machine, but when I do there's usually something broken.
+I don’t find myself using [ROOT](http://root.cern.ch/drupal/) much on my home machine, but when I do there’s usually something broken.
 
 In this case, it was when trying to use [PyROOT](http://root.cern.ch/drupal/content/pyroot), a ROOT interface for Python, that this error made my day:
 
@@ -23,7 +23,7 @@ ImportError: dlopen(/usr/local/root/lib/libPyROOT.so, 2): Library not loaded: @r
 
 This is using the install as documented in [a previous post]({% post_url 2012-08-03-installing-root-on-mountain-lion %}).
 
-The problem is that the library Python loads can't find another library it needs. To fix this, the `DYLD_LIBRARY_PATH` variable needs to be set:
+The problem is that the library Python loads can’t find another library it needs. To fix this, the `DYLD_LIBRARY_PATH` variable needs to be set:
 
 {% highlight text %}
 export DYLD_LIBRARY_PATH=$ROOTSYS/lib:$DYLD_LIBRARY_PATH

@@ -11,8 +11,8 @@ One of the nice features of [ROOT](http://root.cern.ch/), a data analysis framew
 ![Old familiar: a ROOT TBrowser](/assets/img/tbrowser-shortcut/root-tbrowser.png)
 
 It lets you view the directory structure of [ROOT files](http://root.cern.ch/root/htmldoc/TFile), as well as quickly create histograms of ntuple branches.
-It's so useful that I use it a lot during the day, maybe 20 times or more.
-Using it then becomes a little tedious, as its instantiation is a little more verbose than I care for, particularly when I'm typing it all day.
+It’s so useful that I use it a lot during the day, maybe 20 times or more.
+Using it then becomes a little tedious, as its instantiation is a little more verbose than I care for, particularly when I’m typing it all day.
 
 {% highlight bash %}
 $ root my_file.root
@@ -68,7 +68,7 @@ As I really am lazy, I alias the `tbrowser` function to `tb`; again, in a file m
 alias tb="tbrowser"
 {% endhighlight %}
 
-As an aside, if you haven't already created an alias to hide that obnoxious ROOT splash screen, I'd recommend it.
+As an aside, if you haven’t already created an alias to hide that obnoxious ROOT splash screen, I’d recommend it.
 
 {% highlight bash %}
 alias root="root -l"

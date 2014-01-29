@@ -41,18 +41,18 @@ hadd Target path: ntuple.root:/DecayModeTwo
 hadd Target path: ntuple.root:/GetIntegratedLuminosity
 {% endhighlight %}
 
-This can will take some time if you're merging lots of data (it took me around 40 minutes to merge 120 ntuples with a total size of 20GB).
+This can will take some time if you’re merging lots of data (it took me around 40 minutes to merge 120 ntuples with a total size of 20GB).
 
 A Nicer Way
 -----------
 
-If you're using a bash-like shell (`bash`, `zsh`), then there is an even nicer way of doing things:
+If you’re using a bash-like shell (`bash`, `zsh`), then there is an even nicer way of doing things:
 
 {% highlight bash %}
 $ hadd ntuple.root ntuple.{0..2}.root
 {% endhighlight %}
 
-The `{0..2}` part is expanded by the shell to `ntuple.0.root ntuple.1.root ntuple.2.root`. If you're not a regular bash/zsh user, you can still take advantage of the feature by executing
+The `{0..2}` part is expanded by the shell to `ntuple.0.root ntuple.1.root ntuple.2.root`. If you’re not a regular bash/zsh user, you can still take advantage of the feature by executing
 
 {% highlight bash %}
 $ bash
@@ -64,7 +64,7 @@ in your shell and then
 $ exit
 {% endhighlight %}
 
-once you're done. Note that this new shell may not have `$ROOTSYS/bin` in its `PATH`, but can be quickly added.
+once you’re done. Note that this new shell may not have `$ROOTSYS/bin` in its `PATH`, but can be quickly added.
 
 {% highlight bash %}
 $ export PATH=/path/to/root/bin:$PATH
