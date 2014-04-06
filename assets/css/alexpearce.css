@@ -206,9 +206,31 @@ header h3 {
   font-size: 1.0em;
 }
 
-/* Push back items with icons */
-.comment-count, .tags  {
-  margin-left: -1.2em;
+.alert a {
+  display: block;
+  padding: 0.5em 0;
+  margin-top: 1em;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  background-color: #f1783c;
+  border-radius: 3px;
+  box-shadow: 0 2px 0 #c26246;
+  transition: background-color 0.2s;
+}
+
+.alert a:hover {
+  background-color: #f1883c;
+}
+
+.alert a:active {
+  /* Remove the box shadow and shift to takes it's place. */
+  box-shadow: none;
+  -webkit-transform: translate(0, 2px);
+  -moz-transform: translate(0, 2px);
+  -ms-transform: translate(0, 2px);
+  -o-transform: translate(0, 2px);
+  transform: translate(0, 2px);
 }
 
 .comment-count:before {
