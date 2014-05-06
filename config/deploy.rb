@@ -35,7 +35,7 @@ task :deploy => :environment do
   deploy do
     invoke :"git:clone"
     invoke :"bundle:install"
-    queue "#{bundle_bin} exec jekyll --no-auto"
+    queue "#{bundle_bin} exec jekyll build"
   end
 end
 
