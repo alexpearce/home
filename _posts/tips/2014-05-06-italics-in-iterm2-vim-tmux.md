@@ -52,7 +52,7 @@ xterm-256color-italic|xterm with 256 colors and italic,
   use=xterm-256color,
 {% endhighlight %}
 
-Create a file called `xterm-256color-italic.terminfo ` with the above contents.
+Create a file called `xterm-256color-italic.terminfo`, where ever you like, with the above contents.
 This file needs to be processed and added to the `TERM` database.
 
 {% highlight bash %}
@@ -61,6 +61,7 @@ $ tic xterm-256color-italic.terminfo
 
 Finally, we need to tell iTerm2 to use this new `TERM`, `xterm-256color-italic`, by default.
 This is done in the terminal pane of whatever profile you’re using.
+The new entry probably won’t be in the list, but we can just type it in.
 
 ![Where to change the reported terminal type in iTerm2](/assets/img/italics-in-iterm2-vim-tmux/iterm2-report-terminal-type.jpg)
 
@@ -167,3 +168,5 @@ $ tic xterm-256-italic.terminfo
 {% endhighlight %}
 
 Repeat for the `screen` terminfo.
+
+You can delete the `.terminfo` files, from both the remote and local machines, once you’ve loaded them with `tic`.
