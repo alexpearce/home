@@ -5,7 +5,7 @@ category: Tips
 tags: [Jekyll, JavaScript]
 description: How to include Liquid tags in Jekyll posts.
 ---
-Writing [the previous post]({% post_url 2012-04-22-simple-jekyll-searching %}) brought about a problem: How can I write posts about [Liquid tags](http://liquidmarkup.org/)?
+Writing [the previous post]({% post_url tips/2012-04-22-simple-jekyll-searching %}) brought about a problem: How can I write posts about [Liquid tags](http://liquidmarkup.org/)?
 
 By default, any Jekyll file containing [YAML front matter](https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter) will be churned through the Liquid processor. This means that any blog posts, which require YAML front matter, that contain Liquid tags will have them processed producing unwanted results.
 

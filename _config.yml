@@ -2,10 +2,6 @@
 
 # Don't use custom plugins
 safe: true
-# Regeneration files when changed
-auto: true
-# Don't start the server
-server: false
 
 baseurl: /
 url: http://localhost:4000
@@ -17,7 +13,7 @@ destination: ./_site
 # Markdown engine
 markdown: rdiscount
 # Use Pygments for syntax highlighting
-pygments: true
+highlighter: rouge
 
 # Exclude these files from compilation
 exclude: [Gemfile, Gemfile.lock, README.md, vendor, bin]
