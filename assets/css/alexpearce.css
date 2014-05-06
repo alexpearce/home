@@ -241,10 +241,12 @@ header h3 {
   padding-right: 0.4em;
 }
 
-/* Images change size to fit the parent */
+/* Centered images change size to fit the parent */
 article img {
+  display: block;
   max-width: 100%;
   height: auto;
+  margin: 0 auto;
 }
 
 /* Search and index listings */
