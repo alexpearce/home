@@ -5,6 +5,23 @@
 
 {% include normalize.css %}
 
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  moz-box-sizing: border-box;
+}
+
+.cf:before, .cf:after {
+  content: "";
+  display: table;
+}
+.cf:after {
+  clear: both;
+}
+.cf {
+  *zoom: 1;
+}
+
 /* @end Normalize */
 
 /* @group Typography */
@@ -13,11 +30,6 @@
 
 /* Make the body fill the entire window. */
 body {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   font-family: "Droid Serif", "Palatino", "Georgia", serif;
 }
 
@@ -32,7 +44,7 @@ pre, code, kbd, samp {
 /* @end Font faces */
 
 h1 {
-  font-size: 1.7em;
+  font-size: 1.5em;
 }
 
 h2 {
@@ -146,42 +158,24 @@ li {
 
 /* @end Typography */
 
-/* Now that's simple CSS columns! */
-.columns {
-  min-height: 100%;
-  display: -webkit-flex;
-  -webkit-flex-direction: row;
-  display: -ms-flex;
-  -ms-flex-direction: row;
-  display: flex;
-  flex-direction: row;
-}
+/* @group Sidebar */
 
-/* Sidebar */
 .sidebar {
-  width: 12em;
-  -webkit-flex-shrink: 0;
-  -ms-flex-shrink: 0;
-  flex-shrink: 0;
-  padding: 2em 1em 0 1em;
-  border-right: 0.15em solid rgb(31, 40, 59);
-  background: rgb(41, 53, 77);
-  color: rgb(235, 240, 243);
-  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
+  padding: 1em;
+  /* padding: 2em 1em 0 1em; */
+  border-bottom: 1px solid #eee;
 }
 
-.sidebar h2 {
-  color: rgb(80, 109, 152);
+.sidebar p {
+  display: none;
 }
 
-.sidebar a {
-  text-decoration: none;
-}
+/* @end Sidebar */
 
 /* @group Main content */
 
 main {
-  padding: 2em 3em;
+  padding: 1em 2em;
   text-align: left;
   color: #333;
 }
@@ -288,33 +282,40 @@ ul.results > li:first-child {
   content: "";
 }
 
+/* @group Disqus */
+
+#disqus_thread {
+  padding: 1em 0 0 0;
+  border-top: 1px solid #eee;
+}
+
+/* @end */
+
 /* @end Main content */
 
-@media only screen and (max-width: 750px) {
-  .columns {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
+@media only screen and (min-width: 768px) {
+  body {
+    width: 768px;
+    margin: 0 auto;
+    padding: 50px 0;
   }
 
   .sidebar {
-    width: 100%;
-    border-right: none;
-    -webkit-flex-shrink: 1;
-    -ms-flex-shrink: 1;
-    flex-shrink: 1;
-    padding: 1em;
+    width: 187px;
+    float: left;
+    padding: 2em 2em 1em 1em;
+    border-bottom: none;
+    border-right: 1px solid #eee;
   }
 
   .sidebar p {
-    display: none;
+    display: block;
   }
-}
 
-@media only screen and (max-width: 500px) {
   main {
-    padding: 2em 2em;
-    text-align: left;
+    width: 580px;
+    float: right;
+    padding: 0 1em 0 2em;
   }
 }
 
