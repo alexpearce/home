@@ -271,6 +271,7 @@ ul.results > li:first-child {
 .tags li {
   display: inline-block;
   margin-bottom: 0;
+  color: #aaa;
 }
 
 /* Add a comma+space after each list item, except the last */
