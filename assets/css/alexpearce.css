@@ -99,6 +99,10 @@ code {
   border-radius: 0.3em;
 }
 
+a:hover code {
+  background-color: #f1eaec;
+}
+
 .highlight {
   position: relative;
   border-radius: 0.2em;
