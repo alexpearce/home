@@ -11,7 +11,9 @@ source: .
 # Where to put the compiled site
 destination: ./_site
 # Markdown engine
-markdown: rdiscount
+markdown: redcarpet
+redcarpet:
+  extensions: [with_toc_data]
 # Use Pygments for syntax highlighting
 highlighter: rouge
 
