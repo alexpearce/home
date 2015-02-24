@@ -467,7 +467,7 @@ If this information isn't present in the session, we can redirect users to `/log
 
 ### Flask SSO
 
-Our updated Flask application, [available as a gist](), now allows the user to log in and log out, storing and destroying their user information as they do so.
+Our updated Flask application, [available as a gist](https://gist.github.com/alexpearce/4ef660422085838ff2d2), now allows the user to log in and log out, storing and destroying their user information as they do so.
 It uses the [Flask-SSO](http://flask-sso.readthedocs.org/en/latest/) Flask extension to simplify the mapping of the headers from the authentication procedure to the user session object.
 Let's install the Flask-SSO module, and overwrite the old application with our updated version.
 
