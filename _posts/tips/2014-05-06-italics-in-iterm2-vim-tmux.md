@@ -76,7 +76,7 @@ Check its value is `xterm-256color-italic`.
 
 {% highlight bash %}
 $ echo $TERM
-xterm-256-color-italic
+xterm-256color-italic
 {% endhighlight %}
 
 If it’s different, check you’re dotfiles (like `.bashrc`).
