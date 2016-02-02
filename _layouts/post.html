@@ -10,7 +10,7 @@ layout: default
       </time>
     </h2>
     {% if page.comments != false %}
-      <h3 class="comment-count"><a href="{{ page.url}}#disqus_thread" data-disqus-identifier="{{ page.slug }}">No comments</a></h3>
+      <h3 class="comment-count"><a href="{{ page.url}}#disqus_thread" data-disqus-identifier="{{ page.url }}">No comments</a></h3>
     {% endif %}
     <ul class="tags">
       {% for tag in page.tags %}
