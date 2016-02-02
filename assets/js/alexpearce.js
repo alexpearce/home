@@ -2,7 +2,7 @@
   'use strict';
 
   // Search page URL without leading slash
-  var SEARCH_PATH = 'search';
+  var SEARCH_PATH = 'search/';
 
   var ready = function(fn) {
     if (document.readyState != 'loading'){
