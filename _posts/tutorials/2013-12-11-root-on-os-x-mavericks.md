@@ -6,6 +6,12 @@ tags: [ROOT, OS X]
 description: Caveats when installing ROOT on OS X 10.9 (Mavericks).
 ---
 
+<div class="alert">
+  <a href="{% post_url 2015-02-02-root-on-os-x-el-capitan %}">
+    Running OS X 10.10 or 10.11? Check out the latest tutorial.
+  </a>
+</div>
+
 With the [recent release of OS X 10.9 Mavericks](http://en.wikipedia.org/wiki/OS_X_Mavericks), I tried to install a recent version of [ROOT](http://root.cern.ch/), 5.34/10, using [my tutorial]({% post_url 2012-08-03-installing-root-on-mountain-lion %}).
 It didn’t work.
 

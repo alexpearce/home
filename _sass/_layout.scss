@@ -236,4 +236,14 @@ blockquote {
   font-style: italic;
 }
 
+.alert {
+  padding: 0.7em 1em 0.8em 1em;
+  border-radius: 2px;
+  background: $highlight_color;
+  a {
+    color: #fff;
+    text-shadow: 0 1px 0 darken($highlight_color, 10%);
+  }
+}
+
 /* @end Post/page style */
