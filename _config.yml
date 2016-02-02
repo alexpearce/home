@@ -5,7 +5,7 @@ description: >
   Blog of physicist and developer Alex Pearce.
 baseurl: ""
 url: "https://alexpearce.me"
-permalink: /:year/:month/:title
+permalink: /:year/:month/:title/
 twitter_username: alxprc
 github_username:  alexpearce
 
