@@ -1,26 +1,40 @@
-<div id="disqus_thread">
-  <a href="//disqus.com" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span></a>.
-</div>
+{% comment %}
+This file should be included where ever Disqus comment counts or comment
+threads are needed.
 
+It will show a thread when on a post page, and will always load the comment
+count script.
+{% endcomment %}
+<div id="disqus_thread"></div>
 <script>
-  var disqus_shortname = window.location.host === "alexpearce.me" ? "alexpearce" : "alexpearce-devel",
-      disqus_title = "{{ page.title }}",
-      disqus_identifier = "{{ page.url }}",
-      disqus_developer = 0;
+  // Enable developer mode when not on the production site
+  var disqus_devel = window.location.hostname !== 'alexpearce.me',
+      disqus_shortname = disqus_devel ? 'alexpearce-devel' : 'alexpearce',
+      disqus_rooturl = disqus_devel ? 'localhost' : 'alexpearce.me',
+      disqus_config = function () {
+    this.page.url = window.location.protocol + '//' + disqus_rooturl + '{{ page.url }}';
+    this.page.identifier = '{{ page.slug }}';
+    this.page.title = '{{ page.title }}';
+  };
 
-  (function(d) {
-    var embed = d.createElement("script"),
-        count = d.createElement("script");
-    embed.async = count.async = true;
-    embed.src = "//" + disqus_shortname + ".disqus.com/embed.js";
-    count.src = "//" + disqus_shortname + ".disqus.com/count.js";
+  (function() {
+    var embed = document.createElement('script'),
+        count = document.createElement('script');
 
-    // If comments aren't disabled for the article, load the embed and count script
-    if ("{{ page.comments }}" !== "false") {
-      d.getElementsByTagName("head")[0].appendChild(embed);
-      d.getElementsByTagName("head")[0].appendChild(count);
-    } else {
-      d.getElementById("disqus_thread").innerHTML = "";
+    embed.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    embed.setAttribute('data-timestamp', +new Date());
+
+    count.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    count.id = 'dsq-count-scr';
+    count.async = true;
+
+    var dest = document.head || document.body;
+    // If we're on a post page and comments aren't disabled for the post,
+    // load the embed and count script
+    if (document.querySelectorAll('article.post').length > 0 && '{{ page.comments }}' !== 'false') {
+      dest.appendChild(embed);
     }
-  })(document);
+    dest.appendChild(count);
+  })();
 </script>
+<noscript>Comments disabled as JavaScript is not available.</noscript>

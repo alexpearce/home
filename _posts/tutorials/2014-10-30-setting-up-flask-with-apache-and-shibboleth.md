@@ -157,7 +157,7 @@ $ yum install -y mod_ssl
 Edit the Apache SSL configuration in `/etc/httpd/conf.d/ssl.conf` as root to point to the correct certificates, making sure the following lines are present and that the directives only appear once in the file.
 (You can use, for example, `sudo vi /etc/httpd/conf.d/ssl.conf` to edit a file with super user privileges.)
 
-{% highlight apache %}
+{% highlight config %}
 SSLCertificateFile /etc/pki/tls/certs/host.cert
 SSLCertificateKeyFile /etc/pki/tls/private/privkey.pem
 SSLCertificateChainFile /etc/pki/tls/certs/CERN-bundle.pem
@@ -165,7 +165,7 @@ SSLCertificateChainFile /etc/pki/tls/certs/CERN-bundle.pem
 
 On [CERN advice](https://twiki.cern.ch/twiki/bin/view/LinuxSupport/ConfigureApacheSSLonSLC) add the following line after the `LoadModule ssl_module modules/mod_ssl.so` line in the same `ssl.conf` file.
 
-{% highlight apache %}
+{% highlight config %}
 TraceEnable Off
 {% endhighlight %}
 

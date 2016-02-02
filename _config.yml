@@ -1,27 +1,20 @@
-# http://jekyllrb.com/docs/configuration/
-
-# Don't use custom plugins
-safe: true
-
-baseurl: /
-url: http://localhost:4000
-
-# Site source
-source: .
-# Where to put the compiled site
-destination: ./_site
-# Markdown engine
-markdown: redcarpet
-redcarpet:
-  extensions: [with_toc_data]
-# Use Pygments for syntax highlighting
-highlighter: rouge
-
-# Exclude these files from compilation
-exclude: [Gemfile, Gemfile.lock, README.md, vendor, bin]
-
-# Don't produce a 'related posts' index
-lsi: false
-
-# Permalink style
+# Site settings
+title: Alex Pearce
+email: alex@alexpearce.me
+description: >
+  Blog of physicist and developer Alex Pearce.
+baseurl: ""
+url: "https://alexpearce.me"
 permalink: /:year/:month/:title
+twitter_username: alxprc
+github_username:  alexpearce
+
+markdown: kramdown
+
+# These files aren't part of the build
+exclude: [Gemfile, Gemfile.lock, README.md, config, vendor]
+
+paginate: 8
+paginate_path: "/blog/page:num/"
+
+gems: [jekyll-paginate]

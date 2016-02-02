@@ -21,7 +21,7 @@ ImportError: dlopen(/usr/local/root/lib/libPyROOT.so, 2): Library not loaded: @r
   Reason: image not found
 {% endhighlight %}
 
-This is using the install as documented in [a previous post]({% post_url tutorials/2012-08-03-installing-root-on-mountain-lion %}).
+This is using the install as documented in [a previous post]({% post_url 2012-08-03-installing-root-on-mountain-lion %}).
 
 The problem is that the library Python loads can’t find another library it needs. To fix this, the `DYLD_LIBRARY_PATH` variable needs to be set:
 

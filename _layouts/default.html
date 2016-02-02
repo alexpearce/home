@@ -1,32 +1,20 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>{% if page.title %}{{ page.title }} - {% endif %}Alex Pearce</title>
-  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Blog of web developer and physicist Alex Pearce.{% endif %}">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed">
-
-  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-  <link href="//fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400,700,400italic" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/assets/css/alexpearce.css">
-
-  {% include analytics.html %}
-</head>
-<body class="cf">
-
-  {% include sidebar.html %}
-
-  <main>
-    {{ content }}
-  </main>
-
-
-  <script defer src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-
-  <script defer src="/assets/js/alexpearce.js"></script>
-</body>
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+  <body>
+    <div class="masthead">
+      <h1 class="title"><a href="/">Alex Pearce</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/">About</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="https://github.com/alexpearce">Projects</a></li>
+        </ul>
+      </nav>
+    </div>
+    <main>
+      {{ content }}
+    </main>
+  </body>
+  {% include foot.html %}
 </html>
