@@ -27,16 +27,27 @@
   };
 
   // Only display posts on the search page that match the query
-  var filterPosts = function(categoriesContainer, tagsContainer) {
+  var filterPosts = function(categoriesContainer, tagsContainer, errorsContainer) {
     var params = parseSearchParameters(window.location.search.slice(1)),
         hasTag = params.tag !== undefined,
         hasCategory = params.category !== undefined,
-        children, child, searchTerm, i;
+        children, child, searchTerm, i, hasMatch = false;
 
-    // 0 or more than 1 search terms were specified
-    if ((!hasTag && !hasCategory) || hasTag && hasCategory) {
+    // No search terms were specified
+    if (!hasTag && !hasCategory) {
       tagsContainer.style.display = 'none';
-      categoriesContainer.style.display = 'block';
+      categoriesContainer.style.display = 'none';
+      errorsContainer.style.display = 'block';
+      errorsContainer.querySelector('.too-few-parameters').style.display = 'block';
+      return;
+    }
+
+    // More than 1 search term was specified
+    if (hasTag && hasCategory) {
+      tagsContainer.style.display = 'none';
+      categoriesContainer.style.display = 'none';
+      errorsContainer.style.display = 'block';
+      errorsContainer.querySelector('.too-many-parameters').style.display = 'block';
       return;
     }
 
@@ -56,19 +67,30 @@
 
     for (i = 0; i < children.length; i++) {
       child = children[i];
-      child.style.display = decodeURI(child.dataset.name) === searchTerm ? 'display' : 'none';
+      if (decodeURI(child.dataset.name) === searchTerm) {
+        child.style.display = 'display';
+        hasMatch = true;
+      } else {
+        child.style.display = 'none';
+      }
     };
+
+    if (!hasMatch) {
+      errorsContainer.style.display = 'block';
+      errorsContainer.querySelector('.no-results').style.display = 'block';
+    }
   };
 
   ready(function() {
     // If we're on the search page, get the index containers and filter them
     // based on the GET query
     if (window.location.pathname.slice(-SEARCH_PATH.length) === SEARCH_PATH) {
-      var tagsContainer = document.querySelectorAll('.tag-index'),
-          categoriesContainer = document.querySelectorAll('.category-index');
+      var tagsContainer = document.querySelector('.tag-index'),
+          categoriesContainer = document.querySelector('.category-index'),
+          errorsContainer = document.querySelector('.error');
       // We need both containers for the method to work
-      if (!tagsContainer.length !== 1 || categoriesContainer.length !== 1) {
-        filterPosts(categoriesContainer[0], tagsContainer[0]);
+      if (!!tagsContainer || !!categoriesContainer) {
+        filterPosts(categoriesContainer, tagsContainer, errorsContainer);
       }
     }
   });

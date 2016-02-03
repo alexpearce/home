@@ -256,3 +256,14 @@ blockquote {
 }
 
 /* @end Post/page style */
+
+/* @begin Search page */
+
+.error {
+  display: none;
+  .too-few-parameters, .too-many-parameters, .no-results {
+    display: none;
+  }
+}
+
+/* @end Search page */
