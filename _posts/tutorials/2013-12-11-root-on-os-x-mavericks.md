@@ -7,7 +7,7 @@ description: Caveats when installing ROOT on OS X 10.9 (Mavericks).
 ---
 
 <div class="alert">
-  <a href="{% post_url 2015-02-02-root-on-os-x-el-capitan %}">
+  <a href="{% post_url 2016-02-02-root-on-os-x-el-capitan %}">
     Running OS X 10.10 or 10.11? Check out the latest tutorial.
   </a>
 </div>
