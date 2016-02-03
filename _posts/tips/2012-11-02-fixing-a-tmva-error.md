@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fixing a TMVA Error
+title: Fixing a TMVA error
 category: Tips
 tags: [ROOT, TMVA, Physics]
 description: One solution for the TMVA error “signal and background histograms have different or invalid dimensions”.

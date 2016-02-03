@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ROOT on OS X Mavericks
+title: ROOT on OS X 10.9 Mavericks
 category: Tutorials
 tags: [ROOT, OS X]
 description: Caveats when installing ROOT on OS X 10.9 (Mavericks).

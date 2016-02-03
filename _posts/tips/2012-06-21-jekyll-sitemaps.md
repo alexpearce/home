@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Jekyll Sitemaps
+title: Jekyll sitemaps
 category: Tips
 tags: [Jekyll]
 description: How to create a Google sitemap for a Jekyll site.

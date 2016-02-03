@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Deploying to a VPS With Capistrano
+title: Deploying with Capistrano
 category: Tutorials
 tags: [Capistrano, Ruby, nginx]
 description: A step-by-step tutorial on deploying Ruby and static apps to a VPS with Capistrano.

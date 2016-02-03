@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Installing ROOT on OS X 10.11
+title: ROOT on OS X 10.11 El Capitan
 category: Tips
 tags: [ROOT, OS X]
 description: A guide to install to high energy physics framework ROOT on OS X 10.11 with Homebrew.

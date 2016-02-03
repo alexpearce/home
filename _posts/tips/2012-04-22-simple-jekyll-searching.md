@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Simple Jekyll Searching
+title: Simple Jekyll searching
 category: Tips
 tags: [Jekyll, JavaScript]
 description: How to add simple JSON-based searching to Jekyll site.

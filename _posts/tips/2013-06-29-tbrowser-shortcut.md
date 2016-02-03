@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TBrowser Shortcut
+title: TBrowser shortcut
 category: Tips
 tags: [ROOT]
 description: A shortcut to launch a ROOT TBrowser from the terminal.

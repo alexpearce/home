@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Setting Up a Flask App under Apache with Shibboleth Authentication
+title: Flask with Apache and Shibboleth authentication
 category: Tutorials
 tags: [sysadmin, Python, Apache, CERN]
 description: A step-by-step tutorial on deploying Flask apps to a Linux VPS, running behind Apache with Shibboleth CERN SSO authentication.

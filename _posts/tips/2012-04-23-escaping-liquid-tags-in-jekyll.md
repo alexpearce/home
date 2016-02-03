@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Escaping Liquid Tags in Jekyll
+title: Escaping liquid tags in Jekyll
 category: Tips
 tags: [Jekyll, JavaScript]
 description: How to include Liquid tags in Jekyll posts.

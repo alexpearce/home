@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Installing ROOT on OS X 10.8 with CMake and Homebrew
+title: ROOT on OS X 10.8 with CMake and Homebrew
 category: Tutorials
 tags: [ROOT, OS X]
 description: A step-by-step guide to install to high energy physics framework ROOT on OS X 10.8 with CMake and Homebrew.

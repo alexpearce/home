@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Enabling italic fonts in iTerm2, tmux, and vim
+title: Italic fonts in iTerm2, tmux, and vim
 category: Tips
 tags: [Terminal, vim, tmux]
 description: How to configure iTerm2, tmux, and vim to enable italic fonts.

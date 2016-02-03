@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Merging ROOT Ntuples
+title: Merging ROOT ntuples
 category: Tips
 tags: [ROOT, Physics]
 description: How to merge multiple ntuples, in the form ntuple.root, in to a single file.

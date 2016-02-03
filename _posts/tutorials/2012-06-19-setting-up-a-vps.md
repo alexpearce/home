@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Setting Up an Ubuntu VPS With rbenv, Nginx and Passenger
+title: An Ubuntu VPS with rbenv, nginx and Passenger
 category: Tutorials
 tags: [sysadmin, Ruby, nginx]
 description: A step-by-step tutorial on deploying Ruby apps to a Linux VPS, installing nginx, Passenger, rbenv, and PostgreSQL along the way.
