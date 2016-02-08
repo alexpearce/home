@@ -6,6 +6,10 @@
   <title>{% if page.title %}{{ page.title | escape }} - {% endif %}{{ site.title | escape }}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
+  <link rel="icon" href="{{ "/assets/img/favicon-32x32.png" | prepend: site.baseurl }}">
+  <link rel="apple-touch-icon" href="{{ "/assets/img/favicon-120x120.png" | prepend: site.baseurl }}" sizes="120x120">
+  <link rel="apple-touch-icon" href="{{ "/assets/img/favicon-152x152.png" | prepend: site.baseurl }}" sizes="152x152">
+
   <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Neuton:400,700,400italic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ "/assets/css/alexpearce.css" | prepend: site.baseurl }}" type="text/css" media="screen">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
