@@ -94,7 +94,7 @@ The logic I went for goes like this:
 2. Some JavaScript parses the GET parameters for either a `tag` or a `category` 
    parameter, storing the value;
 3. The list of `.collection` containers is searched, and a container is hidden 
-   if it's `data-name` property doesn't much the value of the search parameter.
+   if it's `data-name` property doesn't match the value of the search parameter.
 
 There are many ways you could write the JavaScript logic, but you can view what 
 I ended up with [on GitHub][4].
