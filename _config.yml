@@ -11,6 +11,10 @@ github_username:  alexpearce
 
 markdown: kramdown
 
+# Minify output CSS
+sass:
+  style: compressed
+
 # These files aren't part of the build
 exclude: [Gemfile, Gemfile.lock, README.md, config, vendor]
 
