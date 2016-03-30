@@ -5,9 +5,9 @@ require "mina/rbenv"
 set :app, "alexpearce.me"
 
 set :user, "deploy"
-set :port, "19808"
+set :port, "19810"
 set :domain, "192.249.56.87"
-set :deploy_to, "/home/deploy/apps/#{app}"
+set :deploy_to, "/home/#{user}/#{app}"
 
 set :repository, "git://github.com/alexpearce/alexpearce.github.com.git"
 set :branch, "master"
@@ -16,6 +16,7 @@ set :shared_paths, []
 
 task :setup => :environment do
   invoke :link
+  queue "mkdir #{deploy_to}/logs"
 end
 
 task :link do
