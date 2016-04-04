@@ -1,0 +1,19 @@
+alexpearce.me {
+  root /home/deploy/alexpearce.me/current/_site
+  tls webmaster@alexpearce.me
+  gzip
+  log /home/deploy/logs/access.alexpearce.me.log {
+    rotate {
+      keep 5
+    }
+  }
+  errors {
+    log /home/deploy/logs/error.alexpearce.me.log {
+      rotate {
+        keep 5
+      }
+    }
+    404 /home/deploy/alexpearce.me/current/_site/404.html
+    500 /home/deploy/alexpearce.me/current/_site/500.html
+  }
+}

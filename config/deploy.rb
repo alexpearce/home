@@ -16,19 +16,14 @@ set :shared_paths, []
 
 task :setup => :environment do
   invoke :link
-  queue "mkdir #{deploy_to}/logs"
 end
 
 task :link do
-  queue "ln -sf #{deploy_to}/#{current_path}/config/nginx.conf /opt/nginx/sites-enabled/#{app}.conf"
+  queue "ln -sf #{deploy_to}/#{current_path}/config/Caddyfile /home/deploy/caddyfiles/#{app}.conf"
 end
 
 task :unlink do
-  queue "rm /opt/nginx/sites-enabled/#{app}.conf"
-end
-
-task :environment do
-  invoke :"rbenv:load"
+  queue "rm /home/deploy/caddyfiles/#{app}.conf"
 end
 
 desc "Deploys the current version to the server."
