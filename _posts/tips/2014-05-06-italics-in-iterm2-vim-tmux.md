@@ -6,6 +6,12 @@ tags: [Terminal, vim, tmux]
 description: How to configure iTerm2, tmux, and vim to enable italic fonts.
 ---
 
+<div class="alert">
+  <a href="{% post_url 2014-05-06-italics-in-iterm2-vim-tmux %}#tmux-21-and-above">
+    Using tmux version 2.1 or above? Check out the update.
+  </a>
+</div>
+
 Recently, I’ve been trying to restrict my coding workflow to the terminal.
 I’ve always used [iTerm2][1] as my terminal, and, since switching to [vim][2] about 18 months, have used [MacVim][3] as my editor.
 I felt I was losing efficiency switching between windows though, and losing power by not exploiting things like [splits][4].
@@ -170,3 +176,39 @@ $ tic xterm-256-italic.terminfo
 Repeat for the `screen` terminfo.
 
 You can delete the `.terminfo` files, from both the remote and local machines, once you’ve loaded them with `tic`.
+
+tmux 2.1 and above
+------------------
+
+The release of [tmux 2.1][tmux21] saw several changes to the way tmux handles 
+the terminal type, amongst other things. For getting italics working, we now 
+need a *new terminfo* called `tmux`.
+
+Luckily, there's already [an FAQ][tmux21-faq] on how to add the new terminfo entry with a single command.
+
+{% highlight bash %}
+$ cat <<EOF|tic -x -
+tmux|tmux terminal multiplexer,
+  ritm=\E[23m, rmso=\E[27m, sitm=\E[3m, smso=\E[7m, Ms@,
+  use=xterm+tmux, use=screen,
+
+tmux-256color|tmux with 256 colors,
+  use=xterm+256setaf, use=tmux,
+EOF
+{% endhighlight %}
+
+We then just need to tell tmux to use this new terminfo.
+
+{% highlight text %}
+set -g default-terminal "tmux"
+{% endhighlight %}
+
+You might need to restart your terminal and/or the tmux server for the changes 
+to take effect.
+
+Thanks to Landon Schropp for [pointing this out][tmux21-comment] in the 
+comments.
+
+[tmux21]: https://github.com/tmux/tmux/releases/tag/2.1
+[tmux21-faq]: https://github.com/tmux/tmux/blob/2.1/FAQ#L355-L383
+[tmux21-comment]: https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/#comment-2629095475
