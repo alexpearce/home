@@ -242,4 +242,4 @@ running acron jobs on it right away.
 [acron-host-guide]: https://cern.service-now.com/service-portal/article.do?n=KB0001704
 [arc-server]: http://linuxsoft.cern.ch/cern/centos/7/cern/x86_64/repoview/arc-server.html
 [comments]: #disqus_thread
-[acron-gist]: TODO
+[acron-gist]: https://gist.github.com/alexpearce/df924109f0630e3ad19e3fd703b0b37c
