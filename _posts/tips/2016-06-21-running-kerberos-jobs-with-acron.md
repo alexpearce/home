@@ -87,12 +87,13 @@ You can define jobs to run periodically on machines in the CERN network with
 acron, and those jobs will have Kerberos tokens automatically.
 You can manipulate the acron table with the `acrontab` command
 
-In a later post, we'll go over how to set up your own [virtual machine in the 
-CERN network][openstack] that is able to run acron jobs, so that you can 
-install your own software for your jobs to use.
+In [the next post][acron-vm], we'll go over how to set up your own [virtual 
+machine in the CERN network][openstack] that is able to run acron jobs, so that 
+you can install your own software for your jobs to use.
 
 [cern]: https://home.cern/
 [kerberos]: https://en.wikipedia.org/wiki/Kerberos_(protocol)
 [acron]: http://acron.web.cern.ch/
 [lxplus]: https://information-technology.web.cern.ch/services/lxplus-service
 [openstack]: http://clouddocs.web.cern.ch/clouddocs/
+[acron-vm]: {% post_url 2016-06-22-creating-a-vm-for-acron-jobs %}
