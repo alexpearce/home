@@ -7,9 +7,9 @@ permalink: /
 I am physicist and a coder. I spend a lot of time writing computer programs 
 that try to answer questions about data.
 
-I work as a PhD student in experimental particle physics at the [University of 
-Manchester](https://www.manchester.ac.uk), making measurements using data 
-produced at the Large Hadron Collider at [CERN](https://home.cern/).
+I work as a research fellow on the [LHCb experiment](https://lhcb.cern.ch) at 
+[CERN](https://home.cern), making measurements using data produced at the Large 
+Hadron Collider.
 
 When I make something useful, which is less often than I'd like, I put it on 
 [GitHub](https://github.com/alexpearce), and when I solve a problem that others 
