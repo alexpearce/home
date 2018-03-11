@@ -92,6 +92,11 @@ main {
   }
 }
 
+.footnotes {
+  border-top: 1px dashed #eee;
+  font-size: 0.8em;
+}
+
 footer {
   display: flex;
   // Display the elements in reverse order to their DOM order
