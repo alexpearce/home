@@ -17,6 +17,8 @@ sass:
 
 # These files aren't part of the build
 exclude: [Gemfile, Gemfile.lock, README.md, config, vendor]
+# Needed for Netlify redirects
+include: [_redirects]
 
 paginate: 8
 paginate_path: "/blog/page:num/"
