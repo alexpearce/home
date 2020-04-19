@@ -7,7 +7,7 @@ description: How to configure iTerm2, tmux, and vim to enable italic fonts.
 ---
 
 <div class="alert">
-  <a href="{% post_url 2014-05-06-italics-in-iterm2-vim-tmux %}#tmux-21-and-above">
+  <a href="{% post_url /tips/2014-05-06-italics-in-iterm2-vim-tmux %}#tmux-21-and-above">
     Using tmux version 2.1 or above? Check out the update.
   </a>
 </div>
@@ -169,7 +169,7 @@ We can extract the terminfo from our local database, and then upload it to the r
 $ infocmp xterm-256color-italic > xterm-256color-italic.terminfo
 $ scp xterm-256color-italic.terminfo user@remote:
 $ ssh user@remote
-# On the remote machine
+# On the remote machine
 $ tic xterm-256-italic.terminfo
 {% endhighlight %}
 

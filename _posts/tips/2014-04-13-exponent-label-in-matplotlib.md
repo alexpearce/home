@@ -58,7 +58,7 @@ To access the [`Text` object](http://matplotlib.org/api/artist_api.html#matplotl
 
 {% highlight python %}
 ax.get_xaxis().get_offset_text()
-# Or equivalently
+# Or equivalently
 # ax.xaxis.offsetText
 {% endhighlight %}
 
@@ -83,7 +83,7 @@ So, let’s shift the *axis label* slightly to the left, and keep the exponentia
 
 {% highlight python %}
 ax.set_xlabel('Vertex position [mm]', x=0.9, ha='right')
-# This line's not necessary as x=1 is the default
+# This line's not necessary as x=1 is the default
 ax.get_xaxis().get_offset_text().set_x(1)
 {% endhighlight %}
 

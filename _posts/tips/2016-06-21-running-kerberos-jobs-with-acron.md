@@ -96,4 +96,4 @@ you can install your own software for your jobs to use.
 [acron]: http://acron.web.cern.ch/
 [lxplus]: https://information-technology.web.cern.ch/services/lxplus-service
 [openstack]: http://clouddocs.web.cern.ch/clouddocs/
-[acron-vm]: {% post_url 2016-06-22-creating-a-vm-for-acron-jobs %}
+[acron-vm]: {% post_url /tutorials/2016-06-22-creating-a-vm-for-acron-jobs %}

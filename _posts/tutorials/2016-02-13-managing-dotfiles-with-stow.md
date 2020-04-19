@@ -24,7 +24,7 @@ organise your dotfiles in the same way.
 [1]: https://github.com/
 [2]: https://dotfiles.github.com/
 
-## The dotfiles repository
+## The dotfiles repository
 
 Let's say you have a machine that you spend most of your time on, but 
 occasionally you login in to some server somewhere.
@@ -133,7 +133,7 @@ Stow has created the symlink for us! Magic. So what's actually going on?
 
 [5]: https://www.gnu.org/software/stow/
 [6]: http://mama.indstate.edu/users/ice/tree/
-[7]: {% post_url 2016-02-02-root-on-os-x-el-capitan %}
+[7]: {% post_url /tips/2016-02-02-root-on-os-x-el-capitan %}
 [8]: https://www.gnu.org/software/bash/
 [9]: http://www.vim.org
 

@@ -12,7 +12,7 @@ I recently rewrote large parts of my blog when upgrading to [Jekyll 3][2], and
 implemented a lazier, hackier, but simpler way of achieving the same effect. 
 This post guides you through how it's done.
 
-[1]: {% post_url 2012-04-22-simple-jekyll-searching %}
+[1]: {% post_url /tips/2012-04-22-simple-jekyll-searching %}
 [2]: https://jekyllrb.com/news/2015/10/26/jekyll-3-0-released/
 
 ## What we want

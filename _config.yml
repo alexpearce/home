@@ -23,4 +23,4 @@ include: [_redirects]
 paginate: 8
 paginate_path: "/blog/page:num/"
 
-gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
