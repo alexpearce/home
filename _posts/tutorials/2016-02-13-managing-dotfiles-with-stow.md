@@ -24,7 +24,7 @@ organise your dotfiles in the same way.
 [1]: https://github.com/
 [2]: https://dotfiles.github.com/
 
-## The dotfiles repository
+## The dotfiles repository
 
 Let's say you have a machine that you spend most of your time on, but 
 occasionally you login in to some server somewhere.

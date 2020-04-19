@@ -169,7 +169,7 @@ We can extract the terminfo from our local database, and then upload it to the r
 $ infocmp xterm-256color-italic > xterm-256color-italic.terminfo
 $ scp xterm-256color-italic.terminfo user@remote:
 $ ssh user@remote
-# On the remote machine
+# On the remote machine
 $ tic xterm-256-italic.terminfo
 {% endhighlight %}
 

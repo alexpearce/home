@@ -361,7 +361,7 @@ Edit the SELinux configuration from `enforcing` to `permissive`, as [instructed 
 As root:
 
 {% highlight bash %}
-$ vi /etc/sysconfig/selinux # Change 'enforcing' to 'permissive'
+$ vi /etc/sysconfig/selinux # Change 'enforcing' to 'permissive'
 $ setenforce Permissive
 {% endhighlight %}
 
@@ -472,7 +472,7 @@ It uses the [Flask-SSO](http://flask-sso.readthedocs.org/en/latest/) Flask exten
 Let's install the Flask-SSO module, and overwrite the old application with our updated version.
 
 {% highlight bash %}
-# Stop the uWSGI server if you have it running,
+# Stop the uWSGI server if you have it running,
 # and reactivate the ssotutorial virtualenv before running pip
 $ pip install flask-sso
 $ curl -O https://gist.githubusercontent.com/alexpearce/4ef660422085838ff2d2/raw/951685c44142b84bd2f59b25bcb1e33f827be9e8/__init__.py
