@@ -133,7 +133,7 @@ Stow has created the symlink for us! Magic. So what's actually going on?
 
 [5]: https://www.gnu.org/software/stow/
 [6]: http://mama.indstate.edu/users/ice/tree/
-[7]: {% post_url 2016-02-02-root-on-os-x-el-capitan %}
+[7]: {% post_url /tips/2016-02-02-root-on-os-x-el-capitan %}
 [8]: https://www.gnu.org/software/bash/
 [9]: http://www.vim.org
 

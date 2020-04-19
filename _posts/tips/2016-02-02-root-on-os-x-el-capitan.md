@@ -14,8 +14,8 @@ requiring several dependencies that are occasionally non-obvious. These days,
 though, things are extremely simple.
 
 [1]: https://root.cern.ch
-[2]: {% post_url 2012-08-03-installing-root-on-mountain-lion %}
-[3]: {% post_url 2013-12-11-root-on-os-x-mavericks %}
+[2]: {% post_url /tutorials/2012-08-03-installing-root-on-mountain-lion %}
+[3]: {% post_url /tutorials/2013-12-11-root-on-os-x-mavericks %}
 [4]: https://root.cern.ch/building-root
 
 ## Homebrew

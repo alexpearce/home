@@ -227,7 +227,7 @@ Once the VM has booted and you've run the script, you should be able to begin
 running acron jobs on it right away.
 
 [acron]: http://acron.web.cern.ch/
-[acron-tut]: {% post_url 2016-06-21-running-kerberos-jobs-with-acron %}
+[acron-tut]: {% post_url /tips/2016-06-21-running-kerberos-jobs-with-acron %}
 [vm]: https://en.wikipedia.org/wiki/Virtual_machine
 [lxplus]: https://information-technology.web.cern.ch/services/lxplus-service
 [openstack]: http://clouddocs.web.cern.ch/clouddocs/

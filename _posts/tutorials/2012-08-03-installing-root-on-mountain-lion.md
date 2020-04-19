@@ -7,7 +7,7 @@ description: A step-by-step guide to install to high energy physics framework RO
 ---
 
 <div class="alert">
-  <a href="{% post_url 2013-12-11-root-on-os-x-mavericks %}">
+  <a href="{% post_url /tutorials/2013-12-11-root-on-os-x-mavericks %}">
     Running OS X 10.9 Mavericks? Check out the latest tutorial.
   </a>
 </div>
