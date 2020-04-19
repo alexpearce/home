@@ -154,8 +154,8 @@ $ mkdir /usr/local/stow
 $ cd /usr/local/stow
 $ mkdir -p foo1.3/bin
 $ mkdir -p foo2.0/bin
-$ mv /usr/local/bin/foo1.3 foo1.3/bin
-$ mv /usr/local/bin/foo2.0 foo2.0/bin
+$ mv /usr/local/bin/foo1.3 foo1.3/bin/foo
+$ mv /usr/local/bin/foo2.0 foo2.0/bin/foo
 {% endhighlight %}
 
 Now when you want to start using `foo1.3`, you just use stow to set up some 
@@ -165,7 +165,7 @@ symbolic links.
 $ cd /usr/local/stow
 $ stow foo1.3
 $ ls -la /usr/local/bin | grep foo
-lrwxr-xr-x    1 apearce  staff      20  7 Jan 12:35 foo -> ../stow/foo1.3/bin/foo1.3
+lrwxr-xr-x    1 apearce  staff      20  7 Jan 12:35 foo -> ../stow/foo1.3/bin/foo
 {% endhighlight %}
 
 Notice that we have a directory structure inside the `foo1.3` folder, and stow 
