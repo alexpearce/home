@@ -1,18 +1,16 @@
 ---
-layout: post
 title: Simple Jekyll searching
-category: Tips
-tags: [Jekyll, JavaScript]
+tags: [Tips, Jekyll, JavaScript]
 description: How to add simple JSON-based searching to Jekyll site.
 ---
 
 <div class="alert">
-  <a href="{% post_url /tips/2016-02-03-simpler-jekyll-searching %}">
+  <a href="{% post_url collections.posts, 'simpler-jekyll-searching' %}">
     Want a simpler solution? Check out the latest post.
   </a>
 </div>
 
-I [recently made]({% post_url /general/2012-04-21-hello %}) this blog with [Jekyll](https://github.com/mojombo/jekyll). It’s a nice little program once you get used to it’s methodology. Jekyll’s daughter, [Octopress](http://octopress.org/), touts itself as being “for hackers” and Jekyll itself isn’t much different in this respect.
+I [recently made]({% post_url collections.posts, 'hello' %}) this blog with [Jekyll](https://github.com/mojombo/jekyll). It’s a nice little program once you get used to it’s methodology. Jekyll’s daughter, [Octopress](http://octopress.org/), touts itself as being “for hackers” and Jekyll itself isn’t much different in this respect.
 
 The [docs](https://github.com/mojombo/jekyll/wiki) are lacking examples and this did throw me initially, even leading me to put off making the site for a month or so. Eventually I got round to building the site and found Jekyll to be almost pleasurable to work with.
 
@@ -35,7 +33,7 @@ While I wasn’t look for auto-completion, the idea of creating a JSON index of 
 
 I created `search.json` (using a blank [YAML front matter](https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter) to tell Jekyll to parse the file with [Liquid](http://liquidmarkup.org/)):
 
-{% highlight text %}
+```text
 ---
 ---
 [
@@ -44,11 +42,11 @@ I created `search.json` (using a blank [YAML front matter](https://github.com/mo
   <% endfor %>
   null
 ]
-{% endhighlight %}
+```
 
 with the `post.json` partial in `_includes`.
 
-{% highlight text %}
+```text
 {
   "title"    : "<%= post.title %>",
   "category" : "<%= post.category %>",
@@ -60,7 +58,7 @@ with the `post.json` partial in `_includes`.
     "year"  : "<%= post.date | date: "%Y" %>"
   }
 }
-{% endhighlight %}
+```
 
 `search.json` now generates an array containing all of the sites posts.
 
@@ -69,7 +67,7 @@ Implementation
 
 First was `search.html`.
 
-{% highlight html %}
+```html
 <div id="results">
   <h1><!-- `key` listing for `value` --></h1>
 
@@ -77,13 +75,13 @@ First was `search.html`.
     <!-- results lists -->
   </ul>
 </div>
-{% endhighlight %}
+```
 
 This is a blank `div` which will hold the search results. I wanted to have tag and category pages, so in my post templates I linked categories with `/search.html?category=<%= page.category | downcase %>` and similarly for tags. The JavaScript then needs to grab the GET parameter value, then search the JSON for it.
 
 The main script is pretty simple.
 
-{% highlight js %}
+```js
 var map = {
   'category' : getParam('category'),
   'tags'     : getParam('tags')
@@ -102,7 +100,7 @@ $.each(map, function(type, value) {
     });
   }
 });
-{% endhighlight %}
+```
 
 We have a map of objects we’d like to search (categories and tags), where `getParam(key)` retrieves the value of the GET parameter with key `key`. For the link `/search.html?category=testing`, `getParam('category')` returns `testing`.
 
@@ -121,6 +119,4 @@ Caveats
 Source
 ------
 
-You can view the [final JavaScript on Github](https://github.com/alexpearce/alexpearce.github.com/blob/master/assets/js/alexpearce.js) (or in this site’s [source](/assets/js/alexpearce.js)). I’ve tried to concisely document any thing particularly funky.
-
-You can try out the script by clicking any tag or category on this site or [this example](/search/?category=Tips).
+You can view the [final JavaScript on Github](https://github.com/alexpearce/alexpearce.github.com/blob/ab1690f74c1fdb0592e2a15668e5d90f61f08c13/assets/js/alexpearce.js). I’ve tried to concisely document any thing particularly funky.

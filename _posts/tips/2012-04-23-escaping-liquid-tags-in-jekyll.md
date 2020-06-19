@@ -1,11 +1,9 @@
 ---
-layout: post
 title: Escaping liquid tags in Jekyll
-category: Tips
-tags: [Jekyll, JavaScript]
+tags: [Tips, Jekyll, JavaScript]
 description: How to include Liquid tags in Jekyll posts.
 ---
-Writing [the previous post]({% post_url /tips/2012-04-22-simple-jekyll-searching %}) brought about a problem: How can I write posts about [Liquid tags](http://liquidmarkup.org/)?
+Writing [the previous post]({% post_url collections.posts, 'simple-jekyll-searching' %}) brought about a problem: How can I write posts about [Liquid tags](http://liquidmarkup.org/)?
 
 By default, any Jekyll file containing [YAML front matter](https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter) will be churned through the Liquid processor. This means that any blog posts, which require YAML front matter, that contain Liquid tags will have them processed producing unwanted results.
 
@@ -13,21 +11,21 @@ The few solutions to this problem I’ve seen monkey-patch Jekyll. This works bu
 
 Instead of writing my posts with Liquid tags , I simply substitute in ERB-style brackets.
 
-{% highlight erb %}
+```erb
 <% for post in site.posts %>
   <%= post.title %>
   <% include post.json %>
 <% endfor %>
-{% endhighlight %}
+```
 
 The above will be transformed in to
 
-{% highlight text %}
+```text
 <% for post in site.posts %>
   <%= post.title %>
   <% include post.json %>
 <% endfor %>
-{% endhighlight %}
+```
 
 The replacement is done with JavaScript via `replaceERBTags($el)`, where `$el` is a jQuery object of the element containing the tags to be replaced. The function itself is nothing complex, in fact it’s so simple I can’t show it because it can’t escape itself! So you’ll have to be content with viewing it [on GitHub](https://github.com/alexpearce/alexpearce.github.com/blob/37f92f56e4cf85f96361f52baa523ab1dd900398/assets/js/alexpearce.js#L113).
 

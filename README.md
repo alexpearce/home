@@ -1,3 +1,20 @@
-This is the source for my blog. Check out the [first commit](https://github.com/alexpearce/alexpearce.github.com/commit/683a752638c7971729358d85538236d41e817a1f) for a reasonably sane Jekyll template.
+# Blog
 
-You can read about how I [escape Liquid tags in Jekyll](http://alexpearce.me/2012/04/escaping-liquid-tags-in-jekyll/), and how I chose to implement [category and tags index pages](http://alexpearce.me/2012/04/simple-jekyll-searching/).
+This is the source for [my blog][blog].
+
+## Building
+
+This site is built with [Eleventy](https://www.11ty.dev/), a JavaScript-based static site generator.
+
+Before building, install npm and then install the dependencies with `npm install`.
+
+Generate the site with:
+
+```
+npm run-script build
+```
+
+The `serve` command can be used instead of `build` to start a auto-reloading
+web server.
+
+[blog]: https://alexpearce.me

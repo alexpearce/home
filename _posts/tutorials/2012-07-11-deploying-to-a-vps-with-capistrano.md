@@ -1,16 +1,14 @@
 ---
-layout: post
 title: Deploying with Capistrano
-category: Tutorials
-tags: [Capistrano, Ruby, nginx]
+tags: [Tutorials, Capistrano, Ruby, nginx]
 description: A step-by-step tutorial on deploying Ruby and static apps to a VPS with Capistrano.
 ---
 
-Following on from the previous tutorial on [how to set up a Linux VPS for Ruby apps]({% post_url /tutorials/2012-06-19-setting-up-a-vps %}), we’ll get a simple Ruby site up-and-running by deploying it to our server with [Capistrano](https://github.com/capistrano/capistrano).
+Following on from the previous tutorial on [how to set up a Linux VPS for Ruby apps]({% post_url collections.posts, 'setting-up-a-vps' %}), we’ll get a simple Ruby site up-and-running by deploying it to our server with [Capistrano](https://github.com/capistrano/capistrano).
 
 Capistrano simplifies many of the common tasks encountered when to deploying an app to one or more servers, allowing a push with a simple `cap deploy`. Along with Ruby apps, it can be used to deploy static (HTML) pages. The nice thing about using Capistrano rather than something such as [`rsync`](http://www.samba.org/ftp/rsync/rsync.html) is that we can easily pull the latest version from a git repository, as well as rollback to a previous version.
 
-I will assume that our VPS has been set up as in my [VPS setup]({% post_url /tutorials/2012-06-19-setting-up-a-vps %}) post, but the essentials are:
+I will assume that our VPS has been set up as in my [VPS setup]({% post_url collections.posts, 'setting-up-a-vps' %}) post, but the essentials are:
 
 * SSH access
 * Ruby
@@ -26,32 +24,32 @@ Local Setup
 
 Let’s create a directory to hold our app, create the Gemfile and install the required gems.
 
-{% highlight bash %}
+```bash
 $ mkdir testing
 $ cd testing
 $ echo -e "source :rubygems\n\ngem 'sinatra'" >> Gemfile
 $ bundle install --path vendor/bundle
-{% endhighlight %}
+```
 
 Passing the `--path` argument to the `bundle` command allows us to locally install gems without messing with systems gems (it allows us to avoid things like RVM gemsets).
 
 Now the Sinatra gem is installed, we’ll initialise a [git](http://git-scm.com/) repository.
 
-{% highlight bash %}
+```bash
 $ git init .
 $ echo -e ".bundle/\nvendor/bundle" >> .gitignore
 $ git add .
 $ git commit -m "Initial commit."
-{% endhighlight %}
+```
 
 The `echo` is creating a `.gitignore` file which tells git which files and folders to ignore; we don’t need to track the `.bundle` directory. We `git add` all the files to the staging area and then commit them with a message.
 
 In order for Capistrano to deploy our app, we’ll tell it to use git. This means setting up a remote repository, which [GitHub](http://github.com) provides for free. Create a [new repository on GitHub](https://github.com/new) and add the remote repo to our local one, then push to it.
 
-{% highlight bash %}
+```bash
 $ git remote add origin https://github.com/USERNAME/REPONAME.git
 $ git push -u origin master
-{% endhighlight %}
+```
 
 Our ‘app’ now exists locally and remotely. When we makes changes locally, we `git commit` the changes and the `git push` them to GitHub. Each commit effectively acts as a separate release which Capistrano can deploy.
 
@@ -59,13 +57,13 @@ Our ‘app’ now exists locally and remotely. When we makes changes locally, we
 
 We’ll create a very simple “Hello World!” Sinatra app to test everything works. Firstly, create the application files.
 
-{% highlight bash %}
+```bash
 $ touch app.rb config.ru
-{% endhighlight %}
+```
 
 Then fill `app.rb`, using your favourite editor, with the following.
 
-{% highlight ruby %}
+```ruby
 # Bundler
 require "rubygems"
 require "bundler/setup"
@@ -79,24 +77,24 @@ class Testing < Sinatra::Base
     "Hello, World!"
   end
 end
-{% endhighlight %}
+```
 
 And fill `config.ru` with the following.
 
-{% highlight bash %}
+```bash
 require "./app"
 
 run Testing
-{% endhighlight %}
+```
 
 The [docs](http://www.sinatrarb.com/documentation) give a comprehensive overview of how to use Sinatra. We can test the app locally to make sure every thing’s OK.
 
-{% highlight bash %}
+```bash
 $ bundle exec rackup config.ru
 ...
 INFO  WEBrick::HTTPServer#start: pid=4885 port=9292
 ...
-{% endhighlight %}
+```
 
 Launch [`localhost:9292`](http://localhost:9292) to view the site.
 
@@ -104,28 +102,28 @@ Launch [`localhost:9292`](http://localhost:9292) to view the site.
 
 Hurrah! Let’s configure the app for deployment. Add `gem 'capistrano'` to your Gemfile, which should now look like this:
 
-{% highlight ruby %}
+```ruby
 source :rubygems
 
 gem 'sinatra'
 
 gem 'capistrano'
-{% endhighlight %}
+```
 
 and then install the gem. No need to worry about adding the `--path` argument; Bundler remembers the preference in `.bundle/config`.
 
-{% highlight bash %}
+```bash
 $ bundle install
-{% endhighlight %}
+```
 
 Add the app file to git repository, commit, then add the changes to the Gemfile, then finally commit again.
 
-{% highlight bash %}
+```bash
 $ git add app.rb config.ru
 $ git commit -m "Add the Sinatra app."
 $ git commit -a -m "Add Capistrano."
 $ git push
-{% endhighlight %}
+```
 
 The `-a` flag adds all modified files, which in this case is the `Gemfile` and the [lock file](http://stackoverflow.com/questions/4151495/should-gemfile-lock-be-included-in-gitignore) `Gemfile.lock`.
 
@@ -139,7 +137,7 @@ The `deploy.rb` file is where almost all of the configuration is done. Rather th
 * `:repository`: Your GitHub repository, or where ever you’re hosting the repo remotely.
 * The `:app`, `:web` and `:db` roles: The IP address or FQDN of the VPS to deploy to.
 
-If you didn’t set up your VPS using the [previous tutorial]({% post_url /tutorials/2012-06-19-setting-up-a-vps %}), there may be a few other things you need to change.
+If you didn’t set up your VPS using the [previous tutorial]({% post_url collections.posts, 'setting-up-a-vps' %}), there may be a few other things you need to change.
 
 * `:user`: If you’re not using a deploy user.
 * If you’re not using [Passenger](http://www.modrails.com/), the `start`, `stop`, and `restart` tasks will need adjusting.
@@ -147,14 +145,14 @@ If you didn’t set up your VPS using the [previous tutorial]({% post_url /tutor
 
 Finally, we’ll require an nginx ‘hosts’ file specific to our app. Again, we’ll use a [template nginx hosts file](https://github.com/alexpearce/templates/blob/master/nginx.app.conf) I’ve created. Let’s retrieve both of the files.
 
-{% highlight bash %}
+```bash
 $ capify .
 ...
 
 $ cd config
 $ curl https://raw.github.com/alexpearce/templates/master/nginx.app.conf -o nginx.server
 $ curl https://raw.github.com/alexpearce/templates/master/deploy.rb -o deploy.rb
-{% endhighlight %}
+```
 
 Now **edit them accordingly**. The nginx file requires a few changes.
 
@@ -173,11 +171,11 @@ All commands below are to be run *on the remote VPS*, so log in to the VPS via S
 
 In order to allow automated pulling from GitHub, we’ll touch GitHub over SSH so our server knows the certficate. As it’s the `deploy` user who deploys app, we’ll assume the identity of `deploy`.
 
-{% highlight bash %}
+```bash
 $ su - deploy
 $ ssh github.com
 y
-{% endhighlight %}
+```
 
 And that’s it! Nice and simple.
 
@@ -188,10 +186,10 @@ We’re back *working locally* now.
 
 Inside the app directory, we just need to run a few commands.
 
-{% highlight bash %}
+```bash
 $ cap deploy:setup
 $ cap deploy:cold
-{% endhighlight %}
+```
 
 Done! Visit the site using the IP address or FQDN specified in the `nginx.server` file.
 
@@ -199,13 +197,13 @@ Done! Visit the site using the IP address or FQDN specified in the `nginx.server
 
 To fully test our deployment we’ll change the “Hello World” text to something different, commit and push the changes then deploy.
 
-{% highlight bash %}
+```bash
 $ nano app.rb
 ...
 $ git commit -a -m "Updated app."
 $ git push
 $ cap deploy
-{% endhighlight %}
+```
 
 Now refresh the live app.
 

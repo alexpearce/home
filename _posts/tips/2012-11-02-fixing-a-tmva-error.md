@@ -1,16 +1,14 @@
 ---
-layout: post
 title: Fixing a TMVA error
-category: Tips
-tags: [ROOT, TMVA, Physics]
+tags: [Tips, ROOT, TMVA, Physics]
 description: One solution for the TMVA error “signal and background histograms have different or invalid dimensions”.
 ---
 
 If you’re using the multivariate analysis package [TMVA](http://tmva.sourceforge.net) and are running in to the following error on training or testing:
 
-{% highlight text %}
+```text
 --- <FATAL> Tools: <GetSeparation> signal and background histograms have different or invalid dimensions
-{% endhighlight %}
+```
 
 It might be failing because you’re giving it one or more [`NaN` values](http://en.wikipedia.org/wiki/Not_a_Number).
 
@@ -20,9 +18,9 @@ After a couple weeks of working around the issue, I discovered that I had a sing
 
 You can either apply a cut to the input data:
 
-{% highlight text %}
+```text
 factory->PrepareTrainingAndTestTree("troublesome_var > 0", "troublesome_var > 0", splitOptions);
-{% endhighlight %}
+```
 
 or make sure that the events with bad values aren’t present in your input data.
 

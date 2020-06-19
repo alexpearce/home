@@ -1,8 +1,6 @@
 ---
-layout: post
 title: Moving static sites from a VPS to Netlify
-category: Tips
-tags: [VPS, Hosting, sysadmin, Jekyll]
+tags: [Tips, VPS, Hosting, sysadmin, Jekyll]
 description: A short guide on how to run periodic jobs with a Kerberos token on CERN's computing resources
 ---
 
@@ -77,18 +75,18 @@ changing any settings.
 
 Then, whilst trying to add this `ALIAS`/`ANAME` record in Gandi:
 
-{% highlight text %}
+```text
 alexpearce.me ALIAS random-subdomain-label.netlify.com.
-{% endhighlight %}
+```
 
 I found out that [Gandi doesn’t support `CNAME` records on the root 
 domain][gandiwishlist], which is what I want (to point `alexpearce.me`, with no 
 subdomain, to the Netlify address). So instead I have to create an `A` record, 
 as suggested by Netlify, and deleted the `A` record that pointed to the VPS:
 
-{% highlight text %}
+```text
 @ A 104.198.XXX.XXX
-{% endhighlight %}
+```
 
 No big deal, but this does mean I don’t benefit from Netlify’s CDN. Moving to 
 another DNS provider, one that doesn’t support `ALIAS`/`ANAME`/`CNAME` records 
@@ -96,9 +94,9 @@ on the root domain, would solve this.[^1]
 
 I also set up a record for the `www` subdomain.
 
-{% highlight text %}
+```text
 www A 104.198.XXX.XXX
-{% endhighlight %}
+```
 
 Pointing `www` to Netlify is required for enabling HTTPS.[^2]
 

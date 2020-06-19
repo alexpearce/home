@@ -1,15 +1,13 @@
 ---
-layout: post
 title: Exponent labels in matplotlib
-category: Tips
-tags: [Python, matplotlib]
+tags: [Tips, Python, matplotlib]
 description: How to move and configure the exponent/offset label in matplotlib.
 ---
 
 Creating nice-looking plots in Python is easy with [matplotlib](http://matplotlib.org/).
 Here’s an example of plotting some data as a histogram.
 
-{% highlight python %}
+```python
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -26,7 +24,7 @@ ax.set_xlabel('Vertex position [mm]', x=1, ha='right')
 ax.set_ylabel('Candidates', y=1, ha='right')
 fig.set_tight_layout(True)
 fig.savefig('vertex-position.svg')
-{% endhighlight %}
+```
 
 I like that looking at a matplotlib script is reasonably self-explanatory.
 Most of the default values are sensible, so it doesn’t take much to create something that looks alright.
@@ -40,9 +38,9 @@ All of these are just cosmetic changes to bring the look inline with what I’m 
 The problem comes when the axis tick values are large enough to warrant an exponent or offset.
 If we change `mu` and `sigma` to some large values, we can see the problem.
 
-{% highlight python %}
+```python
 mu, sigma = 1e7, 1e6
-{% endhighlight %}
+```
 
 This shifts the mean of the distribution to ten million, and changes to width to one million.
 Running the code above with this change, we get the following.
@@ -56,19 +54,19 @@ I came across this while creating a scipt to convert [ROOT](http://root.cern.ch/
 Googling didn’t help, so I ended up looking throught the [matplotlib source code](https://github.com/matplotlib/matplotlib).
 To access the [`Text` object](http://matplotlib.org/api/artist_api.html#matplotlib.text.Text) that holds the exponential label, one uses
 
-{% highlight python %}
+```python
 ax.get_xaxis().get_offset_text()
 # Or equivalently
 # ax.xaxis.offsetText
-{% endhighlight %}
+```
 
 where `ax` is the [Axes](http://matplotlib.org/api/axes_api.html) instance.
 Once you have this, you can manipulate the object’s size, position, colour, and a bunch of other properties.
 To shift the exponential label (called ‘offset text’ in matplotlib jargon, as it can also hold an offset value), you can do
 
-{% highlight python %}
+```python
 ax.get_xaxis().get_offset_text().set_x(0)
-{% endhighlight %}
+```
 
 (The `x` property is the x-position of the `Text` object, from 0 to 1 left-to-right.)
 
@@ -81,11 +79,11 @@ But it stills look odd.
 It’s more conventional to have the exponential label on the right.
 So, let’s shift the *axis label* slightly to the left, and keep the exponential fully to the right.
 
-{% highlight python %}
+```python
 ax.set_xlabel('Vertex position [mm]', x=0.9, ha='right')
 # This line's not necessary as x=1 is the default
 ax.get_xaxis().get_offset_text().set_x(1)
-{% endhighlight %}
+```
 
 Now we’re pretty much there.
 
@@ -99,14 +97,14 @@ This also means its y-position can’t be modified.
 If this really bugs you, you can append the offset text to the axis label and hide the offset text itself.
 You need to draw the figure first in order for the text to be created.
 
-{% highlight python %}
+```python
 ax.set_xlabel('Vertex position [mm]', x=1, ha='right')
 fig.savefig('vertex-position.svg')
 offset = ax.get_xaxis().get_offset_text()
 ax.set_xlabel('{0} {1}'.format(ax.get_xlabel(), offset.get_text()))
 offset.set_visible(False)
 fig.savefig('vertex-position.svg')
-{% endhighlight %}
+```
 
 All these changes gives the following.
 

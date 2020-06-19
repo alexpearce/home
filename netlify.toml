@@ -6,4 +6,14 @@ package = "netlify-plugin-no-more-404"
 
   [plugins.inputs]
   # change this key to a new one any time you need to restart from scratch
-  cacheKey = "2020-06-19"
+  cacheKey = "2020-06-19v2"
+
+[[redirects]]
+from = "/search/"
+to = "/blog/tags/:tag/"
+query = {tag = ":tag"}
+
+[[redirects]]
+from = "/search/"
+to = "/blog/tags/:tag/"
+query = {category = ":tag"}

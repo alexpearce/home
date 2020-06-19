@@ -1,8 +1,6 @@
 ---
-layout: post
 title: Managing dotfiles with GNU stow
-category: Tutorials
-tags: [Terminal, sysadmin]
+tags: [Tutorials, Terminal, sysadmin]
 description: How to organise and deploy dotfiles using GNU stow.
 ---
 
@@ -39,24 +37,24 @@ files between machines.
 
 Let's create the git repository and add a dummy dotfile.
 
-{% highlight shell %}
+```shell
 $ mkdir ~/.dotfiles
 $ cd ~/.dotfiles
 $ git init .
 $ echo "This is a dotfile." > mydotfile
 $ git add mydotfile
 $ git commit -m "Create dotfiles repository"
-{% endhighlight %}
+```
 
 Now we have a repository and a dotfile within it, we just need to create the 
 symbolic link.
 
-{% highlight shell %}
+```shell
 $ cd ~
 $ ln -s .dotfiles/mydotfile .mydotfile
 $ ls -la | grep mydotfile
 lrwxr-xr-x    1 apearce  staff      19 12 Feb 17:05 .mydotfile -> .dotfiles/mydotfile
-{% endhighlight %}
+```
 
 The last command shows that we have a symbolic link called `.mydotfile` 
 pointing to the file in the dotfiles repository. We can inspect and edit the 
@@ -89,7 +87,7 @@ directory as tree-like structure in plain text. (It's not installed on OS X by
 default, but you easily [install it with Homebrew][7] with `brew install 
 tree`.) The `-a` flag tells `tree` to show hidden files.
 
-{% highlight shell %}
+```shell
 $ tree -a ~/.dotfiles
 .
 ├── bash
@@ -97,7 +95,7 @@ $ tree -a ~/.dotfiles
 │   └── .profile
 └── vim
     └── .vimrc
-{% endhighlight %}
+```
 
 Now we've got some real dotfiles: a couple for the [Bash shell][8], and one for 
 [vim][9], the editor.
@@ -105,17 +103,17 @@ Now we've got some real dotfiles: a couple for the [Bash shell][8], and one for
 We could symlink these to our home directory in the same way as before, or we 
 could let stow do it for us!
 
-{% highlight shell %}
+```shell
 $ cd ~/.dotfiles
 $ stow vim
-{% endhighlight %}
+```
 
 Now let's take a look at what's in our home directory.
 
-{% highlight shell %}
+```shell
 $ ls -la ~ | grep vimrc
 lrwxr-xr-x    1 apearce  staff      20  7 Jan 12:35 .vimrc -> .dotfiles/vim/.vimrc
-{% endhighlight %}
+```
 
 Stow has created the symlink for us! Magic. So what's actually going on?
 
@@ -133,7 +131,7 @@ Stow has created the symlink for us! Magic. So what's actually going on?
 
 [5]: https://www.gnu.org/software/stow/
 [6]: http://mama.indstate.edu/users/ice/tree/
-[7]: {% post_url /tips/2016-02-02-root-on-os-x-el-capitan %}
+[7]: {% post_url collections.posts, 'root-on-os-x-el-capitan' %}
 [8]: https://www.gnu.org/software/bash/
 [9]: http://www.vim.org
 
@@ -149,24 +147,24 @@ tells the shell where to look for programs. You could just put two programs,
 run `foo1.3` or `foo2.0`. You just want to run `foo`, and you don't want to 
 have to modify scripts that use `foo`, so you do something cool.
 
-{% highlight shell %}
+```shell
 $ mkdir /usr/local/stow
 $ cd /usr/local/stow
 $ mkdir -p foo1.3/bin
 $ mkdir -p foo2.0/bin
 $ mv /usr/local/bin/foo1.3 foo1.3/bin/foo
 $ mv /usr/local/bin/foo2.0 foo2.0/bin/foo
-{% endhighlight %}
+```
 
 Now when you want to start using `foo1.3`, you just use stow to set up some 
 symbolic links.
 
-{% highlight shell %}
+```shell
 $ cd /usr/local/stow
 $ stow foo1.3
 $ ls -la /usr/local/bin | grep foo
 lrwxr-xr-x    1 apearce  staff      20  7 Jan 12:35 foo -> ../stow/foo1.3/bin/foo
-{% endhighlight %}
+```
 
 Notice that we have a directory structure inside the `foo1.3` folder, and stow 
 will respect that structure when making the symbolic link.
@@ -176,7 +174,7 @@ files standard][10], where configuration files for `foo` are kept in
 `~/.config/foo/somefile`, because then your dotfiles repository uses the same 
 folder structure as in your home directory.
 
-{% highlight shell %}
+```shell
 $ tree -a ~/.dotfiles
 .
 ├── bash
@@ -188,7 +186,7 @@ $ tree -a ~/.dotfiles
 │           └── somefile
 └── vim
     └── .vimrc
-{% endhighlight %}
+```
 
 Running `stow foo` inside the dotfiles folder will then create a symbolic link 
 at `~/.config/foo/somefile`, creating any intermediate directories that don't 

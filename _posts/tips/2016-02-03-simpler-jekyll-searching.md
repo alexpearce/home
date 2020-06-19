@@ -1,8 +1,6 @@
 ---
-layout: post
 title: Simpler Jekyll searching
-category: Tips
-tags: [Jekyll, JavaScript]
+tags: [Tips, Jekyll, JavaScript]
 description: How to create a searchable post index on a Jekyll site
 ---
 
@@ -12,7 +10,7 @@ I recently rewrote large parts of my blog when upgrading to [Jekyll 3][2], and
 implemented a lazier, hackier, but simpler way of achieving the same effect. 
 This post guides you through how it's done.
 
-[1]: {% post_url /tips/2012-04-22-simple-jekyll-searching %}
+[1]: {% post_url collections.posts, 'simple-jekyll-searching' %}
 [2]: https://jekyllrb.com/news/2015/10/26/jekyll-3-0-released/
 
 ## What we want
@@ -20,7 +18,7 @@ This post guides you through how it's done.
 You can label Jekyll posts with whatever metadata you want using [YAML front 
 matter][3], which looks like this for the post you're looking at: 
 
-{% highlight yaml %}
+```yaml
 ---
 layout: post
 title: Simpler Jekyll searching
@@ -28,7 +26,7 @@ category: Tips
 tags: [Jekyll, JavaScript]
 description: How to create a searchable post index on a Jekyll site
 ---
-{% endhighlight %}
+```
 
 The interesting things here are the `category` value and `tags` list.
 If we're going to label our posts like this, it would be nice to have an index 
@@ -62,7 +60,7 @@ list per category and tag in the `search.html` page directly.
 This means looping over each category, creating a header, and then an unordered 
 list of post titles and links.
 
-{% highlight liquid %}{% raw %}
+```liquid %}{% raw
 <div class="category-index">
   {% for category in site.categories %}
     {% assign nposts = category | last | size %}
@@ -81,7 +79,7 @@ list of post titles and links.
     </div>
   {% endfor %}
 </div>
-{% endraw %}{% endhighlight %}
+{% endraw %}```
 
 This snippet is for the categories.
 The same logic applies to the loop over the tags.

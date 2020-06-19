@@ -1,0 +1,43 @@
+---
+layout: default
+title: Blog
+pagination:
+  data: collections.posts
+  size: 10
+  alias: posts
+  reverse: true
+permalink: "blog/{% if pagination.pageNumber > 0 %}page{{ pagination.pageNumber | plus: 1 }}/{% endif %}"
+---
+{%- for post in posts %}
+  <div class="post-excerpt">
+    <h1><a href="{{ post.url | prepend: site.baseurl }}">{{ post.data.title }}</a></h1>
+    <h2>Published on {{ post.date | date: "%A %d, %B %Y" }}</h2>
+    {% if post.data.comments != false %}
+    <h3 class="comment-count"><a href="{{ post.url}}#disqus_thread" data-disqus-identifier="{{ post.url }}">No comments</a></h3>
+    {% endif %}
+    <ul class="tags">
+      {% for tag in post.data.tags %}
+        <li><a href="/blog/tags/{{ tag | slug }}/">{{ tag }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endfor -%}
+
+<div class="pagination">
+  {% if pagination.href.previous %}
+    <a href="{{ pagination.href.previous }}" class="previous">&lt;</a>
+  {% else %}
+    <span class="previous">&lt;</span>
+  {% endif %}
+  <span class="page_number">page <span class="current">{{ pagination.pageNumber  | plus: 1 }}</span> of {{ pagination.hrefs | size }}</span>
+  {% if pagination.href.next %}
+    <a href="{{ pagination.href.next }}" class="next">&gt;</a>
+  {% else %}
+    <span class="next ">&gt;</span>
+  {% endif %}
+</div>
+
+<footer>
+  <span><a href="{{ "/atom.xml" | prepend: site.baseurl }}">RSS feed</a></span>
+</footer>
+{% include comments.html %}
