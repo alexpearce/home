@@ -62,7 +62,7 @@ with the `post.json` partial in `_includes`.
 }
 {% endhighlight %}
 
-`search.json` now generates an array containing [all of the sites posts](/search.json).
+`search.json` now generates an array containing all of the sites posts.
 
 Implementation
 ------------------
@@ -123,4 +123,4 @@ Source
 
 You can view the [final JavaScript on Github](https://github.com/alexpearce/alexpearce.github.com/blob/master/assets/js/alexpearce.js) (or in this site’s [source](/assets/js/alexpearce.js)). I’ve tried to concisely document any thing particularly funky.
 
-You can try out the script by clicking any tag or category on this site or [this example](/search.html?category=tips).
+You can try out the script by clicking any tag or category on this site or [this example](/search/?category=Tips).

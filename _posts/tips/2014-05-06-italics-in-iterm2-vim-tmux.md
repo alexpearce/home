@@ -206,8 +206,7 @@ set -g default-terminal "tmux"
 You might need to restart your terminal and/or the tmux server for the changes 
 to take effect.
 
-Thanks to Landon Schropp for [pointing this out][tmux21-comment] in the 
-comments.
+Thanks to Landon Schropp for pointing this out in the comments.
 
 [tmux21]: https://github.com/tmux/tmux/releases/tag/2.1
 [tmux21-faq]: https://github.com/tmux/tmux/blob/2.1/FAQ#L355-L383
