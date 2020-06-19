@@ -62,7 +62,7 @@ This will probably ask you for a password, which is your regular CERN password.
 Setting up the VM
 -----------------
 
-From now on, all commands should be run *on the virtual machine*, with the [above caveat](#toc_1) about root privileges.
+From now on, all commands should be run *on the virtual machine*, with the [above caveat](#super-user-requirements) about root privileges.
 
 Update any old packages and reboot the VM, both as root, to ensure any updated kernel becomes the running one.
 
@@ -89,7 +89,7 @@ Unless it is stated to run commands with super user privileges, all the followin
 Apache
 ------
 
-Although I would rather deploy a Flask application with [nginx](http://nginx.org/), as I'm [more familiar](/search.html?tags=nginx) with it and prefer its configuration, [Shibboleth support for nginx](https://wiki.shibboleth.net/confluence/display/SHIB2/Integrating+Nginx+and+a+Shibboleth+SP+with+FastCGI) is not great, and trying it looks like it would be more painful than just going with Apache.
+Although I would rather deploy a Flask application with [nginx](http://nginx.org/), as I'm [more familiar](/search/?tags=nginx) with it and prefer its configuration, [Shibboleth support for nginx](https://wiki.shibboleth.net/confluence/display/SHIB2/Integrating+Nginx+and+a+Shibboleth+SP+with+FastCGI) is not great, and trying it looks like it would be more painful than just going with Apache.
 The CERN documentation on [SSL](https://twiki.cern.ch/twiki/bin/view/LinuxSupport/ConfigureApacheSSLonSLC) and [SSO](http://linux.web.cern.ch/linux/scientific6/docs/shibboleth.shtml) also deals only with Apache.
 
 So, let's install Apache and configure it to start automatically on boot. As root:
@@ -283,7 +283,7 @@ web: uwsgi -s 127.0.0.1:8000 -w ssotutorial:wsgi --buffer-size=32000
 {% endhighlight %}
 
 The `--buffer-size` option sets the uWSGI buffer to 32 kB.
-The default size is quite small, as hinted at in the uWSGI [things to know](http://uwsgi-docs.readthedocs.org/en/latest/ThingsToKnow.html) guide, and gets easily overloaded by the large headers used during the SSO procedure, which is [explained in more detail later](#toc_10).
+The default size is quite small, as hinted at in the uWSGI [things to know](http://uwsgi-docs.readthedocs.org/en/latest/ThingsToKnow.html) guide, and gets easily overloaded by the large headers used during the SSO procedure, which is [explained in more detail later](#authentication-flow).
 
 To run the uWSGI server, inside the `ssotutorial` virtual environment and inside the root `ssotutorial` folder run `honcho start`.
 
