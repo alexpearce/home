@@ -6,7 +6,8 @@ const xmlFiltersPlugin = require("eleventy-xml-plugin");
 
 module.exports = function (eleventyConfig) {
   // Add header anchor and footnotes plugin to Markdown renderer
-  let markdownLib = markdownIt().use(markdownItFootnote).use(markdownItAnchor);
+  const markdownLib = markdownIt({html: true, typographer: true});
+  markdownLib.use(markdownItFootnote).use(markdownItAnchor);
   eleventyConfig.setLibrary("md", markdownLib);
 
   // Enable syntax highlighting
