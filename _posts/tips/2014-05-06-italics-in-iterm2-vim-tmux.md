@@ -5,7 +5,7 @@ description: How to configure iTerm2, tmux, and vim to enable italic fonts.
 ---
 
 <div class="alert">
-  <a href="{% post_url collections.posts, 'italics-in-iterm2-vim-tmux' %}#tmux-21-and-above">
+  <a href="{% post_url collections.posts, 'italics-in-iterm2-vim-tmux' %}#tmux-2.1-and-above">
     Using tmux version 2.1 or above? Check out the update.
   </a>
 </div>
@@ -178,8 +178,8 @@ You can delete the `.terminfo` files, from both the remote and local machines, o
 tmux 2.1 and above
 ------------------
 
-The release of [tmux 2.1][tmux21] saw several changes to the way tmux handles 
-the terminal type, amongst other things. For getting italics working, we now 
+The release of [tmux 2.1][tmux21] saw several changes to the way tmux handles
+the terminal type, amongst other things. For getting italics working, we now
 need a *new terminfo* called `tmux`.
 
 Luckily, there's already [an FAQ][tmux21-faq] on how to add the new terminfo entry with a single command.
@@ -201,7 +201,7 @@ We then just need to tell tmux to use this new terminfo.
 set -g default-terminal "tmux"
 ```
 
-You might need to restart your terminal and/or the tmux server for the changes 
+You might need to restart your terminal and/or the tmux server for the changes
 to take effect.
 
 Thanks to Landon Schropp for pointing this out in the comments.
