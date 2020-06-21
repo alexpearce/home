@@ -7,19 +7,21 @@ pagination:
   alias: tag
 permalink: "/blog/tags/{{ tag | slug }}/"
 ---
-<h1>Posts tagged ‘{{ tag }}’</h1>
+<p>The posts below are all tagged ‘{{ tag }}’.</p>
 {%- for post in collections[tag] reversed %}
+  <hr/>
   <div class="post-excerpt">
     <h1><a href="{{ post.url | prepend: site.baseurl }}">{{ post.data.title }}</a></h1>
-    <h2>Published on {{ post.date | date: "%A %d, %B %Y" }}</h2>
+    <span class="post-date with-icon">Published on {{ post.date | date: "%d %B %Y" }}</span>
     {% if post.data.comments != false %}
-    <h3 class="comment-count"><a href="{{ post.url}}#disqus_thread" data-disqus-identifier="{{ post.url }}">No comments</a></h3>
+    <span class="post-comment-count with-icon"><a href="{{ post.url}}#disqus_thread" data-disqus-identifier="{{ post.url }}">No comments</a></span>
     {% endif %}
-    <ul class="tags">
+    <ul class="post-tags with-icon">
       {% for tag in post.data.tags %}
         <li><a href="/blog/tags/{{ tag | slug }}/">{{ tag }}</a></li>
       {% endfor %}
     </ul>
+    {% if post.data.description %}<p class="description">{{ post.data.description }}</p>{% endif %}
   </div>
 {% endfor -%}
 
