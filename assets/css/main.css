@@ -1,0 +1,343 @@
+/** Stylesheet for alexpearce.me
+ *
+ * The idea is to be mobile-first, using media queries when things need to
+ * change for larger (desktop) browsers.
+ * There is one breakpoint at --content-width, when the viewport is at least as
+ * wide as the main content.
+ *
+ * Inspired by:
+ *
+ * - https://www.conventionalcommits.org/
+ * - https://nowodzinski.pl/syncope/
+ *
+ * With icons from https://github.com/ionic-team/ionicons.
+ *
+ */
+
+:root {
+  /* Maximum width of any element inside <main> */
+  --content-width: 680px;
+
+  /* System font stack
+   * https://css-tricks.com/snippets/css/system-font-stack/
+   * https://www.digitalocean.com/community/tutorials/css-system-font-stack
+   */
+  --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --mono-stack: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --background-color: #ffffff;
+  /* Body text */
+  --copy-color: #24292e;
+  /* Links, highlight borders, etc. */
+  /* The different colors are cycled through using a JavaScript snippet. */
+  --highlight-color-count: 3;
+  --highlight-color-1: #20a0ff;
+  --highlight-color-2: #de4943;
+  --highlight-color-3: #5bad64;
+  --highlight-color: var(--highlight-color-1);
+  /* Headers, including anchor headers */
+  --header-color: var(--copy-color);
+  /* Code background color */
+  --code-background: #f4f4f4;
+}
+
+/* Colours when OS dark mode is enabled. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #38444c;
+    --copy-color: #f0f4f8;
+    --code-background: #2f3940;
+  }
+}
+
+/* @begin Structure and layout */
+
+* {
+  /* <3 border-box, meaning that padding and margin count towards the `width` */
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--highlight-color);
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0 1em;
+  font-size: 16px;
+  font-family: var(--font-stack);
+  line-height: 1.63em;
+  background: var(--background-color);
+  color: var(--copy-color);
+}
+
+.masthead h1 {
+  padding-top: 0;
+  text-align: center;
+}
+
+.masthead nav ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.masthead nav ul li {
+  margin: 0 2em;
+}
+
+main {
+  margin: 20px auto;
+  padding: 24px;
+  border-radius: 8px;
+}
+
+@media only screen and (min-width: 680px) {
+  main {
+    width: var(--content-width);
+    padding: 24px 48px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.03), 0 2px 20px 10px rgba(0, 0, 0, 0.02);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    main {
+      /* Need a stronger shadow to offset the darker background. */
+      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.075), 0 2px 20px 10px rgba(0, 0, 0, 0.05);
+    }
+  }
+}
+
+hr, footer {
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+hr.footnotes-sep {
+  border-top-style: dashed;
+}
+
+footer {
+  display: flex;
+  /* Display the elements in reverse order to their DOM order
+   * This allows nice things like the "top" link to appear on the right, even
+   * when it's the only element in the footer
+   */
+  flex-flow: row-reverse;
+  /* Space the elements evenly */
+  justify-content: space-between;
+  margin: 1em 0 0 0;
+  padding: 1em 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  hr, footer {
+    border-top-color: #495862;
+  }
+}
+
+/* @end Structure and layout */
+
+/* @begin Typography */
+
+/**
+ * Vertical rhythm by Syncope
+ * http://nowodzinski.pl/syncope
+ */
+
+h1 {
+	font-size: 1.75em;
+	line-height: 1.86em;
+	padding-top: 1.50em;
+	margin-bottom: 0.357em;
+}
+
+h2 {
+	font-size: 1.44em;
+	line-height: 1.13em;
+	padding-top: 1.35em;
+	margin-bottom: 0.913em;
+}
+
+h3 {
+	font-size: 1.19em;
+	line-height: 1.37em;
+	padding-top: 1.74em;
+	margin-bottom: 1.00em;
+}
+
+h4 {
+	font-size: 1.00em;
+	line-height: 1.63em;
+	padding-top: 0.500em;
+	margin-bottom: 1.13em;
+}
+
+p {
+	font-size: 1.00em;
+	line-height: 1.63em;
+	padding-top: 0.500em;
+	margin-bottom: 1.13em;
+}
+
+h1, h2, h3 {
+  color: var(--header-color);
+}
+
+h1 a, h2 a, h3 a {
+  color: var(--header-color);
+}
+
+a {
+  color: var(--highlight-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul, ol {
+  /* List item text is roughly flush with surrounding text */
+  padding-left: 1.25em;
+}
+
+/* @end Typography */
+
+img {
+  /* Images expand to fit their container */
+  width: 100%;
+}
+
+/* @begin Post listing and posts */
+
+.post-excerpt span, header span {
+  display: block;
+}
+
+.post-excerpt .description {
+  font-style: italic;
+}
+
+.with-icon::before, .with-icon::before {
+  display: inline-block;
+  content: ' ';
+  background-size: 1em 1em;
+  height: 1em;
+  width: 1em;
+  margin-left: -1.5em;
+  margin-right: 0.5em;
+  /* The SVG source is #000, soften it a little with opacity. */
+  opacity: 0.9;
+}
+
+.post-date::before {
+  background-image: url('icons/calendar.svg');
+}
+
+.post-comment-count::before {
+  background-image: url('icons/chatbubbles.svg');
+}
+
+.post-tags::before {
+  background-image: url('icons/pricetags.svg');
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Change black icons to white. */
+  .with-icon::before {
+    filter: invert();
+  }
+}
+
+.post-excerpt h1, header h1 {
+  /* These headers already have padding from elements above them,
+   * don't duplicate it
+   */
+  padding: 0;
+}
+
+.post-tags {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-transform: lowercase;
+}
+
+.post-tags li {
+  padding: 0 4px;
+}
+
+.post-tags li:first-child {
+  padding-left: 0;
+}
+
+.post-tags li:after {
+  content: ",";
+}
+
+.post-tags li:last-child:after {
+  content: "";
+}
+
+.pagination {
+  margin: 1em 0;
+  text-align: center;
+  color: #888;
+}
+
+.pagination .previous, .pagination .next {
+  margin: 0 0.5em;
+  padding: 0 0.5em;
+}
+
+/* @end Post listing and posts */
+
+/* @begin Post/page style */
+
+pre, code {
+  font-family: var(--mono-stack);
+  background: var(--code-background);
+  border-radius: 4px;
+}
+
+pre {
+  padding: 0.7em 1em 0.8em 1em;
+  overflow: auto;
+}
+
+pre code {
+  padding: 0;
+}
+
+code {
+  padding: 0.1em 0.3em 0.2em;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0.7em 1em 0.8em 1em;
+  padding: 0 1em;
+  border-left: 2px solid #eee;
+  font-style: italic;
+}
+
+.alert {
+  margin: 1em 0;
+  padding: 0.8em 1em;
+  border-radius: 4px;
+  background: var(--highlight-color);
+  text-align: center;
+}
+
+.alert a {
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* @end Post/page style */

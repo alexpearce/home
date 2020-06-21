@@ -1,8 +1,6 @@
 ---
-layout: post
 title: JaxoDraw on OS X with MacTex
-category: Tips
-tags: [OS X, Physics]
+tags: [Tips, OS X, Physics]
 description: Tips on running the Feynman diagram generator JaxoDraw on OS X
 ---
 
@@ -40,18 +38,18 @@ The OS X application won’t launch, but we’re going to create a *new* applica
 
 Unzip the binary archive by double clicking on it and note the `jaxodraw-2.1-0.jar` file that’s extracted; this is “the binary”. Next, mount the application disk image and execute the following command in Terminal.
 
-{% highlight bash %}
+```bash
 $ cp /Volumes/jaxodraw-2.1-0/JaxoDraw.app/Contents/Resources/jaxoicon2_128.icns \
   ~/Desktop/
-{% endhighlight %}
+```
 
 This will copy the icon image from the JaxoDraw application to your desktop. You can unmount the disk and delete the disk image now; we’re done with it.
 
 We can launch and play around with JaxoDraw straight away. Assuming the JaxoDraw directory that we created when unarchiving the `jaxodraw-2.1-0-bin.tar.gz` file is in your `Downloads` folder, we can launch JaxoDraw with the following command:
 
-{% highlight bash %}
+```bash
 $ java -jar ~/Downloads/jaxodraw-2.1-0/jaxodraw-2.1-0.jar
-{% endhighlight %}
+```
 
 Nearly everything works, but if you try to draw a gluon line (the curly one) the app crashes with an error message similar to
 
@@ -61,9 +59,9 @@ Nearly everything works, but if you try to draw a gluon line (the curly one) the
 
 Luckily, this problem is [well known](http://sourceforge.net/tracker/?func=detail&aid=2561249&group_id=142124&atid=751521) and solvable; we just need to run the file in 32-bit mode:
 
-{% highlight bash %}
+```bash
 $ java -d32 -jar ~/Downloads/jaxodraw-2.1-0/jaxodraw-2.1-0.jar
-{% endhighlight %}
+```
 
 Now we can draw gluons, huzzah!
 
@@ -83,10 +81,10 @@ Download the [axodraw4j archive](http://sourceforge.net/projects/jaxodraw/files/
 
 Assuming you now have a folder called `axodraw4j_2008_11_19` in your `Downloads` folder, execute the following to create the directories where LaTeX looks for packages in and copy the package to that directory:
 
-{% highlight bash %}
+```bash
 $ mkdir -p ~/Library/texmf/tex/latex
 $ cp ~/Downloads/axodraw4j_2008_11_19/axodraw4j.sty ~/Library/texmf/tex/latex/
-{% endhighlight %}
+```
 
 You may need to restart JaxoDraw at this point. To run it, you must use the `java` command as above. This is impractical, but we’ll fix that in just a minute. (You can delete the axodraw stuff in your Downloads folder now; we’re done with it).
 
@@ -103,9 +101,9 @@ When we installed the Java runtime, it provided a few extra tools to make the li
 
 To open the jar bundler, you can either navigate to `/usr/share/java/Tools` or open it in Terminal
 
-{% highlight bash %}
+```bash
 $ open /usr/share/java/Tools/Jar\ Bundler.app
-{% endhighlight %}
+```
 
 This will allow us to bundle the `jaxodraw-2.1-0.jar` file in to a fully-fledged `.app`. 
 

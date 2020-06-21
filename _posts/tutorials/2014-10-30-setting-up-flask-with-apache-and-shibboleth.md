@@ -1,8 +1,6 @@
 ---
-layout: post
 title: Flask with Apache and Shibboleth authentication
-category: Tutorials
-tags: [sysadmin, Python, Apache, CERN]
+tags: [Tutorials, sysadmin, Python, Apache, CERN]
 description: A step-by-step tutorial on deploying Flask apps to a Linux VPS, running behind Apache with Shibboleth CERN SSO authentication.
 ---
 
@@ -53,9 +51,9 @@ General external access isn't allowed to cloud VMs for security reasons.
 
 Once the virtual machine is provisioned and running, which can take a little while, you should be able to log in with the account you used to create it.
 
-{% highlight bash %}
+```bash
 $ ssh myaccount@ssotutorial.cern.ch
-{% endhighlight %}
+```
 
 This will probably ask you for a password, which is your regular CERN password.
 
@@ -66,50 +64,50 @@ From now on, all commands should be run *on the virtual machine*, with the [abov
 
 Update any old packages and reboot the VM, both as root, to ensure any updated kernel becomes the running one.
 
-{% highlight bash %}
+```bash
 $ yum -y update
 $ reboot
-{% endhighlight %}
+```
 
 Log back in to the VM once it has rebooted.
 
 As the root user, add a deploy user to handle running the application.
 
-{% highlight bash %}
+```bash
 $ adduser deploy
 $ passwd deploy
 # Set the password to `deploy`
 # Then to assume to deploy user, do
 $ su - deploy
 # Enter the deploy user's password
-{% endhighlight %}
+```
 
 Unless it is stated to run commands with super user privileges, all the following commands will be run as the `deploy` user.
 
 Apache
 ------
 
-Although I would rather deploy a Flask application with [nginx](http://nginx.org/), as I'm [more familiar](/search/?tags=nginx) with it and prefer its configuration, [Shibboleth support for nginx](https://wiki.shibboleth.net/confluence/display/SHIB2/Integrating+Nginx+and+a+Shibboleth+SP+with+FastCGI) is not great, and trying it looks like it would be more painful than just going with Apache.
+Although I would rather deploy a Flask application with [nginx](http://nginx.org/), as I'm [more familiar](/blog/tags/nginx) with it and prefer its configuration, [Shibboleth support for nginx](https://wiki.shibboleth.net/confluence/display/SHIB2/Integrating+Nginx+and+a+Shibboleth+SP+with+FastCGI) is not great, and trying it looks like it would be more painful than just going with Apache.
 The CERN documentation on [SSL](https://twiki.cern.ch/twiki/bin/view/LinuxSupport/ConfigureApacheSSLonSLC) and [SSO](http://linux.web.cern.ch/linux/scientific6/docs/shibboleth.shtml) also deals only with Apache.
 
 So, let's install Apache and configure it to start automatically on boot. As root:
 
-{% highlight bash %}
+```bash
 $ yum install -y httpd
 $ chkconfig --levels 345 httpd on
 $ service httpd start
-{% endhighlight %}
+```
 
 As Shibboleth must run over [HTTPS](http://en.wikipedia.org/wiki/HTTP_Secure) which by default is on port 443, we must open that port in the firewall, which by default is pretty locked down.
 We will also open port 80 so that we can redirect visitors trying to visit over unencrypted HTTP.
 Again as root:
 
-{% highlight bash %}
+```bash
 $ iptables -I INPUT 5 -i eth0 -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
 $ iptables -I INPUT 5 -i eth0 -p tcp --dport 443 -m state --state NEW,ESTABLISHED -j ACCEPT
 # Persist the rules on reboot
 $ service iptables save
-{% endhighlight %}
+```
 
 Visiting [`ssotutorial`](http://ssotutorial.cern.ch) on port 80 should show the Apache test page.
 
@@ -122,10 +120,10 @@ To encrypt traffic between Apache and clients, we need an SSL certificate for th
 The [CERN Grid Certification Authority](https://gridca.cern.ch/gridca/) issues host certificates to CERN users, so visit them and follow “New host certificate (requires certificate authentication)”.
 To get the certificate, we must generate a certificate signing request on the VM.
 
-{% highlight bash %}
+```bash
 # Make sure to replace ssotutorial with the name of *your* VM!
 $ openssl req -new -subj "/CN=ssotutorial.cern.ch" -out newcsr.csr -nodes -sha512 -newkey rsa:2048
-{% endhighlight %}
+```
 
 This will create two files, `newcsr.csr` and `privkey.pem`.
 The former is the certificate signing request, which you need to copy the contents of in to the field on the host certificate request form, and the latter is the private key.
@@ -136,44 +134,44 @@ After pasting in the certificate signing request and submitting the form, downlo
 
 Convert the CA certificate chain to the `.pem` format so Apache can read it.
 
-{% highlight bash %}
+```bash
 $ openssl pkcs7 -inform PEM -outform PEM -in host-chain.p7b -print_certs > CERN-bundle.pem
-{% endhighlight %}
+```
 
 Then move the host certificate, the CA certificate chain, and the private key we generated in to place as root.
 
-{% highlight bash %}
+```bash
 $ cp host.cert CERN-bundle.pem /etc/pki/tls/certs
 $ cp privkey.pem /etc/pki/tls/private
 $ chmod 600 /etc/pki/tls/{certs/host.cert,private/privkey.pem}
-{% endhighlight %}
+```
 
 Install the SSL Apache module `mod_ssl` as root.
 
-{% highlight bash %}
+```bash
 $ yum install -y mod_ssl
-{% endhighlight %}
+```
 
 Edit the Apache SSL configuration in `/etc/httpd/conf.d/ssl.conf` as root to point to the correct certificates, making sure the following lines are present and that the directives only appear once in the file.
 (You can use, for example, `sudo vi /etc/httpd/conf.d/ssl.conf` to edit a file with super user privileges.)
 
-{% highlight config %}
+```apacheconf
 SSLCertificateFile /etc/pki/tls/certs/host.cert
 SSLCertificateKeyFile /etc/pki/tls/private/privkey.pem
 SSLCertificateChainFile /etc/pki/tls/certs/CERN-bundle.pem
-{% endhighlight %}
+```
 
 On [CERN advice](https://twiki.cern.ch/twiki/bin/view/LinuxSupport/ConfigureApacheSSLonSLC) add the following line after the `LoadModule ssl_module modules/mod_ssl.so` line in the same `ssl.conf` file.
 
-{% highlight config %}
+```apacheconf
 TraceEnable Off
-{% endhighlight %}
+```
 
 Restart Apache as root.
 
-{% highlight bash %}
+```bash
 $ service httpd restart
-{% endhighlight %}
+```
 
 Visiting the [secure `ssotutorial`](https://ssotutorial.cern.ch) on port 443 should show the Apache test page.
 Unless you have the CERN Grid Authority CA certificate installed in your browser, you will get a warning about the site's certificate being invalid due to the CA not being recognised.
@@ -199,7 +197,7 @@ First, we'll set up the environment the application will run in.
 In order not to pollute the global Python configuration as much as possible, we'll install the application's dependencies inside a [virtualenv](http://virtualenv.readthedocs.org/en/latest/), which we'll manage with [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/).
 This means installing [pip](https://pip.pypa.io/en/latest/), a Python package manager, which makes installing modules super simple.
 
-{% highlight bash %}
+```bash
 # Set up the bash environment for virtualenvwrapper
 $ export WORKON_HOME=$HOME/virtualenvs
 $ echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.bashrc
@@ -213,31 +211,31 @@ $ python $HOME/get-pip.py --user
 $ pip install --user virtualenv virtualenvwrapper
 $ rm -f $HOME/get-pip.py
 $ source $HOME/.bash_profile
-{% endhighlight %}
+```
 
 Before we install Flask, the Python development package and a compiler must be installed in order to compile Flask's C extensions.
 
-{% highlight bash %}
+```bash
 # As root
 $ yum install -y python-devel gcc
-{% endhighlight %}
+```
 
 Finally, make and set up the virtual environment for the application and create the file structure.
 
-{% highlight bash %}
+```bash
 $ mkvirtualenv ssotutorial
 $ pip install flask
 $ mkdir -p ssotutorial/ssotutorial
 $ cd ssotutorial
 $ touch ssotutorial/__init__.py
-{% endhighlight %}
+```
 
 Whenever we work with the application, like running it, it must be done inside the `ssotutorial` virtualenv.
 If you need to ‘reactivate’ it, do `workon ssotutorial`.
 
 Fill in `__init__.py` with an example Flask application that displays the time on the root URL `/`.
 
-{% highlight python %}
+```python
 from datetime import datetime
 
 from flask import Flask
@@ -265,22 +263,22 @@ def wsgi(*args, **kwargs):
 
 if __name__ == '__main__':
     create_app().run()
-{% endhighlight %}
+```
 
 The `wsgi` method is the one that the WSGI server will call, but you can test the application now using the Flask test server by running `python ssotutorial/__init__.py`.
 (You won't be able to see the test server, which by default binds to `127.0.0.1:5000`, in the browser as port 5000 is blocked by the VM's firewall, but you can do `curl 127.0.0.1:5000` in another session on the VM to see the page load successfully.)
 
 To run the application behind a WSGI server, we'll install uWSGI and also install [Honcho](https://github.com/nickstenning/honcho) to manage the processes.
 
-{% highlight bash %}
+```bash
 $ pip install uwsgi honcho
-{% endhighlight %}
+```
 
 Create a `Procfile` in the root `ssotutorial` directory and fill it with the uWSGI startup command.
 
-{% highlight text %}
+```text
 web: uwsgi -s 127.0.0.1:8000 -w ssotutorial:wsgi --buffer-size=32000
-{% endhighlight %}
+```
 
 The `--buffer-size` option sets the uWSGI buffer to 32 kB.
 The default size is quite small, as hinted at in the uWSGI [things to know](http://uwsgi-docs.readthedocs.org/en/latest/ThingsToKnow.html) guide, and gets easily overloaded by the large headers used during the SSO procedure, which is [explained in more detail later](#authentication-flow).
@@ -296,7 +294,7 @@ We're at the stage where we can combine our previous efforts by getting Apache s
 This requires us to install the [`mod_proxy_uwsgi`](https://uwsgi-docs.readthedocs.org/en/latest/Apache.html#mod-proxy-uwsgi) Apache module mentioned earlier.
 We first need to install the Apache development files, then download the uWSGI source code, and finally build and install the module.
 
-{% highlight bash %}
+```bash
 # As root
 $ yum install -y httpd-devel git
 $ git clone https://github.com/unbit/uwsgi.git
@@ -309,35 +307,35 @@ $ git checkout 2.0.8
 $ apxs -i -c mod_proxy_uwsgi.c
 $ cd ../../
 $ rm -rf uwsgi
-{% endhighlight %}
+```
 
 Have Apache load the new module by editing the main Apache configuration file `/etc/httpd/conf/httpd.conf` to add the line
 
-{% highlight apache %}
+```apacheconf
 LoadModule proxy_uwsgi_module modules/mod_proxy_uwsgi.so
-{% endhighlight %}
+```
 
 To test everything's wired up correctly, we can temporarily add the proxy information to the bottom of the `VirtualHost` block in `/etc/httpd/conf.d/ssl.conf`, which needs to be edited as root.
 
-{% highlight apache %}
+```apacheconf
 ProxyPass / uwsgi://127.0.0.1:8000/
-{% endhighlight %}
+```
 
 This will send all traffic matching `/` and its descendants to uWSGI. We'll create a configuration file specifically for the application in the `conf.d` folder later.
 
 Finally, the SELinux permissions [need to be relaxed](http://viewsby.wordpress.com/2012/07/03/13permission-denied-proxy-http-attempt-to-connect-to-127-0-0-18080-localhost-failed/) to allow Apache to connect to the proxy.
 
-{% highlight bash %}
+```bash
 # As root
 $ setsebool httpd_can_network_connect 1
-{% endhighlight %}
+```
 
 For all these changes to take effect, restart Apache.
 
-{% highlight bash %}
+```bash
 # As root
 $ service httpd restart
-{% endhighlight %}
+```
 
 Visiting the [secure `ssotutorial`](https://ssotutorial.cern.ch) on port 443 should now show the Flask page showing the time.
 
@@ -353,47 +351,47 @@ Shibboleth
 By now the [SSO application](https://sso-management.web.cern.ch/sso-management/) should have been approved, so we can proceed with installing and configuring Shibboleth.
 As root, install Shibboleth and its dependencies.
 
-{% highlight bash %}
+```bash
 $ yum install -y shibboleth log4shib xmltooling-schemas opensaml-schemas
-{% endhighlight %}
+```
 
 Edit the SELinux configuration from `enforcing` to `permissive`, as [instructed by CERN](http://linux.web.cern.ch/linux/scientific6/docs/shibboleth.shtml), and manually apply the change now to avoid the need to reboot.
 As root:
 
-{% highlight bash %}
+```bash
 $ vi /etc/sysconfig/selinux # Change 'enforcing' to 'permissive'
 $ setenforce Permissive
-{% endhighlight %}
+```
 
 Next, download the CERN-specific Shibboleth configuration files.
 
-{% highlight bash %}
+```bash
 $ curl -O http://linux.web.cern.ch/linux/scientific6/docs/shibboleth/shibboleth2.xml
 $ curl -O http://linux.web.cern.ch/linux/scientific6/docs/shibboleth/ADFS-metadata.xml
 $ curl -O http://linux.web.cern.ch/linux/scientific6/docs/shibboleth/attribute-map.xml
 $ curl -O http://linux.web.cern.ch/linux/scientific6/docs/shibboleth/wsignout.gif
-{% endhighlight %}
+```
 
 Then, enable the Shibboleth service to run on startup and move the files we just downloaded in to place as root.
 
-{% highlight bash %}
+```bash
 $ chkconfig --levels 345 shibd on
 $ service shibd start
 $ cp shibboleth2.xml ADFS-metadata.xml attribute-map.xml wsignout.gif /etc/shibboleth
-{% endhighlight %}
+```
 
 Edit `/etc/shibboleth/shibboleth2.xml` and replace all instances of ` somehost.cern.ch` with the hostname of the VM — `ssotutorial.cern.ch` — and make sure this exact line is present.
 
-{% highlight xml %}
+```xml
 <TCPListener address="127.0.0.1" port="1600" acl="127.0.0.1"/>
-{% endhighlight %}
+```
 
 Restart Apache and the Shibboleth daemon as root for the changes to take effect.
 
-{% highlight bash %}
+```bash
 $ service shibd restart
 $ service httpd restart
-{% endhighlight %}
+```
 
 Shibboleth installs an Apache configuration file at `/etc/httpd/conf.d/shib.conf`, which sets up the URL `/secure` to require a valid Shibboleth session.
 If you try to [visit this](https://ssotutorial.cern.ch/secure) now, however, you'll get a 404 error.
@@ -417,12 +415,12 @@ I won't go through what each Apache directive we're using does, but I've not use
 
 We can download the configuration file directly to the VM.
 
-{% highlight bash %}
+```bash
 $ curl https://gist.githubusercontent.com/alexpearce/d6867026bf7cd1ac0cb6/raw/35563ca70baff6e88bc0c27c7ea284732c7189f6/ssotutorial.apacheconf -o ssotutorial.conf
 # As root
 $ mv ssotutorial.conf /etc/httpd/conf.d/
 $ sudo chown root:root /etc/httpd/conf.d/ssotutorial.conf
-{% endhighlight %}
+```
 
 Read the file to get an idea of what's going on.
 You will need to edit the file to change the name of the host from `ssotutorial`.
@@ -431,17 +429,17 @@ Because the settings in `ssl.conf` and `shib.conf` are defaults provided for us 
 There's also a `welcome.conf` file which is provided when Apache is installed.
 As root, add a `.disabled` extension to each file.
 
-{% highlight bash %}
+```bash
 $ mv /etc/httpd/conf.d/ssl.conf{,.disabled}
 $ mv /etc/httpd/conf.d/shib.conf{,.disabled}
 $ mv /etc/httpd/conf.d/welcome.conf{,.disabled}
-{% endhighlight %}
+```
 
 Restart Apache as root to reload the new set of configuration files.
 
-{% highlight bash %}
+```bash
 $ service httpd restart
-{% endhighlight %}
+```
 
 The final step is changing our Flask app.
 All it does now it display the time, so we need to add some login buttons and display the information we get from the sign-in procedure.
@@ -471,20 +469,20 @@ Our updated Flask application, [available as a gist](https://gist.github.com/ale
 It uses the [Flask-SSO](http://flask-sso.readthedocs.org/en/latest/) Flask extension to simplify the mapping of the headers from the authentication procedure to the user session object.
 Let's install the Flask-SSO module, and overwrite the old application with our updated version.
 
-{% highlight bash %}
+```bash
 # Stop the uWSGI server if you have it running,
 # and reactivate the ssotutorial virtualenv before running pip
 $ pip install flask-sso
 $ curl -O https://gist.githubusercontent.com/alexpearce/4ef660422085838ff2d2/raw/951685c44142b84bd2f59b25bcb1e33f827be9e8/__init__.py
 # Move the new __init__.py to the same location as the old one
 $ mv __init__.py ssotutorial/ssotutorial/__init__.py
-{% endhighlight %}
+```
 
 Now inside the root `ssotutorial` directory with the `ssotutorial` virtualenv activated, start the uWSGI server again.
 
-{% highlight bash %}
+```bash
 $ honcho start
-{% endhighlight %}
+```
 
 When we visit our application, not much has changed…
 

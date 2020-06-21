@@ -1,8 +1,6 @@
 ---
-layout: post
 title: Creating a virtual machine for acron jobs
-category: Tutorials
-tags: [Terminal, sysadmin, CERN]
+tags: [Tutorials, Terminal, sysadmin, CERN]
 description: How to creating and set up a virtual machine for running acron jobs in the CERN network.
 ---
 
@@ -66,10 +64,10 @@ VMs are only accessible from inside the CERN network unless you request
 otherwise, so you'll need to log in to a machine in the CERN network, such as 
 `lxplus.cern.ch`, before logging in to your VM.
 
-{% highlight bash %}
+```bash
 # From a machine inside the CERN network
 $ ssh centos@acron-test.cern.ch
-{% endhighlight %}
+```
 
 The default user is `centos`, so we tell SSH to assume that user.
 If you see errors about permissions, you need to make sure your using the same 
@@ -78,19 +76,19 @@ If you get a timeout error, the machine is probably still booting, so just wait
 a while and try again.
 If everything goes well, you'll end up with a prompt on the VM.
 
-{% highlight bash %}
+```
 [centos@acron-test ~]$
-{% endhighlight %}
+```
 
 Before we move on, we'll just add the CERN user you usually use to the VM, so 
 that you don't need to SSH in as `centos`, and so you can SSH using your usual 
 authentication method (like passwords or Kerberos tokens).
 
-{% highlight bash %}
+```bash
 [centos@acron-test ~]$ sudo yum install -y cern-config-users
 [centos@acron-test ~]$ sudo cern-config-users --setup-all
 [centos@acron-test ~]$ su - your_username
-{% endhighlight %}
+```
 
 The first command looks in the [CERN LanDB][landb] to see who owns the machine 
 (that's you!), and then [sets up the appropriate user account][cc7-setup].
@@ -100,10 +98,10 @@ in to the VM from another machine.
 
 You can now log off the VM, and try logging in using your regular username.
 
-{% highlight bash %}
+```bash
 # On another CERN machine, such as lxplus
 $ ssh your_username@acron-test.cern.ch
-{% endhighlight %}
+```
 
 Now we're ready to install the software needed for our VM to run acron jobs!
 
@@ -118,25 +116,25 @@ closely. Take note: from now on, *all commands should be run on the VM*.
 First, we make sure that the machine is correctly configured to retrieve 
 Kerberos tokens, which are used to allow the acron jobs to access user's files.
 
-{% highlight bash %}
+```bash
 # Say 'yes' to accepting sudo responsibility (scary!)
 $ sudo yum install -y cern-get-keytab
 $ sudo cern-get-keytab --force
-{% endhighlight %}
+```
 
 Next, install [the software][arc-server] that the central acron servers will 
 talk to when an acron job should be run on the VM.
 
-{% highlight bash %}
+```bash
 $ sudo yum install -y arc-server
-{% endhighlight %}
+```
 
 (The central acron servers are managed by the CERN IT group.)
 
 We need to open a hole in the VM's firewall for the acron messages to pass 
 through.
 
-{% highlight bash %}
+```bash
 $ sudo firewall-cmd --zone=public --add-port=4241/tcp --permanent
 $ sudo firewall-cmd --reload
 $ sudo firewall-cmd --list-all
@@ -149,7 +147,7 @@ public (default, active)
   forward-ports:
   icmp-blocks:
   rich rules:
-{% endhighlight %}
+```
 
 The last commands shows us that the port 4241 is now open, and it's this port 
 that the acron communication takes place over.
@@ -157,24 +155,24 @@ that the acron communication takes place over.
 We then need to disable the `dynroot` option of AFS (the shared filesystem used 
 for user home directories and workspaces).
 
-{% highlight bash %}
+```bash
 $ sudo sed -i"" "s/ \-dynroot//" /etc/sysconfig/openafs
-{% endhighlight %}
+```
 
 Finally, we need to restart the `xinetd` service, which is responsible for 
 handling traffic in to and out of our VM, just after adding the acron 
 communication port to the list of known ports.
 
-{% highlight bash %}
+```bash
 $ echo -e 'arc 4241/tcp\n' | sudo tee -a /etc/services
 $ sudo service xinetd restart
-{% endhighlight %}
+```
 
 Finally, reboot.
 
-{% highlight bash %}
+```bash
 $ sudo reboot now
-{% endhighlight %}
+```
 
 And that's it! Once the machine has restarted, we're ready to submit acron jobs 
 to our VM.
@@ -184,9 +182,9 @@ to our VM.
 On lxplus, you can now edit the acron table file as usual, but this time you 
 can specify the address of your VM as the host.
 
-{% highlight text %}
+```text
 01 01 * * * acron-test.cern.ch date > date.log
-{% endhighlight %}
+```
 
 This will run the command `date > date.log`, which saves the date and time the 
 command was run to the `date.log` file. Acron jobs start in your AFS home 
@@ -202,12 +200,12 @@ file has been created.
 The `acrontab` program lives in `/afs/usr/local/bin`, but if you try to run 
 that file on your VM, you'll get an error.
 
-{% highlight bash %}
+```bash
 # Executed on the VM
 $ /afs/usr/local/bin/acrontab -e
 error in arc command, retrying.  Error message:
 /afs/usr/local/etc/arc: error while loading shared libraries: libkrb4.so.2: cannot open shared object file: No such file or directory
-{% endhighlight %}
+```
 
 I don't know what this means, and I don't know how to fix it. Seeing as you can 
 still edit the acrontab file on lxplus it doesn't bother me, but let me know in 
@@ -227,7 +225,7 @@ Once the VM has booted and you've run the script, you should be able to begin
 running acron jobs on it right away.
 
 [acron]: http://acron.web.cern.ch/
-[acron-tut]: {% post_url /tips/2016-06-21-running-kerberos-jobs-with-acron %}
+[acron-tut]: {% post_url collections.posts, 'running-kerberos-jobs-with-acron' %}
 [vm]: https://en.wikipedia.org/wiki/Virtual_machine
 [lxplus]: https://information-technology.web.cern.ch/services/lxplus-service
 [openstack]: http://clouddocs.web.cern.ch/clouddocs/

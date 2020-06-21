@@ -1,5 +1,2 @@
 _site
-vendor/bundle
-.bundle
-public
-.sass-cache
+node_modules

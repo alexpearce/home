@@ -1,8 +1,6 @@
 ---
-layout: post
 title: Running periodic Kerberos-authenticated jobs with acron
-category: Tips
-tags: [Terminal, CERN]
+tags: [Tips, Terminal, CERN]
 description: A short guide on how to run periodic jobs with a Kerberos token on CERN's computing resources
 ---
 
@@ -14,9 +12,9 @@ Jobs are defined in the ‘cron table’, which can be manipulated with the
 `crontab` command.
 An example job definition might look like this in the crontab.
 
-{% highlight text %}
+```text
 01 01 1 1 1 echo foo
-{% endhighlight %}
+```
 
 The command to be run is `echo foo`. The numbers preceding the command specify 
 when the command is to be run: minute, hour, day of the month, month, and the 
@@ -29,12 +27,12 @@ There are already plenty of tutorials for crontabs, so I won't dwell on them to
 long (`man crontab` and `man 5 crontab` are good starting points), but I'll 
 mention two other interesting parts of the crontab syntax.
 
-{% highlight text %}
+```text
 # First example
 01 01 * * * echo foo
 # Second example
 */5 01 * * * echo foo
-{% endhighlight %}
+```
 
 In the first example, we've used the asterisk `*` syntax to tell cron to match 
 any value of the field. In this case, cron will run the job at 01:01 am every 
@@ -63,9 +61,9 @@ It works in a very similar way to regular cron, but now you edit an ‘acron
 table’ with the `acrontab -e` command, and there's one additional field you 
 need to specify for each row.
 
-{% highlight text %}
+```text
 01 01 * * * lxplus.cern.ch echo foo
-{% endhighlight %}
+```
 
 The extra field is before the command, still `echo foo`, where here we've 
 chosen `lxplus.cern.ch`. This field specifies the machine that acron will run 
@@ -96,4 +94,4 @@ you can install your own software for your jobs to use.
 [acron]: http://acron.web.cern.ch/
 [lxplus]: https://information-technology.web.cern.ch/services/lxplus-service
 [openstack]: http://clouddocs.web.cern.ch/clouddocs/
-[acron-vm]: {% post_url /tutorials/2016-06-22-creating-a-vm-for-acron-jobs %}
+[acron-vm]: {% post_url collections.posts, 'creating-a-vm-for-acron-jobs' %}

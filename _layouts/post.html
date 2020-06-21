@@ -3,18 +3,14 @@ layout: default
 ---
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline"><a href="{{ page.url }}">{{ page.title }}</a></h1>
-    <h2 class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        Published on {{ page.date | date: "%A %-d, %B %Y" }} in <a href="/search?category={{ page.category | escape }}">{{ page.category }}</a>
-      </time>
-    </h2>
-    {% if page.comments != false %}
-      <h3 class="comment-count"><a href="{{ page.url}}#disqus_thread" data-disqus-identifier="{{ page.url }}">No comments</a></h3>
+    <h1 class="post-title" itemprop="name headline"><a href="{{ page.url }}">{{ title }}</a></h1>
+    <span class="post-date with-icon"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">Published on {{ page.date | date: "%d %B %Y" }}</time></span>
+    {% if comments != false %}
+      <span class="post-comment-count with-icon"><a href="{{ page.url}}#disqus_thread" data-disqus-identifier="{{ page.url }}">No comments</a></span>
     {% endif %}
-    <ul class="tags">
-      {% for tag in page.tags %}
-        <li><a href="/search?tag={{ tag | escape }}">{{ tag }}</a></li>
+    <ul class="post-tags with-icon">
+      {% for tag in tags %}
+        <li><a href="/blog/tags/{{ tag | slug }}/">{{ tag }}</a></li>
       {% endfor %}
     </ul>
   </header>
@@ -22,7 +18,7 @@ layout: default
     {{ content }}
   </div>
   <footer>
-    <a class="top" href="#">top ▴</a>
+    <a class="top" href="#">back to top &uarr;</a>
   </footer>
   {% include comments.html %}
 </article>

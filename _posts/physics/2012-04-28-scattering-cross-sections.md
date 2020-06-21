@@ -1,7 +1,5 @@
 ---
-layout: post
 title: Scattering Cross Sections in the Standard Model
-category: Physics
 tags: [Physics, Python, C, LaTeX]
 description: A computational physics project on ‘Numerical Evaluation of the e+e− → μ+μ− Cross Section in the Standard Model’
 comments: false
@@ -18,9 +16,9 @@ Compiling
 
 The C script should compile on just about any system with [gcc](http://gcc.gnu.org/) using
 
-{% highlight bash %}
+```bash
 $ gcc -Wall cross_section.c -o cross_section
-{% endhighlight %}
+```
 
  The LaTeX document has a few dependencies.
 

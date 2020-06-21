@@ -14,7 +14,7 @@ count script.
       disqus_config = function () {
     this.page.url = window.location.protocol + '//' + disqus_rooturl + '{{ page.url }}';
     this.page.identifier = '{{ page.url }}';
-    this.page.title = '{{ page.title }}';
+    this.page.title = '{{ title }}';
   };
 
   (function() {

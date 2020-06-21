@@ -1,0 +1,28 @@
+---
+layout: default
+title: Tags
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+permalink: "/blog/tags/{{ tag | slug }}/"
+---
+<p>The posts below are all tagged ‘{{ tag }}’.</p>
+{%- for post in collections[tag] reversed %}
+  <hr/>
+  <div class="post-excerpt">
+    <h1><a href="{{ post.url | prepend: site.baseurl }}">{{ post.data.title }}</a></h1>
+    <span class="post-date with-icon">Published on {{ post.date | date: "%d %B %Y" }}</span>
+    {% if post.data.comments != false %}
+    <span class="post-comment-count with-icon"><a href="{{ post.url}}#disqus_thread" data-disqus-identifier="{{ post.url }}">No comments</a></span>
+    {% endif %}
+    <ul class="post-tags with-icon">
+      {% for tag in post.data.tags %}
+        <li><a href="/blog/tags/{{ tag | slug }}/">{{ tag }}</a></li>
+      {% endfor %}
+    </ul>
+    {% if post.data.description %}<p class="description">{{ post.data.description }}</p>{% endif %}
+  </div>
+{% endfor -%}
+
+{% include comments.html %}
