@@ -346,6 +346,7 @@ blockquote {
   border-radius: 4px;
   background: var(--highlight-color);
   text-align: center;
+  color: #fff;
 }
 
 .alert a {

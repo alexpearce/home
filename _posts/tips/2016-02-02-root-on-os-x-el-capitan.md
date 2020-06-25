@@ -4,6 +4,53 @@ tags: [Tips, ROOT, OS X]
 description: A guide to install to high energy physics framework ROOT on OS X 10.11 with Homebrew.
 ---
 
+<div class="alert">
+  This guide is outdated!
+</div>
+
+The [original post](#original-post) is below for posterity, but
+installing ROOT has been much simpler for a while now, whether you're on El Capitan, Sierra, High Sierra, Mojave, Catalina, or Big Sur.
+
+There are only two steps:
+
+1. Install [Homebrew][5].
+2. Run this command:
+
+```bash
+$ brew install root
+```
+
+Boom. Just take care to read the information printed at the end. You can
+review it later if you missed it:
+
+```bash
+$ brew info root
+==> Caveats
+Because ROOT depends on several installation-dependent
+environment variables to function properly, you should
+add the following commands to your shell initialization
+script (.bashrc/.profile/etc.), or call them directly
+before using ROOT.
+
+For bash users:
+  . /usr/local/bin/thisroot.sh
+For zsh users:
+  pushd /usr/local >/dev/null; . bin/thisroot.sh; popd >/dev/null
+For csh/tcsh users:
+  source /usr/local/bin/thisroot.csh
+For fish users:
+  . /usr/local/bin/thisroot.fish
+```
+
+I recommend [installing ROOT via Anaconda][anaconda] as an alternative, which
+often integrates more nicely in to the reproducible analysis paradigm.
+
+[anaconda]: https://iscinumpy.gitlab.io/post/root-conda/
+
+---
+
+# Original post
+
 I've written some lengthy guides on installing [ROOT][1], firstly for [OS X 
 10.8 Mountain Lion][2] and then for [OS X 10.9 Mavericks][3].
 
