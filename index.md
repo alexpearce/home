@@ -4,7 +4,7 @@ title: About
 permalink: /
 ---
 
-I am physicist and a coder. I spend a lot of time writing computer programs
+I am a physicist and a coder. I spend a lot of time writing computer programs
 that try to answer questions about data.
 
 I work as a member of the research staff at CERN on the [LHCb
