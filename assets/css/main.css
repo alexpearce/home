@@ -354,4 +354,9 @@ blockquote {
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
 }
 
+.route-map {
+  height: 380px;
+  max-width: 100%;
+}
+
 /* @end Post/page style */
