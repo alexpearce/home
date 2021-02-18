@@ -16,9 +16,6 @@ permalink: "blog/{% if pagination.pageNumber > 0 %}page{{ pagination.pageNumber 
   <div class="post-excerpt">
     <h1><a href="{{ post.url | prepend: site.baseurl }}">{{ post.data.title }}</a></h1>
     <span class="post-date with-icon">Published on {{ post.date | date: "%d %B %Y" }}</span>
-    {% if post.data.comments != false %}
-    <span class="post-comment-count with-icon"><a href="{{ post.url}}#disqus_thread" data-disqus-identifier="{{ post.url }}">No comments</a></span>
-    {% endif %}
     <ul class="post-tags with-icon">
       {% for tag in post.data.tags %}
         <li><a href="/blog/tags/{{ tag | slug }}/">{{ tag }}</a></li>
@@ -45,4 +42,3 @@ permalink: "blog/{% if pagination.pageNumber > 0 %}page{{ pagination.pageNumber 
 <footer>
   <span><a href="{{ "/atom.xml" | prepend: site.baseurl }}">RSS feed</a></span>
 </footer>
-{% include comments.html %}

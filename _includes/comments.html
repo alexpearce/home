@@ -1,40 +1,14 @@
 {% comment %}
-This file should be included where ever Disqus comment counts or comment
-threads are needed.
+Include this file to add GitHub issue comment threads.
 
-It will show a thread when on a post page, and will always load the comment
-count script.
+Powered by https://utteranc.es/.
 {% endcomment %}
-<div id="disqus_thread"></div>
-<script>
-  // Enable developer mode when not on the production site
-  var disqus_devel = window.location.hostname !== 'alexpearce.me',
-      disqus_shortname = disqus_devel ? 'alexpearce-devel' : 'alexpearce',
-      disqus_rooturl = disqus_devel ? 'localhost' : 'alexpearce.me',
-      disqus_config = function () {
-    this.page.url = window.location.protocol + '//' + disqus_rooturl + '{{ page.url }}';
-    this.page.identifier = '{{ page.url }}';
-    this.page.title = '{{ title }}';
-  };
-
-  (function() {
-    var embed = document.createElement('script'),
-        count = document.createElement('script');
-
-    embed.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    embed.setAttribute('data-timestamp', +new Date());
-
-    count.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    count.id = 'dsq-count-scr';
-    count.async = true;
-
-    var dest = document.head || document.body;
-    // If we're on a post page and comments aren't disabled for the post,
-    // load the embed and count script
-    if (document.querySelectorAll('article.post').length > 0 && '{{ page.comments }}' !== 'false') {
-      dest.appendChild(embed);
-    }
-    dest.appendChild(count);
-  })();
+<script src="https://utteranc.es/client.js"
+        repo="alexpearce/alexpearce.github.com"
+        issue-term="og:title"
+        label="comments"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
 </script>
 <noscript>Comments disabled as JavaScript is not available.</noscript>

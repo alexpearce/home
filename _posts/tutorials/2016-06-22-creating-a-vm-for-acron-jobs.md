@@ -239,5 +239,5 @@ running acron jobs on it right away.
 [cc7-setup]: http://linux.web.cern.ch/linux/centos7/docs/install.shtml#addusercern
 [acron-host-guide]: https://cern.service-now.com/service-portal/article.do?n=KB0001704
 [arc-server]: http://linuxsoft.cern.ch/cern/centos/7/cern/x86_64/repoview/arc-server.html
-[comments]: #disqus_thread
+[comments]: #comments
 [acron-gist]: https://gist.github.com/alexpearce/df924109f0630e3ad19e3fd703b0b37c
