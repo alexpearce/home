@@ -239,10 +239,6 @@ img {
   background-image: url('icons/calendar.svg');
 }
 
-.post-comment-count::before {
-  background-image: url('icons/chatbubbles.svg');
-}
-
 .post-tags::before {
   background-image: url('icons/pricetags.svg');
 }
@@ -360,3 +356,11 @@ blockquote {
 }
 
 /* @end Post/page style */
+
+/* @begin Comment thread style */
+
+.utterances {
+  margin-top: -30px;
+}
+
+/* @end Comment thread style */

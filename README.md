@@ -17,4 +17,9 @@ npm run-script build
 The `serve` command can be used instead of `build` to start a auto-reloading
 web server.
 
+Comment threads are made as GitHub issues. You can comment directly on the site
+at the bottom of each post, or on [an existing issue on GitHub][issues] if one
+exists.
+
 [blog]: https://alexpearce.me
+[issues]: https://github.com/alexpearce/alexpearce.github.com/issues?q=is%3Aissue+label%3Acomments+

@@ -6,6 +6,11 @@
   <title>{% if title %}{{ title | escape }} - {% endif %}{{ site.title | escape }}</title>
   <meta name="description" content="{% if description %}{{ description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
+  <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  {%- comment %}This OpenGraph attribute is used for titling GitHub issue comment threads.{% endcomment %}
+  <meta property="og:title" content="{{ title | escape }}">
+  <meta property="og:description" content="{{ description | strip_html | strip_newlines | truncate: 160 }}">
+
   <link rel="icon" href="{{ "/assets/img/favicon-32x32.png" | prepend: site.baseurl }}">
   <link rel="apple-touch-icon" href="{{ "/assets/img/favicon-120x120.png" | prepend: site.baseurl }}" sizes="120x120">
   <link rel="apple-touch-icon" href="{{ "/assets/img/favicon-152x152.png" | prepend: site.baseurl }}" sizes="152x152">
