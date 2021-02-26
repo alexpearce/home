@@ -119,4 +119,4 @@ Caveats
 Source
 ------
 
-You can view the [final JavaScript on Github](https://github.com/alexpearce/alexpearce.github.com/blob/ab1690f74c1fdb0592e2a15668e5d90f61f08c13/assets/js/alexpearce.js). I’ve tried to concisely document any thing particularly funky.
+You can view the [final JavaScript on Github](https://github.com/alexpearce/home/blob/ab1690f74c1fdb0592e2a15668e5d90f61f08c13/assets/js/alexpearce.js). I’ve tried to concisely document any thing particularly funky.

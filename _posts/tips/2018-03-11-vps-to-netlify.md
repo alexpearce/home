@@ -128,7 +128,7 @@ things to be stable enough for the next few years.
 [ghpages]: https://pages.github.com/
 [amazons3]: https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html
 [s3ssl]: https://www.josephecombs.com/2018/03/05/how-to-make-an-AWS-S3-static-website-with-ssl
-[blogsrc]: https://github.com/alexpearce/alexpearce.github.com
+[blogsrc]: https://github.com/alexpearce/home
 [netlify]: https://www.netlify.com/
 [netlifyplans]: https://www.netlify.com/pricing/
 [netlifysignup]: https://app.netlify.com/signup

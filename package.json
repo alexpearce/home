@@ -10,9 +10,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:alexpearce/alexpearce.github.com.git"
+    "url": "git@github.com:alexpearce/home.git"
   },
-  "homepage": "https://github.com/alexpearce/alexpearce.github.com",
+  "homepage": "https://github.com/alexpearce/home",
   "keywords": [
     "blog"
   ],

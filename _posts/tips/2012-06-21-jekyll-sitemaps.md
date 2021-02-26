@@ -26,4 +26,4 @@ Listing the index pages was slightly harder, as the template data `sites.tags` i
 
 We just need to use the [liquid filter]() `first` to get the category name, and equally for tags.
 
-Consolidating it all into a `sitemap.xml` might yield [something like mine](http://github.com/alexpearce/alexpearce.github.com/blob/master/sitemap.xml). If you have any extra pages you can add these in a similar way to posts. Nice!
+Consolidating it all into a `sitemap.xml` might yield [something like mine](http://github.com/alexpearce/home/blob/master/sitemap.xml). If you have any extra pages you can add these in a similar way to posts. Nice!

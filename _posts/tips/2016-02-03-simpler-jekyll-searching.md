@@ -99,7 +99,7 @@ The logic I went for goes like this:
 There are many ways you could write the JavaScript logic, but you can view what 
 I ended up with [on GitHub][4].
 
-[4]: https://github.com/alexpearce/alexpearce.github.com/blob/c18e2c8fcdaecfe016b9ac4373fe433fa20a9d2a/assets/js/alexpearce.js#L64-L73
+[4]: https://github.com/alexpearce/home/blob/c18e2c8fcdaecfe016b9ac4373fe433fa20a9d2a/assets/js/alexpearce.js#L64-L73
 
 # Wrap up
 

@@ -22,4 +22,4 @@ at the bottom of each post, or on [an existing issue on GitHub][issues] if one
 exists.
 
 [blog]: https://alexpearce.me
-[issues]: https://github.com/alexpearce/alexpearce.github.com/issues?q=is%3Aissue+label%3Acomments+
+[issues]: https://github.com/alexpearce/home/issues?q=is%3Aissue+label%3Acomments+
