@@ -27,7 +27,7 @@ The above will be transformed in to
 <% endfor %>
 ```
 
-The replacement is done with JavaScript via `replaceERBTags($el)`, where `$el` is a jQuery object of the element containing the tags to be replaced. The function itself is nothing complex, in fact it’s so simple I can’t show it because it can’t escape itself! So you’ll have to be content with viewing it [on GitHub](https://github.com/alexpearce/alexpearce.github.com/blob/37f92f56e4cf85f96361f52baa523ab1dd900398/assets/js/alexpearce.js#L113).
+The replacement is done with JavaScript via `replaceERBTags($el)`, where `$el` is a jQuery object of the element containing the tags to be replaced. The function itself is nothing complex, in fact it’s so simple I can’t show it because it can’t escape itself! So you’ll have to be content with viewing it [on GitHub](https://github.com/alexpearce/home/blob/37f92f56e4cf85f96361f52baa523ab1dd900398/assets/js/alexpearce.js#L113).
 
 Syntax Highlighting
 -------------------

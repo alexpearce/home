@@ -353,7 +353,7 @@ I'd be happy working with Eleventy in the future on other projects. But I'll pro
 [^2]: You can't open the `.html` output files in your browser, as the internal links are likely absolute, relative to your `site.baseurl`, so your stylesheets and stuff won't load.
 
 [lockdown]: https://en.wikipedia.org/wiki/COVID-19_pandemic_lockdowns
-[depmrs]: https://github.com/alexpearce/alexpearce.github.com/pull/1
+[depmrs]: https://github.com/alexpearce/home/pull/1
 [netlify_switch]: {% post_url collections.posts, 'vps-to-netlify' %}
 [eleventy]: https://www.11ty.dev
 [eleventy_docs]: https://www.11ty.dev/docs/getting-started/
@@ -365,22 +365,22 @@ I'd be happy working with Eleventy in the future on other projects. But I'll pro
 [md_anchors]: https://github.com/valeriangalliat/markdown-it-anchor
 [markdown_config]: https://www.11ty.dev/docs/languages/markdown/
 [markdown-it]:  https://github.com/markdown-it/markdown-it
-[jekyll_config]: https://github.com/alexpearce/alexpearce.github.com/blob/87b6adbf14a31c829fa49308580cbd139696bb65/_config.yml
-[jekyll_url_config]: https://github.com/alexpearce/alexpearce.github.com/blob/87b6adbf14a31c829fa49308580cbd139696bb65/_config.yml#L8
+[jekyll_config]: https://github.com/alexpearce/home/blob/87b6adbf14a31c829fa49308580cbd139696bb65/_config.yml
+[jekyll_url_config]: https://github.com/alexpearce/home/blob/87b6adbf14a31c829fa49308580cbd139696bb65/_config.yml#L8
 [cool_uris]: https://www.11ty.dev/docs/permalinks/#cool-uris-dont-change
 [post_url_post]: https://rusingh.com/articles/2020/04/24/implement-jekyll-post-url-tag-11ty-shortcode/
 [collections]: https://www.11ty.dev/docs/collections/
 [passthrough]: https://www.11ty.dev/docs/copy/
 [tag_search_listing]: {% post_url collections.posts, 'simpler-jekyll-searching' %}
 [eleventy_pagination]: https://www.11ty.dev/docs/pagination/
-[blog_pagination]: https://github.com/alexpearce/alexpearce.github.com/blob/503b753ff601db7c5303f5138abe9504feccd166/blog.html#L8
-[tags_listing]: https://github.com/alexpearce/alexpearce.github.com/blob/503b753ff601db7c5303f5138abe9504feccd166/tags.html#L11
+[blog_pagination]: https://github.com/alexpearce/home/blob/503b753ff601db7c5303f5138abe9504feccd166/blog.html#L8
+[tags_listing]: https://github.com/alexpearce/home/blob/503b753ff601db7c5303f5138abe9504feccd166/tags.html#L11
 [xml_plugin]: https://github.com/jeremenichelli/eleventy-xml-plugin
 [sass]: https://sass-lang.com
 [prism]: https://prismjs.com
 [coupe]: https://www.webstoemp.com/blog/from-jekyll-to-eleventy/
 [base_blog]: https://github.com/11ty/eleventy-base-blog
 [netlify_plugins]: https://docs.netlify.com/configure-builds/build-plugins/
-[source]: https://github.com/alexpearce/alexpearce.github.com
+[source]: https://github.com/alexpearce/home
 [css_variables]: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
-[redirect]: https://github.com/alexpearce/alexpearce.github.com/blob/503b753ff601db7c5303f5138abe9504feccd166/netlify.toml#L11-L14
+[redirect]: https://github.com/alexpearce/home/blob/503b753ff601db7c5303f5138abe9504feccd166/netlify.toml#L11-L14
