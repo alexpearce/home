@@ -13,14 +13,13 @@ so that the applications you use behave consistently.
 
 Managing your dotfiles, the collection of these configuration files, is then a 
 neat thing to do.
-[GitHub][1] even has a [website dedicated to different ways of organising and 
+There are several websites [dedicated to different ways of organising and 
 deploying them][2].
 I recently adopted what I think is nice way of doing it, and doesn't seem to be 
 that common, so I thought I'd share what I'm doing, why, and how you can 
 organise your dotfiles in the same way.
 
-[1]: https://github.com/
-[2]: https://dotfiles.github.com/
+[2]: https://dotfiles.github.io/
 
 ## The dotfiles repository
 
