@@ -207,4 +207,4 @@ Stow is a neat way to manage a [dotfiles folder][2].
 If you need a more concrete example of using stow, you can check out [my 
 dotfiles repository on GitHub][11].
 
-[11]: https://github.com/alexpearce/dotfiles
+[11]: https://github.com/alexpearce/dotfiles/tree/4f1feee1e4bc71f2ba5774af44eed1da774510a0
