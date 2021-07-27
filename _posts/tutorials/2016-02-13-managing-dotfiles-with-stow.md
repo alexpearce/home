@@ -4,6 +4,12 @@ tags: [Tutorials, Terminal, sysadmin]
 description: How to organise and deploy dotfiles using GNU stow.
 ---
 
+<div class="alert">
+  <a href="{% post_url collections.posts, 'managing-dotfiles-with-nix' %}">
+    So you like configuration? Try the Nix version of this tutorial!
+  </a>
+</div>
+
 Dotfiles are text files that are used to configure applications you run on the 
 command line (in a terminal). They might tell your editor what colours to use, 
 or what environment variables should be defined in your shell.
@@ -201,4 +207,4 @@ Stow is a neat way to manage a [dotfiles folder][2].
 If you need a more concrete example of using stow, you can check out [my 
 dotfiles repository on GitHub][11].
 
-[11]: https://github.com/alexpearce/dotfiles
+[11]: https://github.com/alexpearce/dotfiles/tree/4f1feee1e4bc71f2ba5774af44eed1da774510a0
