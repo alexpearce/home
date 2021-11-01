@@ -20,6 +20,9 @@ module.exports = function (eleventyConfig) {
   // Copy anything in the assets/ folder verbatim
   eleventyConfig.addPassthroughCopy("assets");
 
+  // Copy Netlify redirect configuration
+  eleventyConfig.addPassthroughCopy("_redirects");
+
   // Define a posts collection for all blog posts
   eleventyConfig.addCollection("posts", function(collectionApi) {
     return collectionApi.getFilteredByGlob("_posts/**/*.md");
