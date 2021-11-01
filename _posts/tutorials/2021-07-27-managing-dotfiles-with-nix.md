@@ -104,32 +104,37 @@ manager and GNU Stow.
 
 ## Installing Nix
 
-For **Linux** systems the [official installation instructions][install-nix] should suffice.
-
-For **macOS** there are [a few rough edges][nix-macos-issues] with the latest
-stable release, but [we can use][nix-macos-issues-comment] an [unstable
-build][nix-unstable] instead:
+The [official installation instructions][install-nix] are the best place to
+start. Linux and macOS (on x86 and ARM) are both well supported.
 
 ```shell
-$ curl -L https://github.com/numtide/nix-flakes-installer/releases/download/nix-2.4pre20210604_8e6ee1b/install -o install.sh
-$ sh install.sh
+$ curl -L https://nixos.org/nix/install -o install.sh
+$ sh install.sh --darwin-use-unencrypted-nix-store-volume
+…
+Installation finished!  To ensure that the necessary environment
+variables are set, either log in again, or type
+
+  . /Users/apearce/.nix-profile/etc/profile.d/nix.sh
+
+in your shell.
 ```
 
-Whichever installer you use, it will guide you through the process and check
-that you're happy to proceed at each step.
+The installer will quickly setup your system with the `/nix` folder, where
+packages will be installed, and the binaries we'll use to administer it.
 
 If your default shell is **bash** or **zsh** then you should be able to start a new
 shell and verify that you now have Nix installed:
 
 ```shell
 $ nix-shell -p nix-info --run "nix-info -m"
- - system: `"x86_64-darwin"`
- - host os: `Darwin 20.5.0, macOS 10.16`
- - multi-user?: `yes`
+…
+ - system: `"aarch64-darwin"`
+ - host os: `Darwin 21.1.0, macOS 12.0.1`
+ - multi-user?: `no`
  - sandbox: `no`
- - version: `nix-env (Nix) 2.4pre20210604_8e6ee1b`
- - channels(root): `"nixpkgs-21.11pre303435.077b2825cd3"`
- - nixpkgs: `/nix/var/nix/profiles/per-user/root/channels/nixpkgs`
+ - version: `nix-env (Nix) 2.3.16`
+ - channels(apearce): `"nixpkgs-21.11pre326545.9303cc04458"`
+ - nixpkgs: `/Users/apearce/.nix-defexpr/channels/nixpkgs`
 ```
 
 If your default shell is [**fish**][fish] (heck yeah! 🐟) then this won't work
@@ -158,14 +163,16 @@ longer be available.
 $ which cowsay
 
 $ nix-shell -p cowsay
-this path will be fetched (0.01 MiB download, 0.05 MiB unpacked):
-  /nix/store/3gf5x0yhix0ixs7kqh4g08r803gdp4rl-cowsay-3.04
-copying path '/nix/store/3gf5x0yhix0ixs7kqh4g08r803gdp4rl-cowsay-3.04' from 'https://cache.nixos.org'...
+these paths will be fetched (7.62 MiB download, 48.87 MiB unpacked):
+  /nix/store/frs6r654963v8klf875n8755a24x4z66-cowsay-3.04
+  /nix/store/v1aja3gzmzxr112ndr2dbm9km82bv9rb-perl-5.34.0
+copying path '/nix/store/v1aja3gzmzxr112ndr2dbm9km82bv9rb-perl-5.34.0' from 'https://cache.nixos.org'...
+copying path '/nix/store/frs6r654963v8klf875n8755a24x4z66-cowsay-3.04' from 'https://cache.nixos.org'...
 
 [nix-shell:~]$ which cowsay
-/nix/store/3gf5x0yhix0ixs7kqh4g08r803gdp4rl-cowsay-3.04/bin/cowsay
+/nix/store/frs6r654963v8klf875n8755a24x4z66-cowsay-3.04/bin/cowsay
 
-[nix-shell:~]$ echo 'Moo?' | cowsay
+[nix-shell:~]$ cowsay 'Moo?'
  ______
 < Moo? >
  ------
@@ -256,36 +263,6 @@ It'll look something like this:
 ```
 
 All that's left for us to do is edit this to suit our needs.
-
-### Aside: working around an error
-
-The Home Manager installation threw up this message for me:
-
-```
-Creating initial Home Manager configuration...
-
-Creating initial Home Manager generation...
-
-/nix/store/pzgyx2m7n6szgd95hhnpgdh55pkmv2p3-home-manager/bin/home-manager: line 71: NIX_PATH: unbound variable
-
-Uh oh, the installation failed! Please create an issue at
-
-    https://github.com/nix-community/home-manager/issues
-
-if the error seems to be the fault of Home Manager.
-```
-
-My `NIX_PATH` environment indeed was (and still is today) empty. I tried to
-figure out [what a valid value might
-be](https://github.com/LnL7/nix-darwin/issues/46#issuecomment-856705028) and
-gave it another go:
-
-```shell
-$ export NIX_PATH="nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixpkgs:$HOME/.nix-defexpr/channels"
-$ nix-shell '<home-manager>' -A install
-```
-
-Then the `home-manager` executable worked as above.
 
 ## Configuring Home Manager
 
@@ -735,6 +712,15 @@ resources helped me along the way.
 - The [Nixology][nixology] playlist.
 - The NixOS [reddit][nixos-reddit] and [Discourse][nixos-discourse] community discussions.
 
+---
+
+## Updates
+
+There was a bit of churn around Nix installation on macOS mid-2021. This post
+was updated in November 2021 to move away from temporary fixes to more stable
+installers. Some Home Manager workarounds are no longer needed and so were
+removed.
+
 [stow-post]: {% post_url collections.posts, 'managing-dotfiles-with-stow' %}
 [homebrew]: https://brew.sh
 [nix]: https://nixos.org/
@@ -743,9 +729,6 @@ resources helped me along the way.
 [home.nix]: https://github.com/alexpearce/dotfiles/blob/d444f75b1ae800ce4dc2f70dea4357cedd245263/home.nix
 
 [install-nix]: https://nixos.org/download.html
-[nix-macos-issues]: https://github.com/NixOS/nix/pull/4289
-[nix-macos-issues-comment]: https://news.ycombinator.com/item?id=27826541
-[nix-unstable]: https://github.com/numtide/nix-unstable-installer
 [fish]: https://fishshell.com/
 [fish-nix-support]: https://github.com/NixOS/nix/issues/1512
 [fish-nix-env]: https://github.com/lilyball/nix-env.fish
