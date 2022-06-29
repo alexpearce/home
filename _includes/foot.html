@@ -32,24 +32,7 @@
     });
   }
 
-  /** Cycle through each `--highlight-color-n` on each page load.
-   *
-   * Total number of colors defined by `--highlight-color-count` variable.
-   *
-   * Why change the page color every refresh? Who knows! 🌈
-   */
-  window.addEventListener("DOMContentLoaded", (event) => {
-    // Local storage key to hold the next value of `n` to set.
-    const ls_key = "current_color";
-
-    const root = document.documentElement;
-    const ncolors = parseInt(window.getComputedStyle(root).getPropertyValue("--highlight-color-count"));
-    // Get the value to set, or set the first value if this is the first visit.
-    const current_color = parseInt(window.localStorage.getItem(ls_key)) || 0;
-    // Set the color (+ 1 as the CSS variables are 1-indexed).
-    root.style.setProperty("--highlight-color", `var(--highlight-color-${current_color + 1})`);
-    window.localStorage.setItem(ls_key, (current_color + 1) % ncolors);
-
+  window.addEventListener("DOMContentLoaded", (_event) => {
     loadMaps();
   });
 </script>

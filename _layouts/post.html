@@ -4,10 +4,10 @@ layout: default
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline"><a href="{{ page.url }}">{{ title }}</a></h1>
-    <span class="post-date with-icon"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">Published on {{ page.date | date: "%d %B %Y" }}</time></span>
-    <ul class="post-tags with-icon">
+    <span class="post-date"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">Published on {{ page.date | date: "%d %B %Y" }}</time></span>
+    <ul class="post-tags">
       {% for tag in tags %}
-        <li><a href="/blog/tags/{{ tag | slug }}/">{{ tag }}</a></li>
+        <li><a href="/blog/tags/{{ tag | slug }}/">#{{ tag }}</a></li>
       {% endfor %}
     </ul>
   </header>
