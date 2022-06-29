@@ -208,8 +208,8 @@ ul, ol {
 
 /* @end Typography */
 
-img {
-  /* Images expand to fit their container */
+img, video {
+  /* Media expands to fit its container */
   width: 100%;
 }
 
