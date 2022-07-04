@@ -109,7 +109,7 @@ start. Linux and macOS (on x86 and ARM) are both well supported.
 
 ```shell
 $ curl -L https://nixos.org/nix/install -o install.sh
-$ sh install.sh --darwin-use-unencrypted-nix-store-volume
+$ sh install.sh
 …
 Installation finished!  To ensure that the necessary environment
 variables are set, either log in again, or type
@@ -129,12 +129,12 @@ shell and verify that you now have Nix installed:
 $ nix-shell -p nix-info --run "nix-info -m"
 …
  - system: `"aarch64-darwin"`
- - host os: `Darwin 21.1.0, macOS 12.0.1`
- - multi-user?: `no`
+ - host os: `Darwin 21.5.0, macOS 12.4`
+ - multi-user?: `yes`
  - sandbox: `no`
- - version: `nix-env (Nix) 2.3.16`
- - channels(apearce): `"nixpkgs-21.11pre326545.9303cc04458"`
- - nixpkgs: `/Users/apearce/.nix-defexpr/channels/nixpkgs`
+ - version: `nix-env (Nix) 2.9.2`
+ - channels(root): `"nixpkgs"`
+ - nixpkgs: `/nix/var/nix/profiles/per-user/root/channels/nixpkgs`
 ```
 
 If your default shell is [**fish**][fish] (heck yeah! 🐟) then this won't work
