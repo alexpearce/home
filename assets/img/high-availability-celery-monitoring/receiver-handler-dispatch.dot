@@ -1,0 +1,12 @@
+digraph {
+  rankdir=LR;
+  node [style="filled", color="#94a3b8", fillcolor="#f1f5f9", fontname="Helvetica Neue"];
+  edge [color="#64748b"];
+
+  receiver [label="Receiver", shape="ellipse"];
+  consumer_a [label="announce_failed_tasks()", fontname="monospace"];
+  consumer_b [label="state.event()", fontname="monospace"];
+
+  receiver -> consumer_a [label="task-failed", fontname="monospace"];
+  receiver -> consumer_b [label="*", fontname="monospace"];
+}
