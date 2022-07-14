@@ -1,0 +1,47 @@
+digraph {
+  rankdir=LR;
+  fontname="Helvetica Neue";
+  node [style="filled", color="#94a3b8", fillcolor="#f1f5f9", fontname="Helvetica Neue"];
+  edge [color="#64748b"];
+
+  producer [label="Producer"];
+
+  subgraph cluster_exchange {
+    label="type=topic";
+    labelloc="b";
+    color=transparent;
+    fontname="monospace";
+    exchange [label="Exchange", shape="ellipse"];
+  }
+
+  subgraph cluster_queue_a {
+    // Use this label to label the 'column' of queues
+    label="Queues";
+    color=transparent;
+    queue_a [label="{||||}", shape="record"];
+  }
+
+  subgraph cluster_queue_b {
+    // label="Queue B";
+    color=transparent;
+    queue_b [label="{||||}", shape="record"];
+  }
+
+  subgraph cluster_queue_c {
+    // label="Queue C";
+    color=transparent;
+    queue_c [label="{||||}", shape="record"];
+  }
+
+  consumer_a [label="Consumer A"];
+  consumer_b [label="Consumer B"];
+  consumer_c [label="Consumer C"];
+
+  producer -> exchange;
+  exchange -> queue_a [label="#", fontname="monospace"];
+  queue_a -> consumer_a;
+  exchange -> queue_b [label="worker.*", fontname="monospace"];
+  queue_b -> consumer_b;
+  exchange -> queue_c [label="*.error", fontname="monospace"];
+  queue_c -> consumer_c;
+}

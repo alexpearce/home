@@ -1,0 +1,32 @@
+digraph {
+  rankdir=LR;
+  fontname="Helvetica Neue";
+  node [style="filled", color="#94a3b8", fillcolor="#f1f5f9", fontname="Helvetica Neue"];
+  edge [color="#64748b"];
+
+  producer [label="Producer"];
+
+  subgraph cluster_exchange {
+    label="name=celeryev\ntype=topic";
+    labelloc="b";
+    color=transparent;
+    fontname="monospace";
+    exchange [label="Exchange", shape="ellipse"];
+  }
+
+  subgraph cluster_queue_a {
+    label="Queue A";
+    color=transparent;
+    queue_a [label="{||||}", shape="record"];
+  }
+
+  consumer_a [label="Receiver A"];
+  consumer_b [label="Receiver B"];
+  consumer_c [label="Receiver C"];
+
+  producer -> exchange;
+  exchange -> queue_a [label="#", fontname="monospace"];
+  queue_a -> consumer_a;
+  queue_a -> consumer_b;
+  queue_a -> consumer_c;
+}

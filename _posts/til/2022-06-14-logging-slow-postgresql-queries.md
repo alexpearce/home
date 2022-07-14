@@ -1,7 +1,7 @@
 ---
 title: "TIL: Logging and analysing slow PostgreSQL queries"
 tags: [TIL, SQL, PostgreSQL]
-description:
+description: How to leverage existing PostgreSQL configuration to find slow queries in your application.
 ---
 
 SQL is a wonderful, declarative abstraction over the details of fetching
