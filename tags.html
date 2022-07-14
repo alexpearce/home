@@ -20,11 +20,11 @@ permalink: "/blog/tags/{{ tag | slug }}/"
         {{ post.data.title }}
       </a>
     </span>
-    <span class="post-tags">
+    <ul class="post-tags">
       {% for tag in post.data.tags %}
-        <a href="/blog/tags/{{ tag | slug }}/">#{{ tag }}</a>
+        <li><a href="/blog/tags/{{ tag | slug }}/">#{{ tag }}</a></li>
       {% endfor %}
-    </span>
+    </ul>
   </li>
 {% endfor -%}
 </ul>
