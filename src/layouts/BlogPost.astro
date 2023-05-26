@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Comments from "../components/Comments.astro";
+import LongDate from "../components/LongDate.astro";
+import slugify from "../lib/slugging";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, date, tags, comments } = Astro.props;
+console.log(title, comments);
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <article>
+        <header class="post-header">
+          <h1 class="post-title">{title}</h1>
+          <span class="post-date">Published on <LongDate date={date} /></span>
+          <ul class="post-tags">
+            {
+              tags.map((tag) => (
+                <li>
+                  <a href={`/blog/tags/${slugify(tag)}`}>#{tag}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </header>
+        <div>
+          <slot />
+        </div>
+        <footer>
+          <a class="top" href="#">back to top ↑</a>
+        </footer>
+        {comments && <Comments/>}
+      </article>
+    </main>
+  </body>
+</html>

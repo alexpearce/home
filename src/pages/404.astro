@@ -1,0 +1,22 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title="404 Not Found" description="The page you requested is not known to this server." social={false} />
+  </head>
+  <body>
+    <Header/>
+    <main>
+      <header>
+        <h1>404 Not Found</h1>
+        <h2>Tough luck.</h2>
+      </header>
+      <p>There doesn't appear to be anything here. Sorry about that.</p>
+      <p>If you've followed a link expecting something to be here, you can <a href="mailto:alex@alexpearce.me?subject=Page%20not%20found">contact me</a>.</a>
+    </main>
+  </body>
+</html>

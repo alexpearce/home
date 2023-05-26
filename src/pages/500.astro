@@ -1,0 +1,22 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title="500 Internal Server Error" description="The server encountered an error while processing your request." social={false} />
+  </head>
+  <body>
+    <Header/>
+    <main>
+      <header>
+        <h1>500 Internal Server Error</h1>
+        <h2>Ouch.</h2>
+      </header>
+      <p>There's a problem with my server.</p>
+      <p>Hopefully I'm already running around trying to fix it, but feel free to <a href="mailto:alex@alexpearce.me?subject=Server%20error">contact me</a> if the problem persists.</p>
+    </main>
+  </body>
+</html>

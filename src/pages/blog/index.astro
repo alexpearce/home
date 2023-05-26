@@ -1,0 +1,51 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import getPosts from "../../lib/posts";
+import ShortDate from "../../components/ShortDate.astro";
+import slugify from "../../lib/slugging";
+
+const posts = await getPosts("desc");
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>Posts</h1>
+      <ul class="post-index">
+        {
+          posts.map((post) => (
+            <li>
+              <span class="post-date">
+                <ShortDate date={post.data.date} />
+              </span>
+              <span class="post-title">
+                <a title={post.data.description} href={`/${post.slug}/`}>
+                  {post.data.title}
+                </a>
+              </span>
+              <ul class="post-tags">
+                {
+                  post.data.tags.map((tag) => (
+                    <li>
+                      <a href={`/blog/tags/${slugify(tag)}`}>#{tag}</a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </li>
+          ))
+        }
+      </ul>
+      <footer>
+        <span><a href="/atom.xml">RSS feed</a></span>
+      </footer>
+    </main>
+  </body>
+</html>

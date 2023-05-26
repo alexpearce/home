@@ -1,0 +1,67 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <p>Hi!</p>
+      <p>
+        I like to spend time writing computer programs that try to solve
+        interesting problems, including statistical analysis, web APIs,
+        optimisation, and developer happiness.
+      </p>
+      <p>
+        I enjoy working in small teams building products from conception to production.
+        After spending most of my career in Python and C++ I'm currently learning and loving Elixir.
+        I'm also a big Nix proponent, using it to manage my development environments, and would enjoy using it more often!
+      </p>
+      <p>
+        <a href="https://www.linkedin.com/in/alex--pearce/">Currently</a> I’m an
+        engineer at <a href="https://www.multiverse.io/en-GB">Multiverse</a>, providing apprenticeships
+        as an alternative to university.
+        Before that I was VP of Software at <a href="https://www.mystic.ai">Mystic AI</a>, a
+        serverless GPU platform for machine learning workloads.
+      </p>
+      <p>
+        Previously I was a high-energy particle physics research scientist at
+        <a href="https://home.cern">CERN</a>. As a member of the <a
+          href="https://lhcb.cern.ch">LHCb</a
+        > collaboration I focused on
+        <a
+          href="https://lhcbproject.web.cern.ch/Publications/LHCbProjectPublic/LHCb-PAPER-2015-041.html"
+          >charm</a
+        >
+        <a
+          href="https://lhcbproject.web.cern.ch/Publications/LHCbProjectPublic/LHCb-PAPER-2016-042.html"
+          >production</a
+        > and <a
+          href="https://lhcbproject.web.cern.ch/Publications/LHCbProjectPublic/LHCb-PAPER-2017-044.html"
+          >matter-anti-matter asymmetry</a
+        >
+        measurements as well as the experiment’s <a
+          href="https://lhcbproject.web.cern.ch/Publications/LHCbProjectPublic/LHCb-DP-2019-002.html"
+          >real-time data processing systems</a
+        >.
+      </p>
+      <p>
+        When I make something neat I put it on <a
+          href="https://github.com/alexpearce">GitHub</a
+        >, and when I solve a problem that others might have I write about it
+        here on my <a href="/blog/">blog</a>.
+      </p>
+      <p>
+        Please feel free to <a href="mailto:alex@alexpearce.me?subject=Hello"
+          >contact me</a
+        > if you have any questions!
+      </p>
+    </main>
+  </body>
+</html>

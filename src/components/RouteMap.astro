@@ -1,0 +1,55 @@
+---
+interface Props {
+  route: string;
+}
+
+const { route } = Astro.props;
+---
+
+<script>
+  import L from "leaflet";
+  import _ from "leaflet-gpx";
+  import "leaflet/dist/leaflet.css";
+
+  const containers = document.getElementsByClassName("route-map");
+  Array.prototype.forEach.call(containers, (el) => {
+    // Check that the element defines the required data
+    const route_url = el.dataset["route"];
+    if (route_url === undefined) {
+      console.error(
+        "Route map element does not define data-route property",
+        el
+      );
+    }
+
+    // Set up the map
+    const map = L.map(el);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution:
+        '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>',
+    }).addTo(map);
+    L.control.scale().addTo(map);
+
+    // Use Icon class which takes marker images from our own resources.
+    const icon = L.icon({
+      ...L.Icon.Default.prototype.options,
+      iconUrl : "/img/marker-icon.png",
+      iconRetinaUrl : "/img/marker-icon-2x.png",
+      shadowUrl : "/img/marker-shadow.png",
+    });
+    // Fetch the GPX file and add it to the map
+    new L.GPX(route_url, {
+      async: true,
+      marker_options: {
+        startIcon: icon,
+        endIcon: icon,
+        wptIcons: { "": icon },
+      },
+    })
+      .on("loaded", (event) => map.fitBounds(event.target.getBounds()))
+      .addTo(map);
+  });
+</script>
+
+<div class="route-map" data-route={route}></div>
