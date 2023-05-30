@@ -8,6 +8,9 @@ package = "netlify-plugin-no-more-404"
   # change this key to a new one any time you need to restart from scratch
   cacheKey = "2020-06-19v2"
 
+[[plugins]]
+package = "netlify-plugin-append-redirects"
+
 [[redirects]]
 from = "/search/"
 to = "/blog/tags/:tag/"

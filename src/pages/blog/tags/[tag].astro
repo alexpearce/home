@@ -1,0 +1,68 @@
+---
+import type { InferGetStaticParamsType, InferGetStaticPropsType } from 'astro';
+import BaseHead from "../../../components/BaseHead.astro";
+import Header from "../../../components/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../../consts";
+import getPages from "../../../lib/posts";
+import ShortDate from "../../../components/ShortDate.astro";
+import slugify from "../../../lib/slugging";
+
+export async function getStaticPaths() {
+  const posts = await getPages("desc");
+  const allTags = posts.flatMap((post) => post.data.tags).map(slugify);
+  const tags = [...new Set(allTags)].map(slugify);
+  return tags.map((tag) => ({
+    params: { tag: tag },
+    props: {
+      posts: posts.filter((post) => post.data.tags.map(slugify).includes(tag)),
+    },
+  }));
+}
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { tag } = Astro.params as Params;
+const { posts } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>{`#${slugify(tag)}`} posts</h1>
+      <!-- TODO extract out the post listing; it is common between the blog and tag indices. -->
+      <ul class="post-index">
+        {
+          posts.map((post) => (
+            <li>
+              <span class="post-date">
+                <ShortDate date={post.data.date} />
+              </span>
+              <span class="post-title">
+                <a title={post.data.description} href={`/${post.slug}/`}>
+                  {post.data.title}
+                </a>
+              </span>
+              <ul class="post-tags">
+                {
+                  post.data.tags.map((tag) => (
+                    <li>
+                      <a href={`/blog/tags/${slugify(tag)}`}>#{tag}</a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </li>
+          ))
+        }
+      </ul>
+      <footer>
+        <span><a href="/blog/">all posts</a></span>
+      </footer>
+    </main>
+  </body>
+</html>
