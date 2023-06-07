@@ -2,3 +2,7 @@ https://www.alexpearce.me/* https://alexpearce.me/:splat 301!
 https://alex.pearwin.com/* https://alexpearce.me/:splat 301!
 /blog/page2/ /blog/
 /blog/page3/ /blog/
+# Proxy requests for the Plausible script and API.
+# https://plausible.io/docs/proxy/guides/netlify
+/js/script.js https://plausible.io/js/script.js 200
+/api/event https://plausible.io/api/event 200

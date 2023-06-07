@@ -1,6 +1,12 @@
 [[plugins]]
 package = "netlify-plugin-checklinks"
 
+  [plugins.inputs]
+  skipPatterns = [
+    # The Plausible script is proxied and so does not map to a file in the build.
+    "/js/script.js",
+  ]
+
 [[plugins]]
 package = "netlify-plugin-no-more-404"
 
