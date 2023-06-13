@@ -22,23 +22,27 @@ const posts = await getPosts("desc");
         {
           posts.map((post) => (
             <li>
-              <span class="post-date">
-                <ShortDate date={post.data.date} />
-              </span>
-              <span class="post-title">
-                <a title={post.data.description} href={`/${post.slug}/`}>
-                  {post.data.title}
-                </a>
-              </span>
-              <ul class="post-tags">
-                {
-                  post.data.tags.map((tag) => (
-                    <li>
-                      <a href={`/blog/tags/${slugify(tag)}`}>#{tag}</a>
-                    </li>
-                  ))
-                }
-              </ul>
+              <div>
+                <span class="post-date">
+                  <ShortDate date={post.data.date} />
+                </span>
+              </div>
+              <div>
+                <span class="post-title">
+                  <a title={post.data.description} href={`/${post.slug}/`}>
+                    {post.data.title}
+                  </a>
+                </span>
+                <ul class="post-tags">
+                  {
+                    post.data.tags.map((tag) => (
+                      <li>
+                        <a href={`/blog/tags/${slugify(tag)}`}>#{tag}</a>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
             </li>
           ))
         }

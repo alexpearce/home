@@ -76,7 +76,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin: 20px;
-  padding: 24px;
+  padding: 12px;
 }
 
 .masthead h1 {
@@ -107,7 +107,7 @@ body {
 
 main {
   margin: 0 20px 20px 20px;
-  padding: 0 24px 24px 24px;
+  padding: 0 12px 24px 12px;
 }
 
 @media only screen and (min-width: 740px) {
@@ -248,6 +248,14 @@ img, video {
 
 /* @begin Post listing and posts */
 
+ul.post-index {
+  padding-left: 0;
+}
+
+.post-index li {
+  display: flex;
+}
+
 .post-index li {
   margin: 0;
   padding: 0;
@@ -259,12 +267,11 @@ img, video {
   width: 5em;
   margin: 0 1em 0 0;
   font-weight: bold;
-  text-align: right;
 }
 
 .post-index .post-tags {
   display: flex;
-  margin: 0 0 0 6em;
+  flex-wrap: wrap;
 }
 
 .post-tags a {
