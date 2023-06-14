@@ -3,13 +3,10 @@ title: ROOT on OS X 10.8 with CMake and Homebrew
 date: 2012-08-03
 tags: [Tutorials, ROOT, OS X]
 description: A step-by-step guide to install to high energy physics framework ROOT on OS X 10.8 with CMake and Homebrew.
+archived: true
 ---
 
-<div class="alert">
-  <a href="/2016/02/root-on-os-x-el-capitan/">
-    Running OS X 10.9 Mavericks? Check out the latest tutorial.
-  </a>
-</div>
+**Note**: Running OS X 10.9 Mavericks or later? Check out [the latest tutorial](/2016/02/root-on-os-x-el-capitan/).
 
 With Mountain Lion, the latest version of OS X, having been [recently released](http://www.theverge.com/2012/7/25/3186764/apple-os-x-10-8-mountain-lion-released), there’s been the usual flurry of blog posts on how to [survive the upgrade](http://robots.thoughtbot.com/post/27985816073/the-hitchhikers-guide-to-riding-a-mountain-lion).
 

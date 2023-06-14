@@ -3,6 +3,7 @@ title: Python and ROOT on OS X
 date: 2013-02-25
 tags: [Tips, ROOT, Python, OSX]
 description: Fixing an ImportError from libPyROOT on OS X
+archived: true
 ---
 
 I don’t find myself using [ROOT](http://root.cern.ch/drupal/) much on my home machine, but when I do there’s usually something broken.

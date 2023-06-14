@@ -4,6 +4,7 @@ date: 2012-05-18
 tags: [Physics, Python, LaTeX]
 description: A computational physics project on ‘Masses of S-State Quarkonium via the Roots of the Airy Function Ai(x)’.
 comments: false
+archived: true
 ---
 
 As part of my degree I’m taking a computing course which requires two project reports. The second was on finding the roots of [the first Airy function](http://mathworld.wolfram.com/AiryFunctions.html) in order to find the charm and beauty quark masses. The first one is in a [previous post](/2012/04/scattering-cross-sections/).

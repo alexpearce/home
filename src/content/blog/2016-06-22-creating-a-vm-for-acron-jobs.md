@@ -3,6 +3,7 @@ title: Creating a virtual machine for acron jobs
 date: 2016-06-22
 tags: [Tutorials, Terminal, sysadmin, CERN]
 description: How to creating and set up a virtual machine for running acron jobs in the CERN network.
+archived: true
 ---
 
 Running periodic jobs with Kerberos authentication on CERN machines is easy 

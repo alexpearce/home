@@ -3,6 +3,7 @@ title: Flask with Apache and Shibboleth authentication
 date: 2014-10-30
 tags: [Tutorials, sysadmin, Python, Apache, CERN]
 description: A step-by-step tutorial on deploying Flask apps to a Linux VPS, running behind Apache with Shibboleth CERN SSO authentication.
+archived: true
 ---
 
 The IT infrastructure at [CERN][1] is well managed and reasonably well documented, but sometimes in can still take a day or two to figure out how to get something up and running there.

@@ -3,6 +3,7 @@ title: Merging ROOT ntuples
 date: 2012-10-28
 tags: [Tips, ROOT, Physics]
 description: How to merge multiple ntuples, in the form ntuple.root, in to a single file.
+archived: true
 ---
 
 You have multiple `.root` files containing ntuples and wish to merge them in to one. For example, you have 3 files called `ntuple.0.root`, `ntuple.1.root`, and `ntuple.2.root`. The structure of each is identical, for instance:

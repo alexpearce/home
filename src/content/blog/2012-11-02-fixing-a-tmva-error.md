@@ -3,6 +3,7 @@ title: Fixing a TMVA error
 date: 2012-11-02
 tags: [Tips, ROOT, TMVA, Physics]
 description: One solution for the TMVA error “signal and background histograms have different or invalid dimensions”.
+archived: true
 ---
 
 If you’re using the multivariate analysis package [TMVA](http://tmva.sourceforge.net) and are running in to the following error on training or testing:
