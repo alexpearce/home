@@ -12,6 +12,7 @@ const blog = defineCollection({
 			.transform((val) => new Date(val)),
 		tags: z.array(z.string()).default([]),
 		comments: z.boolean().default(true),
+		archived: z.boolean().default(false),
 	}),
 });
 

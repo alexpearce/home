@@ -3,6 +3,7 @@ title: Running periodic Kerberos-authenticated jobs with acron
 date: 2016-06-21
 tags: [Tips, Terminal, CERN]
 description: A short guide on how to run periodic jobs with a Kerberos token on CERN's computing resources
+archived: true
 ---
 
 The [`cron` utility][cron] allows you to schedule a program to be run 

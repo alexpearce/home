@@ -3,6 +3,7 @@ title: TBrowser shortcut
 date: 2013-06-29
 tags: [Tips, ROOT]
 description: A shortcut to launch a ROOT TBrowser from the terminal.
+archived: true
 ---
 
 One of the nice features of [ROOT](http://root.cern.ch/), a data analysis framework commonly used in particle physics, is the [`TBrowser`](http://root.cern.ch/root/htmldoc/TBrowser) file browser.

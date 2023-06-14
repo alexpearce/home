@@ -24,6 +24,7 @@
   --mono-stack: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   --background-color: #ffffff;
+  --callout-background-color: #fafafa;
   /* Body text */
   --copy-color: #24292e;
   /* Links, highlight borders, etc (text-violet-600). */
@@ -38,6 +39,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background-color: #38444c;
+    --callout-background-color: #3c4b55;
     --copy-color: #f0f4f8;
     /* text-violet-300 */
     --highlight-color: #c4b5fd;
@@ -369,18 +371,14 @@ blockquote {
   font-style: italic;
 }
 
-.alert {
-  margin: 1em 0;
-  padding: 0.8em 1em;
-  border-radius: 4px;
-  background: var(--highlight-color);
-  text-align: center;
-  color: #fff;
-}
-
-.alert a {
-  color: #fff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+.callout {
+  margin: 1.13em 0;
+  padding: 0 1.25em;
+  background: var(--callout-background-color);
+  border: 1px solid #eee;
+  border-left-width: 0.25rem;
+  border-left-color: var(--highlight-color);
+  border-radius: 0.25rem;
 }
 
 .route-map {

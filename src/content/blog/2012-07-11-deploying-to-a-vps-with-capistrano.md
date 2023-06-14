@@ -3,6 +3,7 @@ title: Deploying with Capistrano
 date: 2012-07-11
 tags: [Tutorials, Capistrano, Ruby, nginx]
 description: A step-by-step tutorial on deploying Ruby and static apps to a VPS with Capistrano.
+archived: true
 ---
 
 Following on from the previous tutorial on [how to set up a Linux VPS for Ruby apps](/2012/06/setting-up-a-vps/), we’ll get a simple Ruby site up-and-running by deploying it to our server with [Capistrano](https://github.com/capistrano/capistrano).

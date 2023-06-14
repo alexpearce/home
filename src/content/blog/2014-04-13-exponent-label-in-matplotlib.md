@@ -3,6 +3,7 @@ title: Exponent labels in matplotlib
 date: 2014-04-13
 tags: [Tips, Python, matplotlib]
 description: How to move and configure the exponent/offset label in matplotlib.
+archived: true
 ---
 
 Creating nice-looking plots in Python is easy with [matplotlib](http://matplotlib.org/).

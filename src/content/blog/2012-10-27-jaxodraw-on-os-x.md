@@ -3,6 +3,7 @@ title: JaxoDraw on OS X with MacTex
 date: 2012-10-27
 tags: [Tips, OS X, Physics]
 description: Tips on running the Feynman diagram generator JaxoDraw on OS X
+archived: true
 ---
 
 Creating [Feynman Diagrams](http://en.wikipedia.org/wiki/Feynman_Diagrams) in LaTeX can be a real pain. There are packages to simplify the process, such as [feynMP](http://osksn2.hep.sci.osaka-u.ac.jp/~taku/osx/feynmp.html), but the syntax is verbose, cumbersome, and unintuitive.

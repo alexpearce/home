@@ -3,6 +3,7 @@ title: Simpler Jekyll searching
 date: 2016-02-03
 tags: [Tips, Jekyll, JavaScript]
 description: How to create a searchable post index on a Jekyll site
+archived: true
 ---
 
 All the way back in 2012, I wrote about [how to create a Jekyll search page][1] 

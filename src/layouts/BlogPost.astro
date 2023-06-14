@@ -3,12 +3,13 @@ import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Comments from "../components/Comments.astro";
+import ArchivedPostBanner from "../components/ArchivedPostBanner.astro";
 import LongDate from "../components/LongDate.astro";
 import slugify from "../lib/slugging";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, date, tags, comments } = Astro.props;
+const { title, description, date, tags, archived, comments } = Astro.props;
 ---
 
 <html lang="en">
@@ -34,12 +35,13 @@ const { title, description, date, tags, comments } = Astro.props;
           </ul>
         </header>
         <div>
+          {archived && <ArchivedPostBanner />}
           <slot />
         </div>
         <footer>
           <a class="top" href="#">back to top ↑</a>
         </footer>
-        {comments && <Comments/>}
+        {comments && <Comments />}
       </article>
     </main>
   </body>

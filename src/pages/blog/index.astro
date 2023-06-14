@@ -1,5 +1,6 @@
 ---
 import BaseHead from "../../components/BaseHead.astro";
+import Callout from "../../components/Callout.astro";
 import Header from "../../components/Header.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import getPosts from "../../lib/posts";
@@ -7,6 +8,8 @@ import ShortDate from "../../components/ShortDate.astro";
 import slugify from "../../lib/slugging";
 
 const posts = await getPosts("desc");
+const activePosts = posts.filter((post) => !post.data.archived);
+const archivedPosts = posts.filter((post) => post.data.archived);
 ---
 
 <!DOCTYPE html>
@@ -20,7 +23,7 @@ const posts = await getPosts("desc");
       <h1>Posts</h1>
       <ul class="post-index">
         {
-          posts.map((post) => (
+          activePosts.map((post) => (
             <li>
               <div>
                 <span class="post-date">
@@ -34,13 +37,47 @@ const posts = await getPosts("desc");
                   </a>
                 </span>
                 <ul class="post-tags">
-                  {
-                    post.data.tags.map((tag) => (
-                      <li>
-                        <a href={`/blog/tags/${slugify(tag)}`}>#{tag}</a>
-                      </li>
-                    ))
-                  }
+                  {post.data.tags.map((tag) => (
+                    <li>
+                      <a href={`/blog/tags/${slugify(tag)}`}>#{tag}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2>Archive</h2>
+      <Callout>
+        <p>
+          These posts are pretty old and likely concern topics that are
+          avoidable by using more moderns tools and techniques. They are
+          preserved for posterity but may no longer be relevant or correct.
+        </p>
+      </Callout>
+      <ul class="post-index">
+        {
+          archivedPosts.map((post) => (
+            <li>
+              <div>
+                <span class="post-date">
+                  <ShortDate date={post.data.date} />
+                </span>
+              </div>
+              <div>
+                <span class="post-title">
+                  <a title={post.data.description} href={`/${post.slug}/`}>
+                    {post.data.title}
+                  </a>
+                </span>
+                <ul class="post-tags">
+                  {post.data.tags.map((tag) => (
+                    <li>
+                      <a href={`/blog/tags/${slugify(tag)}`}>#{tag}</a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </li>

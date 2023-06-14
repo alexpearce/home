@@ -3,14 +3,11 @@ title: ROOT on OS X 10.11 El Capitan
 date: 2016-02-02
 tags: [Tips, ROOT, OS X]
 description: A guide to install to high energy physics framework ROOT on OS X 10.11 with Homebrew.
+archived: true
 ---
 
-<div class="alert">
-  This guide is outdated!
-</div>
-
-The [original post](#original-post) is below for posterity, but
-installing ROOT has been much simpler for a while now, whether you're on El Capitan, Sierra, High Sierra, Mojave, Catalina, or Big Sur.
+**Note**: the [original post](#original-post) is below for posterity, but
+installing ROOT has been much simpler for a while now, whether you're on El Capitan or beyond.
 
 There are only two steps:
 

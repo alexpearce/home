@@ -3,6 +3,7 @@ title: An Ubuntu VPS with rbenv, nginx and Passenger
 date: 2012-06-19
 tags: [Tutorials, sysadmin, Ruby, nginx]
 description: A step-by-step tutorial on deploying Ruby apps to a Linux VPS, installing nginx, Passenger, rbenv, and PostgreSQL along the way.
+archived: true
 ---
 
 Every once in a while I buy a new VPS, mostly because I’m not entirely satisfied with my current setup. My stack of choice is usually [RVM](https://rvm.io/) for Ruby management, the [Apache web server](http://httpd.apache.org/), [Passenger](http://www.modrails.com/) for allowing Apache to run Ruby apps like Rails and Sinatra, and [MySQL](http://www.mysql.com/) for the database.
