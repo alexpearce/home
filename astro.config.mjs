@@ -7,7 +7,7 @@ import rehypeSlug from 'rehype-slug';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://alexpearce.me',
+	site: 'https://alex.pearwin.com',
 	markdown: {
 		rehypePlugins: [
 			rehypeSlug,

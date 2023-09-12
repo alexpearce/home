@@ -7,7 +7,7 @@ It uses [Astro][astro] to generate a static site which is deployed and served by
 Comment threads are made as GitHub issues.
 You can comment directly on the site at the bottom of each post, or on [an existing issue on GitHub][issues] if one exists.
 
-[blog]: https://alexpearce.me
+[blog]: https://alex.pearwin.com
 [astro]: https://astro.build/
 [netlify]: https://www.netlify.com/
 [issues]: https://github.com/alexpearce/home/issues?q=is%3Aissue+label%3Acomments+

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alexpearce.me/sitemap-index.xml
+Sitemap: https://alex.pearwin.com/sitemap-index.xml

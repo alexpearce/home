@@ -1,5 +1,5 @@
-https://www.alexpearce.me/* https://alexpearce.me/:splat 301!
-https://alex.pearwin.com/* https://alexpearce.me/:splat 301!
+https://www.alexpearce.me/* https://alex.pearwin.com/:splat 301!
+https://alexpearce.me/* https://alex.pearwin.com/:splat 301!
 /blog/page2/ /blog/
 /blog/page3/ /blog/
 # Proxy requests for the Plausible script and API.

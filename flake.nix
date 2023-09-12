@@ -1,5 +1,5 @@
 {
-  description = "alexpearce.me website";
+  description = "alex.pearwin.com website";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
