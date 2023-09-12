@@ -3,6 +3,8 @@ package = "netlify-plugin-checklinks"
 
   [plugins.inputs]
   skipPatterns = [
+    # Temporarily disabled during domain name change.
+    "https://alex.pearwin.com/atom.xml",
     # The Plausible script is proxied and so does not map to a file in the build.
     "/js/script.js",
   ]
