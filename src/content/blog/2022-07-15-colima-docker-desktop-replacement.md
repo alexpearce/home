@@ -1,7 +1,7 @@
 ---
 title: "TIL: Colima as a Docker Desktop for Mac replacement"
 date: 2022-07-15
-tags: [TIL, Docker, OS X]
+tags: [TIL, Docker, macOS]
 description: Using the Colima virtual machine manager to replace Docker Desktop for Mac.
 ---
 
