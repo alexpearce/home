@@ -3,18 +3,15 @@ package = "netlify-plugin-checklinks"
 
   [plugins.inputs]
   skipPatterns = [
-    # Temporarily disabled during domain name change.
-    "https://alex.pearwin.com/atom.xml",
     # The Plausible script is proxied and so does not map to a file in the build.
     "/js/script.js",
   ]
 
 [[plugins]]
-package = "netlify-plugin-no-more-404"
+package = "@eggnstone/netlify-plugin-no-more-404"
 
   [plugins.inputs]
-  # change this key to a new one any time you need to restart from scratch
-  cacheKey = "2020-06-19v2"
+  cacheKey = "2025-05-27v1"
 
 [[plugins]]
 package = "netlify-plugin-append-redirects"
