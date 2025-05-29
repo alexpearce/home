@@ -36,4 +36,4 @@ const { title, description, social = true } = Astro.props;
 {social && <MetaSocial title={title} description={description} url={canonicalURL}/>}
 
 <!-- Analytics -->
-<script async defer data-domain="alex.pearwin.com" src="/js/script.js"></script>
+<script is:inline async defer data-domain="alex.pearwin.com" src="/js/script.js"></script>

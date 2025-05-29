@@ -1,4 +1,4 @@
-import { CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 
 type DateOrdering = "asc" | "desc";
 type Post = CollectionEntry<"blog">;

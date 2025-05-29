@@ -1,5 +1,5 @@
 ---
-import type { InferGetStaticParamsType, InferGetStaticPropsType } from 'astro';
+import type { InferGetStaticParamsType } from 'astro';
 import BaseHead from "../../../components/BaseHead.astro";
 import Header from "../../../components/Header.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../../consts";
@@ -19,7 +19,6 @@ export async function getStaticPaths() {
   }));
 }
 type Params = InferGetStaticParamsType<typeof getStaticPaths>;
-type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { tag } = Astro.params as Params;
 const { posts } = Astro.props;
