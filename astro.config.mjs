@@ -4,6 +4,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
+import rehypeUnwrapImages from 'rehype-unwrap-images';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,10 +12,14 @@ export default defineConfig({
 	markdown: {
 		rehypePlugins: [
 			rehypeSlug,
-			[rehypeAutolinkHeadings, {behaviour: "append"}],
+			[rehypeAutolinkHeadings, {behavior: "append"}],
+			rehypeUnwrapImages,
 		],
 		shikiConfig: {
-			theme: 'nord',
+			themes: {
+				light: 'nord',
+				dark: 'nord'
+			},
 		},
 	},
 	integrations: [mdx(), sitemap()],

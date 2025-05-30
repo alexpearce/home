@@ -5,11 +5,10 @@ import Header from "../components/Header.astro";
 import Comments from "../components/Comments.astro";
 import ArchivedPostBanner from "../components/ArchivedPostBanner.astro";
 import LongDate from "../components/LongDate.astro";
-import slugify from "../lib/slugging";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, date, tags, archived, comments } = Astro.props;
+const { title, description, date, archived, comments } = Astro.props;
 ---
 
 <html lang="en">
@@ -20,27 +19,12 @@ const { title, description, date, tags, archived, comments } = Astro.props;
   <body>
     <Header />
     <main>
-      <article>
-        <header class="post-header">
-          <h1 class="post-title">{title}</h1>
-          <span class="post-date">Published on <LongDate date={date} /></span>
-          <ul class="post-tags">
-            {
-              tags.map((tag) => (
-                <li>
-                  <a href={`/blog/tags/${slugify(tag)}`}>#{tag}</a>
-                </li>
-              ))
-            }
-          </ul>
-        </header>
-        <div>
-          {archived && <ArchivedPostBanner />}
-          <slot />
-        </div>
-        <footer>
-          <a class="top" href="#">back to top ↑</a>
-        </footer>
+      <article class="contents">
+        <h1>{title}</h1>
+        <p class="post-publication">Published on <LongDate date={date}></LongDate>.</p>
+        {archived && <ArchivedPostBanner />}
+        <slot />
+        <a class="top" href="#">back to top ↑</a>
         {comments && <Comments />}
       </article>
     </main>
