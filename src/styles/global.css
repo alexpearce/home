@@ -1,94 +1,163 @@
-/** Stylesheet for alex.pearwin.com.
- *
- * The idea is to be mobile-first, using media queries when things need to
- * change for larger (desktop) browsers.
- * There is one breakpoint at --content-width, when the viewport is at least as
- * wide as the main content.
- *
- * Inspired by:
- *
- * - https://www.conventionalcommits.org/
- * - https://nowodzinski.pl/syncope/
- *
- */
-
+/* Variables. */
 :root {
-  /* Maximum width of any element inside <main> */
-  --content-width: 740px;
-
-  /* System font stack
-   * https://css-tricks.com/snippets/css/system-font-stack/
-   * https://www.digitalocean.com/community/tutorials/css-system-font-stack
-   */
-  --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --mono-stack: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-
-  --background-color: #ffffff;
-  --callout-background-color: #fafafa;
-  /* Body text */
-  --copy-color: #24292e;
-  /* Links, highlight borders, etc (text-violet-600). */
-  --highlight-color: #7c3aed;
-  /* Headers, including anchor headers */
-  --header-color: var(--copy-color);
-  /* Code background color */
-  --code-background: #2e3440;
+  color-scheme: light dark;
+  --font-size: 1rem;
+  --line-height: 1.666rem;
+  --type-scale-factor: 1.15;
+  --core-width: 42rem;
+  --background-colour: light-dark(oklch(98.5% 0 0), #030712);
+  --base-colour: light-dark(oklch(20.5% 0 0), oklch(85% 0 0));
+  --highlight-colour: light-dark(#7c3aed, #c4b4ff);
+  --body-padding: 1rlh;
 }
 
-/* Colours when OS dark mode is enabled. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #38444c;
-    --callout-background-color: #3c4b55;
-    --copy-color: #f0f4f8;
-    /* text-violet-300 */
-    --highlight-color: #c4b5fd;
-    --code-background: #2f3940;
-  }
-}
-
-/* @begin Structure and layout */
-
-* {
-  /* <3 border-box, meaning that padding and margin count towards the `width` */
+/* Reset. */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+/* Page. */
 html {
-  margin: 0;
-  padding: 0;
+  font-size: 112.25%;
+  background-color: var(--background-colour);
 }
 
 body {
-  width: 100%;
-  margin: 0;
-  font-size: 16px;
-  font-family: var(--font-stack);
-  line-height: 1.63em;
-  background: var(--background-color);
-  color: var(--copy-color);
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: var(--font-size);
+  font-weight: 480;
+  line-height: var(--line-height);
+  margin: 0 auto;
+  padding: var(--body-padding);
+  color: var(--base-colour);
 }
 
-.sr-only {
-  display: none;
+/* Typography. */
+h1 {
+  font-size: calc(var(--font-size) * var(--type-scale-factor) * var(--type-scale-factor) * var(--type-scale-factor));
+  line-height: calc(1.5 * var(--line-height));
 }
 
+h2 {
+  font-size: calc( var(--font-size) * var(--type-scale-factor) * var(--type-scale-factor));
+  line-height: calc(2 * var(--line-height));
+}
+
+h3 {
+  font-size: calc( var(--font-size) * var(--type-scale-factor));
+  line-height: calc(2 * var(--line-height));
+}
+
+h4, h5, h6 {
+  font-size: var(--font-size);
+  line-height: calc(2 * var(--line-height));
+}
+
+h1:hover a[href^="#"]:before,
+h2:hover a[href^="#"]:before,
+h3:hover a[href^="#"]:before,
+h4:hover a[href^="#"]:before,
+h5:hover a[href^="#"]:before,
+h6:hover a[href^="#"]:before {
+  content: "#";
+  display: inline;
+  margin: 0 0 0 0.5ch;
+}
+
+a {
+  color: var(--highlight-colour);
+}
+
+a:hover {
+  filter: brightness(120%);
+}
+
+/* Vertical rhythm. */
+.contents {
+  display: grid;
+  grid-template-columns:
+    1fr
+    min(var(--core-width), 100%)
+    1fr;
+}
+
+.contents > * {
+  grid-column: 2;
+}
+
+.contents > img {
+  margin-left: auto;
+  margin-right: auto;
+  grid-column: 1 / -1;
+}
+
+.contents > :where(:not(:last-child)) {
+  margin-block-end: var(--line-height);
+}
+
+ul, ol {
+  margin-left: var(--line-height);
+}
+
+li:where(:not(:last-child)) {
+  margin-bottom: calc(0.5 * var(--line-height));
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+pre {
+  padding: calc(0.5 * var(--line-height));
+  border-radius: 5px;
+}
+
+pre, code {
+  font-family: Menlo, Consolas, Monaco, Adwaita Mono, Liberation Mono, Lucida Console, monospace;
+  font-size: 0.95em;
+}
+
+/* Site header. */
 .masthead {
+  width: var(--core-width);
+  margin: 0 auto;
+}
+
+.masthead > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px;
-  padding: 12px;
+  margin: 0 0 var(--line-height) 0;
+  padding: 0 0 var(--body-padding) 0;
+  border-bottom: 1px solid light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.15));
 }
 
-.masthead h1 {
-  margin: 0;
-  padding: 0;
-  line-height: 1em;
-  border-bottom: 2px solid var(--highlight-color);
+.masthead .title {
+  display: flex;
+  gap: 1em;
+  align-items: center;
 }
 
-.masthead h1 a:hover {
+.masthead .profile-image {
+  height: 1.5lh;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0);
+}
+
+.masthead .profile-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.masthead h1 a {
+  font-size: calc(1.1 * var(--font-size));
+  color: var(--base-colour);
   text-decoration: none;
 }
 
@@ -107,305 +176,42 @@ body {
   margin-right: 0;
 }
 
-main {
-  margin: 0 20px 20px 20px;
-  padding: 0 12px 24px 12px;
-}
-
-@media only screen and (min-width: 740px) {
-  .masthead {
-    width: var(--content-width);
-    padding: 24px 48px;
-  }
-
-  main {
-    width: var(--content-width);
-    padding: 0 48px 24px 48px;
-  }
-}
-
-hr, footer {
-  border: 0;
-  border-top: 1px solid #ddd;
-}
-
-section.footnotes {
-  border-top: 1px dashed #ddd;
-}
-
-/* Hack to replace emoji backref with symbol. */
-section.footnotes a.data-footnote-backref {
-  visibility: hidden
-}
-
-section.footnotes a.data-footnote-backref:before {
-  content: '↩︎';
-  visibility: visible;
-}
-
-/* Hack to modify our footnote superscripts to be wrapped in brackets. */
-sup a[href^="#user-content-fn-"]:before {
-  content: "[";
-}
-
-sup a[href^="#user-content-fn-"]:after {
-  content: "]";
-}
-
-footer {
-  display: flex;
-  /* Display the elements in reverse order to their DOM order
-   * This allows nice things like the "top" link to appear on the right, even
-   * when it's the only element in the footer
-   */
-  flex-flow: row-reverse;
-  /* Space the elements evenly */
-  justify-content: space-between;
-  margin: 1em 0 0 0;
-  padding: 1em 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  hr, footer {
-    border-top-color: #495862;
-  }
-}
-
-/* @end Structure and layout */
-
-/* @begin Typography */
-
-/**
- * Vertical rhythm by Syncope
- * http://nowodzinski.pl/syncope
- */
-
-h1 {
-	font-size: 1.75em;
-	line-height: 1.86em;
-	padding-top: 1.50em;
-	margin-bottom: 0.357em;
-}
-
-h2 {
-	font-size: 1.44em;
-	line-height: 1.13em;
-	padding-top: 1.35em;
-	margin-bottom: 0.913em;
-}
-
-h3 {
-	font-size: 1.19em;
-	line-height: 1.37em;
-	padding-top: 1.74em;
-	margin-bottom: 1.00em;
-}
-
-h4 {
-	font-size: 1.00em;
-	line-height: 1.63em;
-	padding-top: 0.500em;
-	margin-bottom: 1.13em;
-}
-
-p {
-	font-size: 1.00em;
-	line-height: 1.63em;
-	padding-top: 0.500em;
-	margin-bottom: 1.13em;
-}
-
-h1, h2, h3 {
-  color: var(--header-color);
-}
-
-h1 a, h2 a, h3 a {
-  color: var(--header-color);
-}
-
-a {
-  color: var(--highlight-color);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Shamefully stolen from GitHub's kbd styling. */
-kbd {
-  display: inline-block;
-  padding: 3px 5px;
-  font-family: var(--mono-stack);
-  font-size: 0.9em;
-  line-height: normal;
-  background-color: #f6f8fa;
-  border: solid 1px rgba(175,184,193,0.2);
-  border-bottom-color: rgba(175,184,193,0.2);
-  border-radius: 6px;
-  box-shadow: inset 0 -1px 0 rgba(175,184,193,0.2);
-}
-
-ul, ol {
-  /* List item text is roughly flush with surrounding text */
-  padding-left: 1.25em;
-}
-
-/* @end Typography */
-main > *:first-child {
-  margin-top: 0;
-  padding-top: 0;
-}
-
-img, video {
-  /* Media expands to fit its container */
-  width: 100%;
-}
-
-/* @begin Post listing and posts */
-
+/* Post index. */
 ul.post-index {
-  padding-left: 0;
+  margin-left: 0;
 }
 
-.post-index li {
+ul.post-index li {
   display: flex;
-}
-
-.post-index li {
-  margin: 0;
-  padding: 0;
   list-style: none;
 }
 
-.post-index .post-date {
+ul.post-index li .post-date {
   display: inline-block;
-  width: 6em;
-  margin: 0 1em 0 0;
-  font-weight: bold;
+  width: 120px;
+  font-weight: 600;
 }
 
-.post-index .post-tags {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.post-tags a {
-  color: #999;
-}
-
-.post-tags a:hover {
-  color: var(--highlight-color);
-}
-
-.post-excerpt span, header span {
-  display: block;
-}
-
-.post-excerpt .description {
+/* Post metadata. */
+.post-publication {
   font-style: italic;
+  color: oklch(60% 0 0);
 }
 
-.post-excerpt h1, header h1 {
-  /* These headers already have padding from elements above them,
-   * don't duplicate it
-   */
-  padding: 0;
-}
-
-.post-tags {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  text-transform: lowercase;
-}
-
-.post-tags li {
-  padding: 0 4px;
-}
-
-.post-tags li:first-child {
-  padding-left: 0;
-}
-
-header {
-  padding: 0 0 1.5em 0;
-  border-bottom: 1px solid #ddd;
-}
-
-/* Header reference links generated by rehype-autolink-headings */
-h1:hover a[href^="#"]:before,
-h2:hover a[href^="#"]:before,
-h3:hover a[href^="#"]:before,
-h4:hover a[href^="#"]:before {
-  content: "🔗";
-  display: inline;
-  margin: 0 0 0 0.25em;
-}
-
-.pagination {
-  margin: 1em 0;
-  text-align: center;
-  color: #888;
-}
-
-.pagination .previous, .pagination .next {
-  margin: 0 0.5em;
-  padding: 0 0.5em;
-}
-
-/* @end Post listing and posts */
-
-/* @begin Post/page style */
-
-pre, code {
-  font-family: var(--mono-stack);
-  font-size: 0.9em;
-}
-
-pre {
-  padding: 0.7em 1em 0.8em 1em;
-  overflow: auto;
-  background: var(--code-background);
-  border-radius: 4px;
-  color: #f8f8f2;
-  line-height: 1.5;
-}
-
-pre code {
-  padding: 0;
-}
-
-blockquote {
-  margin: 0;
-  padding: 0.7em 1em 0.8em 1em;
-  padding: 0 1em;
-  border-left: 2px solid #eee;
-  font-style: italic;
-}
-
+/* Callout. */
 .callout {
-  margin: 1.13em 0;
-  padding: 0 1.25em;
-  background: var(--callout-background-color);
-  border: 1px solid #eee;
-  border-left-width: 0.25rem;
-  border-left-color: var(--highlight-color);
-  border-radius: 0.25rem;
+  padding: var(--line-height);
+  background: light-dark(oklch(97% 0 0), #1c2029);
+  border-inline-start: calc(var(--line-height) / 4) solid light-dark(oklch(81% 0.117 11.638), oklch(45.5% 0.188 13.697));
 }
 
+/* Leaflet maps. */
 .route-map {
-  height: 380px;
-  max-width: 100%;
+  height: calc(15 * var(--line-height));
+  grid-column: 1 / -1;
 }
 
-/* @end Post/page style */
-
-/* @begin Comment thread style */
-
+/* Comments. */
 .utterances {
-  margin-top: -30px;
+  border-top: 1px solid light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.15));
 }
-
-/* @end Comment thread style */

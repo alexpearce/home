@@ -3,13 +3,23 @@ import { SITE_TITLE } from "../consts";
 ---
 
 <div class="masthead">
-  <h1 class="title" title="Alex Pearwin (né Alex Pearce)">
-    <a href="/">{SITE_TITLE}</a>
-  </h1>
-  <nav>
-    <ul>
-      <li><a href="/">About</a></li>
-      <li><a href="/blog/">Blog</a></li>
-    </ul>
-  </nav>
+  <div>
+    <div class="title">
+      <div class="profile-image">
+        <img 
+          src="/img/profile@2x.jpg" 
+          srcset="/img/profile@1x.jpg, /img/profile@2x.jpg 2x" 
+          alt="Profile photo of Alex Pearwin">
+      </div>
+      <h1 title="Alex Pearwin (né Alex Pearce)">
+        <a href="/">{SITE_TITLE}</a>
+      </h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
 </div>

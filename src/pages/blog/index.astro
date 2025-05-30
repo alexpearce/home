@@ -5,7 +5,6 @@ import Header from "../../components/Header.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import getPosts from "../../lib/posts";
 import ShortDate from "../../components/ShortDate.astro";
-import slugify from "../../lib/slugging";
 
 const posts = await getPosts("desc");
 const activePosts = posts.filter((post) => !post.data.archived);
@@ -19,8 +18,8 @@ const archivedPosts = posts.filter((post) => post.data.archived);
   </head>
   <body>
     <Header />
-    <main>
-      <h1>Posts</h1>
+    <main class="contents">
+      <h1>Blog</h1>
       <ul class="post-index">
         {
           activePosts.map((post) => (
@@ -36,18 +35,12 @@ const archivedPosts = posts.filter((post) => post.data.archived);
                     {post.data.title}
                   </a>
                 </span>
-                <ul class="post-tags">
-                  {post.data.tags.map((tag) => (
-                    <li>
-                      <a href={`/blog/tags/${slugify(tag)}`}>#{tag}</a>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </li>
           ))
         }
       </ul>
+      <p>An <a href="/atom.xml">RSS feed</a> is available.</p>
 
       <h2>Archive</h2>
       <Callout>
@@ -72,21 +65,11 @@ const archivedPosts = posts.filter((post) => post.data.archived);
                     {post.data.title}
                   </a>
                 </span>
-                <ul class="post-tags">
-                  {post.data.tags.map((tag) => (
-                    <li>
-                      <a href={`/blog/tags/${slugify(tag)}`}>#{tag}</a>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </li>
           ))
         }
       </ul>
-      <footer>
-        <span><a href="/atom.xml">RSS feed</a></span>
-      </footer>
     </main>
   </body>
 </html>
