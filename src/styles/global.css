@@ -123,7 +123,7 @@ pre, code {
 
 /* Site header. */
 .masthead {
-  width: var(--core-width);
+  max-width: var(--core-width);
   margin: 0 auto;
 }
 
@@ -144,6 +144,7 @@ pre, code {
 
 .masthead .profile-image {
   height: 1.5lh;
+  width: 1.5lh;
   border-radius: 100%;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.3);
