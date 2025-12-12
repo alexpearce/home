@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # Direnv
 .direnv
+
+# Nix build result
+/result
