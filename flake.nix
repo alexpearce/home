@@ -28,6 +28,18 @@
             NODE_ENV = "development";
           };
         };
+        packages.default = pkgs.buildNpmPackage {
+          pname = "alex-pearwin-com";
+          version = "1.0.0";
+          src = ./.;
+          nodejs = pkgs.nodePackages_latest.nodejs;
+          npmDepsHash = "sha256-AonZ5B/uQb04xV+TQmAjEizQmKgTs+GhZ439qQ8ce6U=";
+          installPhase = ''
+            runHook preInstall
+            cp -r dist $out
+            runHook postInstall
+          '';
+        };
       }
     );
 }
