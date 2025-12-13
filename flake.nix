@@ -18,6 +18,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
+        checks.default = self.packages.${system}.default;
         formatter = pkgs.nixfmt-tree;
         devShells = {
           default = pkgs.mkShell {
