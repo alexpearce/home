@@ -31,7 +31,7 @@ const { posts } = Astro.props;
   </head>
   <body>
     <Header />
-    <main>
+    <main class="contents">
       <h1>{`#${slugify(tag)}`} posts</h1>
       <!-- TODO extract out the post listing; it is common between the blog and tag indices. -->
       <ul class="post-index">
