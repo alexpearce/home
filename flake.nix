@@ -34,7 +34,10 @@
           version = "1.0.0";
           src = ./.;
           nodejs = pkgs.nodePackages_latest.nodejs;
-          npmDepsHash = "sha256-AonZ5B/uQb04xV+TQmAjEizQmKgTs+GhZ439qQ8ce6U=";
+          npmDepsHash = {
+            "aarch64-darwin" = "sha256-AonZ5B/uQb04xV+TQmAjEizQmKgTs+GhZ439qQ8ce6U=";
+            "x86_64-linux" = "sha256-yfks+I6oqH9oac5eieRqazr1XK/3aApH2h2hzhScIls=";
+          }.${system};
           installPhase = ''
             runHook preInstall
             cp -r dist $out
